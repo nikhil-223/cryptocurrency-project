@@ -18,5 +18,10 @@ code {
 @tailwind utilities;
 
 #dashboard > div {
-  background-color: rgb(240, 227, 227);
+  padding: 1rem;
+}
+
+
+.droplist::-webkit-scrollbar {
+    display: none;
 }
