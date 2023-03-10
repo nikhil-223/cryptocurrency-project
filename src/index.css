@@ -17,9 +17,7 @@ code {
 @tailwind components;
 @tailwind utilities;
 
-#dashboard > div {
-  padding: 1rem;
-}
+
 
 
 .droplist::-webkit-scrollbar {
