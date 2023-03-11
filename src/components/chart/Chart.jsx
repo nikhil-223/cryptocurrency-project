@@ -4,7 +4,7 @@ import ChartType from './ChartType';
 import CryptoItem from './CryptoItem';
 
 import CurrencyDrop from './CurrencyDrop'
-import LineChart from './LineChart';
+// import LineChart from './LineChart';
 import TimePeriodItem from './TimePeriodItem'
 
 const Chart = () => {
@@ -39,15 +39,15 @@ const Chart = () => {
   return (
 		<div
 			id="chart"
-			className={`grid row-span-3 col-span-6 rounded-xl grid-rows-6 grid-cols-8 grid-flow-row gap-2 bg-boxDark text-white pt-2 p-5`}>
+			className={`grid row-span-3 col-span-8 rounded-xl grid-rows-6 grid-cols-8 grid-flow-row gap-2 bg-boxDark text-white pt-2 p-5`}>
 			{/* Currency Dropdown  */}
       <CurrencyDrop />
 			{/* Currency Dropdown  */}
 
 			{/* timePeriod  */}
 			<div className=" col-span-4 flex justify-end items-center gap-2">
-				{timeperiods.map((item) => {
-          return <TimePeriodItem timePeriod={item.timePeriod} />;
+				{timeperiods.map((item,index) => {
+          return <TimePeriodItem key={index} timePeriod={item.timePeriod} />;
 				})}
 			</div>
       {/* timePeriod  */}
