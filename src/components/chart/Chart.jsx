@@ -1,15 +1,28 @@
-import React from 'react'
+import React, { useEffect,useState } from 'react'
 import { IoMdArrowDropdown } from "react-icons/io";
+import { useDispatch, useSelector } from 'react-redux';
+
+import { getChartData } from '../../api';
 import ChartType from './ChartType';
 import CryptoItem from './CryptoItem';
-
 import CurrencyDrop from './CurrencyDrop'
 import LineChart from './LineChart';
 import TimePeriodItem from './TimePeriodItem'
 
 const Chart = () => {
+
+	const dispatch = useDispatch();
+
+	useEffect(() => {
+		dispatch(getChartData());
+		// eslint-disable-next-line
+	}, [])	
+	
+	 const chartData = useSelector((state) => {
+			return state.chart.data;
+		});
+
   const timeperiods=[
-    {timePeriod:'1H'},
     {timePeriod:'1D'},
     {timePeriod:'1W'},
     {timePeriod:'1M'},
@@ -35,19 +48,28 @@ const Chart = () => {
 				? (document.getElementById("chartTypeDroplist").style.display = "flex")
 				: (document.getElementById("chartTypeDroplist").style.display = "none");
     }
+	const [cryptoInput, setCryptoInput] = useState('Bitcoin')
+	const [chartTypeInput, setChartTypeInput] = useState('Line')
+	const handleCryptoChange=(e)=>{
+		setCryptoInput(e.target.value)
+	}
+	const handleChartTypeChange=(e)=>{
+		setChartTypeInput(e.target.value)
+
+	}
 
   return (
 		<div
 			id="chart"
-			className={`grid row-span-3 col-span-6 rounded-xl grid-rows-6 grid-cols-8 grid-flow-row gap-2 bg-boxDark text-white pt-2 p-5`}>
+			className={`grid row-span-3 col-span-8 rounded-xl grid-rows-6 grid-cols-8 grid-flow-row gap-2 bg-boxDark text-white pt-2 p-5`}>
 			{/* Currency Dropdown  */}
       <CurrencyDrop />
 			{/* Currency Dropdown  */}
 
 			{/* timePeriod  */}
 			<div className=" col-span-4 flex justify-end items-center gap-2">
-				{timeperiods.map((item) => {
-          return <TimePeriodItem timePeriod={item.timePeriod} />;
+				{timeperiods.map((item,index) => {
+          return <TimePeriodItem key={index} timePeriod={item.timePeriod} />;
 				})}
 			</div>
       {/* timePeriod  */}
@@ -59,7 +81,8 @@ const Chart = () => {
 					<input
 						type="text"
 						className="drop-input w-4/5 p-2 bg-transparent focus:outline-none "
-						value={"rahul"}
+						value={cryptoInput}
+						onChange={handleCryptoChange}
 					/>
 					<span
 						className="w-1/5 flex justify-center items-center text-2xl"
@@ -86,7 +109,8 @@ const Chart = () => {
 					<input
 						type="text"
 						className="drop-input w-4/5 p-2 bg-transparent focus:outline-none "
-						value={"rahul"}
+						value={chartTypeInput}
+						onChange={handleChartTypeChange}
 					/>
 					<span
 						className="w-1/5 flex justify-center items-center text-2xl"
@@ -108,8 +132,8 @@ const Chart = () => {
 				</div>
 				{/* chartType dropdown  */}
 			</div>
-      <div className=' col-span-8 row-span-5 bg-slate-300'>
-        {/* <LineChart/> */}
+      <div className=' col-span-8 row-span-5 '>
+       {chartData && <LineChart/>}
       </div>
 		</div>
 	);
