@@ -1,13 +1,27 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { IoMdArrowDropdown } from "react-icons/io";
+import { useDispatch,useSelector } from 'react-redux';
+
+import { getChartData } from '../../api';
 import ChartType from './ChartType';
 import CryptoItem from './CryptoItem';
-
 import CurrencyDrop from './CurrencyDrop'
 // import LineChart from './LineChart';
 import TimePeriodItem from './TimePeriodItem'
 
 const Chart = () => {
+
+	const dispatch = useDispatch();
+	useEffect(() => {
+		dispatch(getChartData());
+		// eslint-disable-next-line
+	}, [])
+	
+	const chartData = useSelector((state)=>{
+		return state.chart.data;
+	})
+	
+
   const timeperiods=[
     {timePeriod:'1H'},
     {timePeriod:'1D'},

@@ -1,19 +1,9 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React from "react";
 import { Chart, Coins, Exchange, Portfolio } from "./components";
-import { getCoins } from "./api";
 
 const App = () => {
-	const dispatch = useDispatch();
-	const data = useSelector((state) => {
-		return state.coins;
-	});
-	console.log(data);
 
-	useEffect(() => {
-		dispatch(getCoins());
-		// eslint-disable-next-line
-	}, []);
+	
 
 	return (
 		<>
