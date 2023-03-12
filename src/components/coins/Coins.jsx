@@ -17,10 +17,7 @@ const Coins = () => {
 	}, [first]);
 
 	return (
-		<div
-			id="coins"
-			className={` col-span-3 row-span-5 rounded-xl bg-boxDark text-white`}>
-			
+		<>
 			<div className="h-12">title</div>
 			<div className="coinlist py-4 h-5/6 overflow-scroll">
 				{coins? coins.map((item,index) => {
@@ -32,8 +29,7 @@ const Coins = () => {
 				}):"loading..." 
 			}
 			</div>
-
-		</div>
+		</>
 	);
 };
 

@@ -16,15 +16,15 @@ const CurrencyDrop = () => {
 		setDropdownName(e.target.value)
 	}
   return (
-		<div className="flex justify-between gap-2 px-2 py-2 w-full h-12 m-auto rounded-lg bg-dropdownBoxDark text-white">
+		<div className="flex col-span-2 justify-between gap-2 px-2 py-2 h-12 rounded-lg bg-dropdownBoxDark text-white">
 			<input
 				type="text"
-				className="drop-input w-4/5 p-2 bg-transparent focus:outline-none "
+				className="drop-input  w-20 p-2 bg-transparent focus:outline-none "
 				value={dropdownName}
 				onChange={handleChange}
 			/>
 			<span
-				className="w-1/5 flex justify-center items-center text-5xl"
+				className="w-6 flex justify-center items-center text-5xl"
 				onClick={showList}>
 				<IoMdArrowDropdown />
 			</span>

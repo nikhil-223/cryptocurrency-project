@@ -30,19 +30,30 @@ module.exports = {
 				650: "650px",
 				685: "685px",
 				800: "800px",
+				1500: "1200px",
 				"90vh": "90vh",
 			},
 			minWidth: {
 				210: "210px",
 				350: "350px",
 				620: "620px",
+				600: "600px",
+				750: "750px",
+				20: "20px",
 			},
 			screens: {
-				sm: "640px",
-				md: "768px",
+				sm: "200px",
+				md: "750px",
 				lg: "1024px",
 				xl: "1280px",
 				"2xl": "1536px",
+			},
+			gridTemplateRows: {
+				// Simple 8 row grid
+				10: "repeat(10, minmax(0, 1fr))",
+
+				// Complex site-specific row configuration
+				layout: "200px minmax(900px, 1fr) 100px",
 			},
 			colors: {
 				boxDark: "#07182d",
