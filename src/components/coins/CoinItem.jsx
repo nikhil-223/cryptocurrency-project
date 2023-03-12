@@ -27,7 +27,7 @@ const CoinItem = (props) => {
 				</div>
 
 				<div className={`flex flex-col items-end`}>
-					<div>{` ${current_price}`}</div>
+					<div>{`$ ${current_price}`}</div>
 
 					<div
 						className={

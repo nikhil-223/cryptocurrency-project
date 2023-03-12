@@ -9,11 +9,10 @@ const Coins = () => {
 	const coins = useSelector((state) => {
 		return state.coins.data;
 	});
-
+ 
 	const [first, setfirst] = useState("")
 	useEffect(() => {
 		dispatch(getCoins());
-		console.log('fds');
 		// eslint-disable-next-line
 	}, [first]);
 
