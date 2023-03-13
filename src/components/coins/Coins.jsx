@@ -22,20 +22,41 @@ const Coins = () => {
 	return (
 		<div
 			id="coins"
-			className={` col-span-2 row-span-5 rounded-xl bg-boxDark text-white`}>
-			<div className=" h-12 w-full flex items-center justify-start ">
-				<div className=" m-3 text-xl"><AiOutlineSearch size={25}/></div>
-				
-				<input className="h-full w-3/5 bg-boxDark outline-none " type="text" placeholder="Search by Coin"/>
-				
-	             <div className=" ml-auto w-12 text-xl flex item-end bg-transparent text-fuchsia-600" >< MdLightMode size={30}/></div>
-			</div> 
-			<div className=" bg-slate-400 h-4/5 overflow-scroll ">
-				{arr.map((item) => {
-					return <CoinItem itemname={item.itemname} title={item.title} />;
-				})}
+			className={` col-span-2 row-span-5 rounded-xl h-full bg-boxDark text-white`}>
+			<div className=" my-2 h-12 w-full flex items-center justify-start ">
+				<div className=" m-3 text-xl">
+					<AiOutlineSearch size={25} />
+				</div>
+
+				<input
+					className="h-full w-3/5 bg-boxDark outline-none "
+					type="text"
+					placeholder="Search by Coin"
+				/>
+
+				<div className=" ml-auto w-12 text-xl flex item-end bg-transparent text-fuchsia-600">
+					<MdLightMode size={30} />
+				</div>
 			</div>
-		</>
+			<div className="coinlist py-4 h-5/6 overflow-scroll">
+				{coins
+					? coins.map((item, index) => {
+							return (
+								<CoinItem
+									key={index}
+									name={item.name}
+									current_price={item.current_price}
+									market_cap_change_percentage_24h={
+										item.market_cap_change_percentage_24h
+									}
+									image={item.image}
+									symbol={item.symbol}
+								/>
+							);
+					  })
+					: "loading..."}
+			</div>
+		</div>
 	);
 };
 
