@@ -23,25 +23,32 @@ const Coins = () => {
 		<div
 			id="coins"
 			className={` col-span-2 row-span-5 rounded-xl h-full bg-boxDark text-white`}>
+			{/* title  */}
 			<div className=" my-2 h-12 w-full flex items-center justify-start ">
+				{/* search icon  */}
 				<div className=" m-3 text-xl">
 					<AiOutlineSearch size={25} />
 				</div>
 
+				{/* input  */}
 				<input
 					className="h-full w-3/5 bg-boxDark outline-none "
 					type="text"
 					placeholder="Search by Coin"
-				/>
+					/>
 
+				{/* theme button */}
 				<div className=" ml-auto w-12 text-xl flex item-end bg-transparent text-fuchsia-600">
 					<MdLightMode size={30} />
 				</div>
 			</div>
+			{/* title  */}
+
+			{/* coinlist  */}
 			<div className="coinlist py-4 h-5/6 overflow-scroll">
 				{coins
 					? coins.map((item, index) => {
-							return (
+						return (
 								<CoinItem
 									key={index}
 									name={item.name}
@@ -51,11 +58,12 @@ const Coins = () => {
 									}
 									image={item.image}
 									symbol={item.symbol}
-								/>
-							);
-					  })
-					: "loading..."}
+									/>
+									);
+								})
+								: "loading..."}
 			</div>
+			{/* coinlist  */}
 		</div>
 	);
 };
