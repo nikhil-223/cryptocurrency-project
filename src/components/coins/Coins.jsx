@@ -1,23 +1,24 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getCoins } from "../../api";
 import CoinItem from "./CoinItem";
 import {AiOutlineSearch} from "react-icons/ai"
 import { MdLightMode } from "react-icons/md";
 
 const Coins = () => {
-	const arr = [
-		{ itemname: "rahul", title: "jj" },
-		{ itemname: "rahul", title: "jj" },
-		{ itemname: "rahul", title: "jj" },
-		{ itemname: "rahul", title: "jj" },
-		{ itemname: "rahul", title: "jj" },
-		{ itemname: "rahul", title: "jj" },
-		{ itemname: "rahul", title: "jj" },
-		{ itemname: "rahul", title: "jj" },
-		{ itemname: "rahul", title: "jj" },
-		{ itemname: "rahul", title: "jj" },
-		{ itemname: "rahul", title: "jj" },
-		{ itemname: "rahul", title: "jj" },
-	];
+
+	const dispatch = useDispatch();
+	const coins = useSelector((state) => {
+		return state.coins.data;
+	});
+ 
+	const [first, setfirst] = useState("")
+	useEffect(() => {
+		dispatch(getCoins());
+	    setfirst()
+		// eslint-disable-next-line
+	}, [first]);
+
 	return (
 		<div
 			id="coins"
@@ -34,7 +35,7 @@ const Coins = () => {
 					return <CoinItem itemname={item.itemname} title={item.title} />;
 				})}
 			</div>
-		</div>
+		</>
 	);
 };
 

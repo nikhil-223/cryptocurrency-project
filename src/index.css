@@ -23,3 +23,6 @@ code {
 .droplist::-webkit-scrollbar {
     display: none;
 }
+.coinlist::-webkit-scrollbar {
+    display: none;
+}
