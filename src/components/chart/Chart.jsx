@@ -1,10 +1,10 @@
 import React from 'react'
-import { IoMdArrowDropdown } from "react-icons/io";
+import { IoMdArrowDropdown } from 'react-icons/io';
 import ChartType from './ChartType';
 import CryptoItem from './CryptoItem';
 
 import CurrencyDrop from './CurrencyDrop'
-import LineChart from './LineChart';
+// import LineChart from './LineChart';
 import TimePeriodItem from './TimePeriodItem'
 
 const Chart = () => {
@@ -16,7 +16,7 @@ const Chart = () => {
     {timePeriod:'6M'},
     {timePeriod:'1Y'},
 
-  ]
+  ] 
   
     const arr = [{ itemname: "rahul" }, { itemname: "nikhil" }];
 
