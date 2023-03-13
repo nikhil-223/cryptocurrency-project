@@ -64,7 +64,7 @@ const Chart = () => {
 			{/* Currency Dropdown  */}
 
 			{/* timePeriod  */}
-			<div className="lg:flex md:hidden sm:hidden col-span-3 justify-end items-center gap-2">
+			<div className="lg:flex md:hidden sm:hidden col-span-3 justify-end items-center gap-3">
 				{timeperiods.map((item, index) => {
 					return <TimePeriodItem key={index} timePeriod={item.timePeriod} />;
 				})}
@@ -84,7 +84,7 @@ const Chart = () => {
 
 			<div className=" lg:col-span-4 md:col-span-7 sm:col-span-6 sm:col-start-4 flex items-center justify-end gap-4 sm:gap-1 lg:gap-4">
 				{/* crypto dropdown */}
-				<div className="flex items-center justify-between  w-44 h-12 p-2 bg-dropdownBoxDark rounded-lg">
+				<div className="flex items-center justify-between  w-44 h-xs p-2 bg-dropdownBoxDark rounded-lg">
 					<input
 						type="text"
 						className="drop-input w-4/5 p-2 bg-transparent focus:outline-none "
@@ -111,7 +111,7 @@ const Chart = () => {
 				{/* crypto dropdown */}
 
 				{/* chartType dropdown  */}
-				<div className="flex items-center justify-between  w-44 h-12 p-2 bg-dropdownBoxDark rounded-lg">
+				<div className="flex items-center justify-between  w-44 h-xs p-2 bg-dropdownBoxDark rounded-lg">
 					<input
 						type="text"
 						className="drop-input w-4/5 p-2 bg-transparent focus:outline-none "

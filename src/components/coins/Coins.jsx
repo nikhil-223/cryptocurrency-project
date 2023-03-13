@@ -13,6 +13,7 @@ const Coins = () => {
 	const [first, setfirst] = useState("")
 	useEffect(() => {
 		dispatch(getCoins());
+	    setfirst()
 		// eslint-disable-next-line
 	}, [first]);
 

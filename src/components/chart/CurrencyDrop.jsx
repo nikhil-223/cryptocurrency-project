@@ -16,7 +16,7 @@ const CurrencyDrop = () => {
 		setDropdownName(e.target.value)
 	}
   return (
-		<div className="flex col-span-2 justify-between gap-2 px-2 py-2 h-12 rounded-lg bg-dropdownBoxDark text-white">
+		<div className="flex col-span-2 justify-between gap-2 px-2 py-2 h-xs rounded-lg bg-dropdownBoxDark text-white">
 			<input
 				type="text"
 				className="drop-input  w-20 p-2 bg-transparent focus:outline-none "

@@ -18,11 +18,12 @@ module.exports = {
 				508: "508px",
 			},
 			height: {
+				xs: "2.8rem",
 				80: "80px",
 				150: "150px",
 				225: "225px",
 				300: "300px",
-				340: "340px",
+				350: "350px",
 				370: "370px",
 				420: "420px",
 				510: "510px",
@@ -31,7 +32,7 @@ module.exports = {
 				685: "685px",
 				800: "800px",
 				1500: "1200px",
-				"90vh": "90vh",
+				"93vh": "93vh",
 			},
 			minWidth: {
 				210: "210px",
@@ -51,7 +52,17 @@ module.exports = {
 			gridTemplateRows: {
 				// Simple 8 row grid
 				10: "repeat(10, minmax(0, 1fr))",
-
+				dashPc: " 25rem 18rem ",
+				dashTab: " minmax(43vh,25rem)  minmax(30vh,20rem) minmax(30vh,20rem) ",
+				dashMob: " 43vh 82vh",
+				// Complex site-specific row configuration
+				layout: "200px minmax(900px, 1fr) 100px",
+			},
+			gridTemplateColumns: {
+				// Simple 8 row grid
+				dashPc: "minmax(33vw,33rem)  minmax(33vw,33rem) minmax(28vw ,24rem)",
+				dashTab: "55% 45% ",
+				dashMob: "100vw",
 				// Complex site-specific row configuration
 				layout: "200px minmax(900px, 1fr) 100px",
 			},
