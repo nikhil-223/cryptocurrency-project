@@ -26,7 +26,7 @@ const Coins = () => {
 			{/* title  */}
 			<div className=" my-2 h-12 w-full flex items-center justify-start ">
 				{/* search icon  */}
-				<div className=" m-3 text-xl">
+				<div className=" m-3 mx-5 text-xl">
 					<AiOutlineSearch size={25} />
 				</div>
 
@@ -45,7 +45,7 @@ const Coins = () => {
 			{/* title  */}
 
 			{/* coinlist  */}
-			<div className="coinlist py-4 h-5/6 overflow-scroll">
+			<div className="coinlist pb-4 h-5/6 overflow-scroll">
 				{coins
 					? coins.map((item, index) => {
 						return (
