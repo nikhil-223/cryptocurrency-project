@@ -31,6 +31,8 @@ module.exports = {
 				650: "650px",
 				685: "685px",
 				800: "800px",
+				"5/12": "41.6666667",
+				"90vh": "90vh",
 				1500: "1200px",
 				"93vh": "93vh",
 			},
@@ -69,6 +71,7 @@ module.exports = {
 			colors: {
 				boxDark: "#07182d",
 				boxLight: "#07182d",
+				exchBtn:"rgb(43 129 143)",
 				dropdownBoxDark: "#14446b",
 				dropdownBoxLight: "#14446b",
 				dropdownListDark: "#19476e",

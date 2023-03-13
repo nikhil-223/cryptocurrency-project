@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from "react";
 import { IoMdArrowDropdown } from "react-icons/io";
 import { useDispatch, useSelector } from "react-redux";
@@ -9,8 +10,10 @@ import CurrencyDrop from "./CurrencyDrop";
 import LineChart from "./LineChart";
 import TimePeriodItem from "./TimePeriodItem";
 
+
 const Chart = () => {
 	const dispatch = useDispatch();
+
 
 	useEffect(() => {
 		dispatch(getChartData());
