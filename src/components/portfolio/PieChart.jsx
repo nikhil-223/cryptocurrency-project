@@ -6,15 +6,14 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 
 const PieChart = () => {
 
+  const PieItem=useSelector((state)=>{
+    return state.pieItem
+  })
   const coins=useSelector((state)=>{
     return state.coins.data;
   })
   const arr=[]
-
-  const bt=[
-    'Bitcoin','Ethereum','Lido Staked Ether',
-  ]
-  bt.map((item)=>{
+  PieItem.map((item)=>{
 
      let found= coins.find(function (element) {
           return element.name === item;

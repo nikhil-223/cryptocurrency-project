@@ -1,4 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
+
 import { ChartSlice, CoinSlice, CurrencySlice, ThemeSlice } from "./slices";
 
 const store = configureStore({
@@ -7,6 +8,7 @@ const store = configureStore({
 		chart: ChartSlice,
 		theme: ThemeSlice,
 		currency: CurrencySlice,
+		pieItem: PieItemSlice,
 	},
 });
 
