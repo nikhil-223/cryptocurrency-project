@@ -1,6 +1,9 @@
 import React from 'react'
+import { useDispatch } from 'react-redux';
+import { addPieItem } from '../../store/slices/PieItemSlice';
 
 const CoinItem = (props) => {
+	const dispatch=useDispatch()
     const {
 			name,
 			current_price,
@@ -10,12 +13,15 @@ const CoinItem = (props) => {
 		} = props;
     
 	const market_cap_change_percentage_24h_toString = `${market_cap_change_percentage_24h}`;
-
+const aboutItem=((e)=>{
+let item=e.target.closest(".coinItem").querySelector('.coinName').innerHTML
+dispatch(addPieItem(item))
+})
   return (
 		<>
 			<div
-				className="w-full h-auto py-4 px-6 flex justify-between"
-				data-tracker={name}>
+				className="coinItem  cursor-pointer w-full h-auto py-4 px-6 flex justify-between"
+				data-tracker={name} onClick={aboutItem}>
 
 				{/* coin details  */}
 				<div className="flex items-center gap-4">
@@ -25,7 +31,7 @@ const CoinItem = (props) => {
 					</div>
 					{/* coin name and symbol  */}
 					<div>
-						<div className=' text-md'>{name}</div>
+						<div className=' coinName text-md'>{name}</div>
 						<div className=' opacity-50'>{symbol}</div>
 					</div>
 				</div>
