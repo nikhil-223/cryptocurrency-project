@@ -20,9 +20,7 @@ const Coins = () => {
 	}, [first]);
 
 	return (
-		<div
-			id="coins"
-			className={` col-span-2 row-span-5 rounded-xl h-full bg-boxDark text-white`}>
+		<>
 			{/* title  */}
 			<div className=" my-2 h-12 w-full flex items-center justify-start ">
 				{/* search icon  */}
@@ -35,7 +33,7 @@ const Coins = () => {
 					className="h-full w-3/5 bg-boxDark outline-none "
 					type="text"
 					placeholder="Search by Coin"
-					/>
+				/>
 
 				{/* theme button */}
 				<div className=" ml-auto w-12 text-xl flex item-end bg-transparent text-fuchsia-600">
@@ -48,7 +46,7 @@ const Coins = () => {
 			<div className="coinlist pb-4 h-5/6 overflow-scroll">
 				{coins
 					? coins.map((item, index) => {
-						return (
+							return (
 								<CoinItem
 									key={index}
 									name={item.name}
@@ -58,13 +56,13 @@ const Coins = () => {
 									}
 									image={item.image}
 									symbol={item.symbol}
-									/>
-									);
-								})
-								: "loading..."}
+								/>
+							);
+					  })
+					: "loading..."}
 			</div>
 			{/* coinlist  */}
-		</div>
+		</>
 	);
 };
 

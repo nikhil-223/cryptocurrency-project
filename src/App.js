@@ -5,7 +5,6 @@ import PhoneMenu from "./components/phoneMenu/PhoneMenu";
 const App = () => {
 	return (
 		<>
-		
 			{/* for pc */}
 			<div className="dashboard lg:grid sm:hidden md:hidden grid-rows-dashPc grid-cols-dashPc p-4 content-center justify-center w-auto h-screen gap-1 grid-flow-col bg-sky-300">
 				<div
@@ -20,7 +19,7 @@ const App = () => {
 				</div>
 				<div
 					id="exchange"
-					className={`row-span-1 col-span-1 min-w-fit rounded-lg bg-boxDark text-white`}>
+					className={`row-span-1 w-full flex flex-col justify-between p-4 col-span-1 min-w-fit rounded-lg bg-boxDark text-white`}>
 					<Exchange />
 				</div>
 
@@ -45,7 +44,7 @@ const App = () => {
 				</div>
 				<div
 					id="exchange"
-					className={`row-span-1 col-span-1 bg-boxDark text-white`}>
+					className={`row-span-1 w-full flex flex-col justify-between p-4 col-span-1 min-w-fit rounded-lg bg-boxDark text-white`}>
 					<Exchange />
 				</div>
 
@@ -58,20 +57,22 @@ const App = () => {
 
 			{/* for phones */}
 			<div className="dashboard  lg:hidden sm:grid md:hidden  grid-rows-dashMob grid-cols-dashMob p-0 w-full h-93vh overflow-hidden gap-0 grid-flow-col bg-sky-300">
-			    <div className="fixed bottom-0"><PhoneMenu/></div>
+				<div className="fixed bottom-0">
+					<PhoneMenu />
+				</div>
 				<div
 					id="chart"
-					className={` grid row-span-1 col-span-1 grid-rows-6 grid-cols-9 grid-flow-row gap-2 bg-boxDark text-white pt-2 p-5`}>
+					className={` grid col-start-1 row-start-1 row-span-1 col-span-1 grid-rows-6 grid-cols-9 grid-flow-row gap-2 bg-boxDark text-white pt-2 p-5`}>
 					<Chart />
 				</div>
 				<div
 					id="portfolio"
-					className={`fixed p-4 w-full h-350 grid grid-rows-6 grid-cols-1 gap-1 bg-boxDark text-white`}>
+					className={` col-start-1 row-start-1 p-4 w-full grid grid-rows-6 grid-cols-1 gap-1 bg-boxDark text-white`}>
 					<Portfolio />
 				</div>
 				<div
 					id="exchange"
-					className={`fixed p-4 w-full h-350  bg-boxDark text-white`}>
+					className={` col-start-1 row-start-1 w-full flex flex-col justify-between p-4 col-span-1 min-w-fit rounded-lg bg-boxDark text-white`}>
 					<Exchange />
 				</div>
 
@@ -80,7 +81,6 @@ const App = () => {
 					className={` row-span-1 col-span-1 bg-boxDark text-white`}>
 					<Coins />
 				</div>
-
 			</div>
 		</>
 	);
