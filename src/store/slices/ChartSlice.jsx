@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { getChartData } from "../../api";
 
+
 const ChartSlice = createSlice({
 	name: "chart",
 	initialState: {
@@ -17,7 +18,6 @@ const ChartSlice = createSlice({
 			state.isLoading = true;
 		});
 		builder.addCase(getChartData.rejected, (state, action) => {
-			console.log("Error", action.payload);
 			state.isError = true;
 		});
 	},

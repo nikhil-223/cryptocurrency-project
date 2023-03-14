@@ -5,7 +5,7 @@ const CoinSlice = createSlice({
 	name: "coins",
 	initialState: {
 		isLoading: false,
-		data: null,
+		data: [],
 		isError:false,
 	},
 	extraReducers: (builder) => {
