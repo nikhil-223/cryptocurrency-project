@@ -39,11 +39,12 @@ module.exports = {
 			minWidth: {
 				210: "210px",
 				350: "350px",
+				300: "300px",
 				620: "620px",
 				600: "600px",
 				750: "750px",
 				20: "20px",
-				"ex": "150px",
+				ex: "130px",
 			},
 			screens: {
 				sm: "200px",
@@ -63,7 +64,7 @@ module.exports = {
 			},
 			gridTemplateColumns: {
 				// Simple 8 row grid
-				dashPc: "minmax(33vw,33rem)  minmax(33vw,33rem) minmax(28vw ,24rem)",
+				dashPc: "minmax(28vw,33rem)  minmax(33vw,33rem) minmax(28vw ,24rem)",
 				dashTab: "55% 45% ",
 				dashMob: "100vw",
 				// Complex site-specific row configuration
@@ -71,14 +72,19 @@ module.exports = {
 			},
 			colors: {
 				boxDark: "#07182d",
-				boxLight: "#07182d",
-				exchBtn:"rgb(43 129 143)",
+				boxLight: "#fafafa",
+				textLight: "#f8e5e4",
+				textDark: "#093b40",
+				exchBtnDark: "rgb(43 129 143)",
+				exchBtnLight: "rgb(228 34 99 / 30%)",
 				dropdownBoxDark: "#14446b",
-				dropdownBoxLight: "#14446b",
+				dropdownBoxLight: "#9dd5d53b",
+				timePeriodDark: "#14446b",
+				timePeriodLight: "#9dd5d53b",
 				dropdownListDark: "#19476e",
-				dropdownListLight: "#19476e",
+				dropdownListLight: "#9dd5d53b",
 				dropdownListItemDark: "#0c375e",
-				dropdownListItemLight: "#0c375e",
+				dropdownListItemLight: "#9dd5d53b",
 				headingColor: "#2e2e2e",
 				textColor: "#515151",
 				cartNumBg: "#e80013",

@@ -9,7 +9,6 @@ const PieChart = () => {
   const coins=useSelector((state)=>{
     return state.coins.data;
   })
-  console.log(coins[0])
   const arr=[]
 
   const bt=[

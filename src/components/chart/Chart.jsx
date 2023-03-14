@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 import { IoMdArrowDropdown } from "react-icons/io";
 import { useDispatch, useSelector } from "react-redux";
@@ -10,10 +9,12 @@ import CurrencyDrop from "./CurrencyDrop";
 import LineChart from "./LineChart";
 import TimePeriodItem from "./TimePeriodItem";
 
-
 const Chart = () => {
-	const dispatch = useDispatch();
+	const theme = useSelector((state) => {
+		return state.theme;
+	});
 
+	const dispatch = useDispatch();
 
 	useEffect(() => {
 		dispatch(getChartData());
@@ -62,7 +63,7 @@ const Chart = () => {
 		<>
 			{/* Currency Dropdown  */}
 			<div className=" col-span-2 flex justify-start items-center gap-2">
-				<CurrencyDrop />
+				<CurrencyDrop theme={theme} />
 			</div>
 			{/* Currency Dropdown  */}
 
@@ -82,12 +83,17 @@ const Chart = () => {
 					return <TimePeriodItem key={index} timePeriod={item.timePeriod} />;
 				})}
 			</div>
-			
+
 			{/* timePeriod  */}
 
 			<div className=" lg:col-span-4 md:col-span-7 sm:col-span-6 sm:col-start-4 flex items-center justify-end gap-4 sm:gap-1 lg:gap-4">
 				{/* crypto dropdown */}
-				<div className="flex items-center justify-between  w-44 h-xs p-2 bg-dropdownBoxDark rounded-lg">
+				<div
+					className={`flex items-center justify-between  w-44 h-xs p-2 ${
+						theme === "dark" ? " bg-dropdownBoxDark" : " bg-dropdownBoxLight"
+					} ${
+						theme === "dark" ? " text-textLight" : "text-textDark"
+					} rounded-lg`}>
 					<input
 						type="text"
 						className="drop-input w-4/5 p-2 bg-transparent focus:outline-none "
@@ -102,7 +108,11 @@ const Chart = () => {
 
 					<div
 						id="cryptoDroplist"
-						className="droplist absolute bg-dropdownListDark -translate-x-1 translate-y-32 w-36 h-48 flex-col rounded overflow-scroll"
+						className={`droplist absolute${
+							theme === "dark" ? " bg-dropdownBoxDark" : " bg-dropdownBoxLight"
+						} ${
+							theme === "dark" ? " text-textLight" : "text-textDark"
+						} -translate-x-1 translate-y-32 w-36 h-48 flex-col rounded overflow-scroll`}
 						style={{ display: "none" }}>
 						{arr.map((item) => {
 							return (
@@ -114,10 +124,15 @@ const Chart = () => {
 				{/* crypto dropdown */}
 
 				{/* chartType dropdown  */}
-				<div className="flex items-center justify-between  w-44 h-xs p-2 bg-dropdownBoxDark rounded-lg">
+				<div
+					className={`flex items-center justify-between  w-44 h-xs p-2 ${
+						theme === "dark" ? " bg-dropdownBoxDark" : " bg-dropdownBoxLight"
+					} ${
+						theme === "dark" ? " text-textLight" : "text-textDark"
+					} rounded-lg`}>
 					<input
 						type="text"
-						className="drop-input w-4/5 p-2 bg-transparent focus:outline-none "
+						className={`drop-input w-4/5 p-2 bg-transparent focus:outline-none`}
 						value={chartTypeInput}
 						onChange={handleChartTypeChange}
 					/>
@@ -129,7 +144,11 @@ const Chart = () => {
 
 					<div
 						id="chartTypeDroplist"
-						className="droplist absolute bg-dropdownListDark -translate-x-1 translate-y-32 w-36 h-48 flex-col rounded overflow-scroll"
+						className={`droplist absolute${
+							theme === "dark" ? " bg-dropdownBoxDark" : " bg-dropdownBoxLight"
+						} ${
+							theme === "dark" ? " text-textLight" : "text-textDark"
+						} -translate-x-1 translate-y-32 w-36 h-48 flex-col rounded overflow-scroll`}
 						style={{ display: "none" }}>
 						{arr.map((item) => {
 							return <ChartType key={item.itemname} itemname={item.itemname} />;

@@ -3,9 +3,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { getCoins } from "../../api";
 import CoinItem from "./CoinItem";
 import {AiOutlineSearch} from "react-icons/ai"
-import { MdLightMode } from "react-icons/md";
+import { MdLightMode, MdModeNight } from "react-icons/md";
+import { setThemeDark } from "../../store/slices/ThemeSlice";
+import { setThemeLight } from "../../store/slices/ThemeSlice";
 
 const Coins = () => {
+	
+	const theme= useSelector((state)=>{
+		return state.theme
+	})
 
 	const dispatch = useDispatch();
 	const coins = useSelector((state) => {
@@ -19,6 +25,13 @@ const Coins = () => {
 		// eslint-disable-next-line
 	}, [first]);
 
+	const setMode=()=>{
+		theme==='dark'?
+		dispatch(setThemeLight('light')):
+		dispatch(setThemeDark('dark'))
+	}
+	
+
 	return (
 		<>
 			{/* title  */}
@@ -30,15 +43,26 @@ const Coins = () => {
 
 				{/* input  */}
 				<input
-					className="h-full w-3/5 bg-boxDark outline-none "
+					className="h-full w-3/5 bg-transparent outline-none "
 					type="text"
 					placeholder="Search by Coin"
 				/>
 
 				{/* theme button */}
-				<div className=" ml-auto w-12 text-xl flex item-end bg-transparent text-fuchsia-600">
-					<MdLightMode size={30} />
-				</div>
+
+				{theme === "dark" ? (
+					<div
+						className=" ml-auto w-12 text-xl flex item-end bg-transparent text-fuchsia-600"
+						onClick={setMode}>
+						<MdLightMode size={30} />
+					</div>
+				) : (
+					<div
+						className=" ml-auto w-12 text-xl flex item-end bg-transparent text-black"
+						onClick={setMode}>
+						<MdModeNight size={30} />
+					</div>
+				)}
 			</div>
 			{/* title  */}
 

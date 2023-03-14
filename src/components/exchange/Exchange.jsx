@@ -1,7 +1,11 @@
 import React from "react";
 import {MdArrowDropDown} from 'react-icons/md'
+import { useSelector } from "react-redux";
 
 const Exchange = () => {
+	const theme=useSelector((state)=>{
+		return state.theme
+	})
   return (
 		<>
 			{/* Title  */}
@@ -15,7 +19,9 @@ const Exchange = () => {
 				{/* Sell */}
 				<div className="flex flex-col gap-2 w-2/6 min-w-ex">
 					<h1 className=" text-red-600">Sell</h1>
-					<div className=" bg-dropdownBoxDark p-2 items-center flex rounded-lg">
+					<div className= { ` ${
+				theme === "dark" ? " bg-dropdownBoxDark" : " bg-dropdownBoxLight"
+			} ${theme==='dark'? ' text-textLight':'text-textDark'} p-2 items-center flex rounded-lg`}>
 						<input
 							className=" w-4/5 bg-transparent outline-none  "
 							type="text"
@@ -29,7 +35,9 @@ const Exchange = () => {
 				{/* Buy */}
 				<div className="flex flex-col gap-2 w-2/6 min-w-ex">
 					<h1 className=" text-green-500">Buy</h1>
-					<div className=" bg-dropdownBoxDark p-2 items-center flex rounded-lg">
+					<div className= { `${
+				theme === "dark" ? " bg-dropdownBoxDark" : " bg-dropdownBoxLight"
+			} ${theme==='dark'? ' text-textLight':'text-textDark'} p-2 items-center flex rounded-lg`}>
 						<input
 							className=" w-4/5 bg-transparent outline-none  "
 							type="text"
@@ -58,7 +66,7 @@ const Exchange = () => {
 			{/* showing values */}
 			{/* Exchange Button  */}
 			<div className="w-full flex items-center justify-center">
-				<button className=" bg-exchBtn p-3 py-2 rounded-md ">Exchange</button>
+				<button className={`${theme==='dark'?'bg-exchBtnDark':'bg-exchBtnLight'}  p-3 py-2 rounded-md `}>Exchange</button>
 			</div>
 		</>
 	);

@@ -2,7 +2,11 @@ import React,{useState} from 'react'
 import CurrencyItem from './CurrencyItem'
 import {IoMdArrowDropdown} from 'react-icons/io'
 
-const CurrencyDrop = () => {
+const CurrencyDrop = (props) => {
+
+	const{theme}=props;
+
+
 	const [dropdownName, setDropdownName] = useState('USD $')
     const arr = [{ itemname: "rahul" }, { itemname: "nikhil" }];
     const showList=()=>{
@@ -16,7 +20,10 @@ const CurrencyDrop = () => {
 		setDropdownName(e.target.value)
 	}
   return (
-		<div className="flex col-span-2 justify-between gap-2 px-2 py-2 h-xs rounded-lg bg-dropdownBoxDark text-white">
+		<div
+			className={`flex col-span-2 justify-between gap-2 px-2 py-2 h-xs rounded-lg ${
+				theme === "dark" ? " bg-dropdownBoxDark" : " bg-dropdownBoxLight"
+			} ${theme==='dark'? ' text-textLight':'text-textDark'}`}>
 			<input
 				type="text"
 				className="drop-input  w-20 p-2 bg-transparent focus:outline-none "
