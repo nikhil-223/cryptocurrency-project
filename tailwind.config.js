@@ -43,6 +43,7 @@ module.exports = {
 				600: "600px",
 				750: "750px",
 				20: "20px",
+				"ex": "150px",
 			},
 			screens: {
 				sm: "200px",
@@ -54,7 +55,7 @@ module.exports = {
 			gridTemplateRows: {
 				// Simple 8 row grid
 				10: "repeat(10, minmax(0, 1fr))",
-				dashPc: " 25rem 18rem ",
+				dashPc: " 55vh 40vh ",
 				dashTab: " minmax(43vh,25rem)  minmax(30vh,20rem) minmax(30vh,20rem) ",
 				dashMob: " 43vh 82vh",
 				// Complex site-specific row configuration
