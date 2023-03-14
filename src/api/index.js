@@ -27,3 +27,16 @@ export const getChartData = createAsyncThunk("getChartData", async () => {
 	return response.json();
 });
 
+export const getCurrencies = createAsyncThunk("getCurrencies", async () => {
+	const response = await fetch(
+		`https://api.coingecko.com/api/v3/simple/supported_vs_currencies`,
+		{
+			method: "GET",
+			headers: {
+				"Content-Type": "application/json",
+			},
+		}
+	);
+	return response.json();
+});
+

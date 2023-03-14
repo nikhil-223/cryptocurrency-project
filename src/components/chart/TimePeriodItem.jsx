@@ -7,7 +7,7 @@ const TimePeriodItem = (props) => {
 			return state.theme;
 		});
   return (
-    <div className={`flex justify-center items-center rounded w-11 h-9 ${theme==='dark' ? ' bg-timePeriodDark' : ' bg-timePeriodLight' } cursor-pointer`}>{timePeriod}</div>
+    <div className={`timePeriodItem flex justify-center items-center rounded w-11 h-9 ${theme==='dark' ? ' bg-timePeriodDark' : ' bg-timePeriodLight' } cursor-pointer`}>{timePeriod}</div>
   )
 }
 

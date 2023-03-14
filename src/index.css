@@ -18,10 +18,16 @@ code {
 @tailwind components;
 @tailwind utilities;
 
+.dashboard> div ,
+.dropdown,
+.exchangeBtn,
+.timePeriodItem{
+	transition: all 0.2s linear;
+}
 
 #root{
 	font-family: 'Poppins', sans-serif;
-	font-weight: 700;
+	font-weight: 500;
 }
 
 .droplist::-webkit-scrollbar {

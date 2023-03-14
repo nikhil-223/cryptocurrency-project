@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { IoMdArrowDropdown } from "react-icons/io";
 import { useDispatch, useSelector } from "react-redux";
 
-import { getChartData } from "../../api";
+import { getChartData, getCurrencies } from "../../api";
 import ChartType from "./ChartType";
 import CryptoItem from "./CryptoItem";
 import CurrencyDrop from "./CurrencyDrop";
@@ -18,6 +18,7 @@ const Chart = () => {
 
 	useEffect(() => {
 		dispatch(getChartData());
+		dispatch(getCurrencies())
 		// eslint-disable-next-line
 	}, []);
 
@@ -89,7 +90,7 @@ const Chart = () => {
 			<div className=" lg:col-span-4 md:col-span-7 sm:col-span-6 sm:col-start-4 flex items-center justify-end gap-4 sm:gap-1 lg:gap-4">
 				{/* crypto dropdown */}
 				<div
-					className={`flex items-center justify-between  w-44 h-xs p-2 ${
+					className={`dropdown flex items-center justify-between  w-44 h-xs p-2 ${
 						theme === "dark" ? " bg-dropdownBoxDark" : " bg-dropdownBoxLight"
 					} ${
 						theme === "dark" ? " text-textLight" : "text-textDark"
@@ -125,7 +126,7 @@ const Chart = () => {
 
 				{/* chartType dropdown  */}
 				<div
-					className={`flex items-center justify-between  w-44 h-xs p-2 ${
+					className={` dropdown flex items-center justify-between  w-44 h-xs p-2 ${
 						theme === "dark" ? " bg-dropdownBoxDark" : " bg-dropdownBoxLight"
 					} ${
 						theme === "dark" ? " text-textLight" : "text-textDark"
