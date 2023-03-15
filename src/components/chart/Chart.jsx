@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { IoMdArrowDropdown } from "react-icons/io";
-import {  useSelector } from "react-redux";
+import {  useDispatch, useSelector } from "react-redux";
+import { setCryptoDropName } from "../../store/slices/ChartSlice";
 
 import ChartType from "./ChartType";
 import CryptoItem from "./CryptoItem";
@@ -13,11 +14,18 @@ const Chart = () => {
 		return state.theme;
 	});
 
-	
+	const coins = useSelector((state) => {
+		return state.coins.data;
+	});
+	const cryptoDropName = useSelector((state) => {
+		return state.chart.cryptoDropName;
+	});
 
 	const chartData = useSelector((state) => {
 		return state.chart.data;
 	});
+
+	const dispatch = useDispatch()
 
 	const timeperiods = [
 		{ timePeriod: "1D" },
@@ -27,7 +35,7 @@ const Chart = () => {
 		{ timePeriod: "1Y" },
 	];
 
-	const arr = [{ itemname: "rahul" }, { itemname: "nikhil" }];
+	const arr = [{ itemname: "Line" }, { itemname: "Bar" }];
 
 	const showCryptoList = () => {
 		const dropListState =
@@ -44,12 +52,19 @@ const Chart = () => {
 			? (document.getElementById("chartTypeDroplist").style.display = "flex")
 			: (document.getElementById("chartTypeDroplist").style.display = "none");
 	};
-	const [cryptoInput, setCryptoInput] = useState("Bitcoin");
 	const [chartTypeInput, setChartTypeInput] = useState("Line");
+	const handleCryptoFocus=()=>{
+		document.getElementById("cryptoDroplist").style.display = "flex";
+	}
 	const handleCryptoChange = (e) => {
-		setCryptoInput(e.target.value);
+		handleCryptoFocus()
+		dispatch(setCryptoDropName(e.target.value))
 	};
+	const handleChartFocus=()=>{
+		document.getElementById("chartTypeDroplist").style.display = "flex";
+	}
 	const handleChartTypeChange = (e) => {
+		handleChartFocus()
 		setChartTypeInput(e.target.value);
 	};
 
@@ -87,15 +102,16 @@ const Chart = () => {
 						theme === "dark" ? " bg-dropdownBoxDark" : " bg-dropdownBoxLight"
 					} ${
 						theme === "dark" ? " text-textLight" : "text-textDark"
-					} rounded-lg`}>
+					}  lg:rounded md:rounded sm:rounded`}>
 					<input
 						type="text"
 						className="drop-input w-4/5 lg:px-1 md:px-1 sm:px-1 bg-transparent focus:outline-none "
-						value={cryptoInput}
+						value={cryptoDropName}
 						onChange={handleCryptoChange}
+						onFocus={handleCryptoFocus}
 					/>
 					<span
-						className="w-1/5 sm:w-5 flex justify-center items-center text-2xl"
+						className="w-1/5 sm:w-5 flex justify-center items-center text-2xl cursor-pointer"
 						onClick={showCryptoList}>
 						<IoMdArrowDropdown />
 					</span>
@@ -104,12 +120,12 @@ const Chart = () => {
 						id="cryptoDroplist"
 						className={`droplist absolute ${
 							theme === "dark" ? " bg-dropdownBoxDark" : " bg-dropdownBoxLight"
-						}  -translate-x-1 translate-y-32 w-36 h-48 flex-col rounded overflow-scroll`}
-						style={{ display: "none" }}>
-						{arr.map((item) => {
-							return (
-								<CryptoItem key={item.itemname} itemname={item.itemname} />
-							);
+						}  -translate-x-1 translate-y-32 w-28 h-48 flex-col rounded overflow-scroll`}
+						style={{ display: "none" }}
+						onMouseLeave={showCryptoList}
+						onClick={showCryptoList}>
+						{coins.map((item) => {
+							return <CryptoItem key={item.name} name={item.id} />;
 						})}
 					</div>
 				</div>
@@ -119,15 +135,16 @@ const Chart = () => {
 				<div
 					className={` dropdown flex items-center justify-between  lg:w-24 md:w-24 sm:w-20 lg:p-2 md:p-2 sm:p-1 ${
 						theme === "dark" ? " bg-dropdownBoxDark" : " bg-dropdownBoxLight"
-					} rounded-lg`}>
+					}  lg:rounded md:rounded sm:rounded`}>
 					<input
 						type="text"
 						className={`drop-input w-3/5 sm:px-1 bg-transparent focus:outline-none`}
 						value={chartTypeInput}
 						onChange={handleChartTypeChange}
+						onFocus={handleChartFocus}
 					/>
 					<span
-						className="lg:w-2/5 sm:w-5 flex justify-center items-center text-2xl"
+						className="lg:w-5 sm:w-5 flex justify-center items-center text-2xl cursor-pointer"
 						onClick={showChartList}>
 						<IoMdArrowDropdown />
 					</span>
@@ -136,8 +153,10 @@ const Chart = () => {
 						id="chartTypeDroplist"
 						className={`droplist absolute ${
 							theme === "dark" ? " bg-dropdownBoxDark" : " bg-dropdownBoxLight"
-						} -translate-x-1 translate-y-32 w-36 h-48 flex-col rounded overflow-scroll`}
-						style={{ display: "none" }}>
+						} -translate-x-1 translate-y-20 w-20 h-24 flex-col rounded overflow-scroll`}
+						style={{ display: "none" }}
+						onMouseLeave={showChartList}
+						onClick={showChartList}>
 						{arr.map((item) => {
 							return <ChartType key={item.itemname} itemname={item.itemname} />;
 						})}

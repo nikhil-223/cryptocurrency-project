@@ -17,10 +17,11 @@ const Portfolio = () => {
 	 
 	 coins[0] && PieItem.map((item)=>{
 	
-		 let found= coins.find(function (element) {
+	 let found= coins.find(function (element) {
 			  return element.name === item;
 		  });
-		tv=tv+found.current_price
+		tv= tv + found.current_price
+		return 0
 	  })
   return (
 	<>

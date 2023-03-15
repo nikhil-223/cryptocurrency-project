@@ -51,7 +51,7 @@ const Coins = () => {
 					</div>
 				) : (
 					<div
-						className=" ml-auto w-12 text-xl flex item-end bg-transparent text-black"
+						className=" ml-auto w-12 text-xl flex item-end bg-transparent text-textDark"
 						onClick={setMode}>
 						<MdModeNight size={30} />
 					</div>
@@ -66,6 +66,7 @@ const Coins = () => {
 							return (
 								<CoinItem
 									key={index}
+									id={item.id}
 									name={item.name}
 									current_price={item.current_price}
 									market_cap_change_percentage_24h={

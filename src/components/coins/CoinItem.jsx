@@ -1,5 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { setCryptoDropName, setCurrentCoin } from "../../store/slices/ChartSlice";
 import { addPieItem } from "../../store/slices/PieItemSlice";
 
 const CoinItem = (props) => {
@@ -10,6 +11,7 @@ const CoinItem = (props) => {
 		market_cap_change_percentage_24h,
 		image,
 		symbol,
+		id,
 	} = props;
 
 	const market_cap_change_percentage_24h_toString = `${market_cap_change_percentage_24h}`;
@@ -19,10 +21,10 @@ const CoinItem = (props) => {
 	});
 
 	const aboutItem = (e) => {
-		let item = e.target
-			.closest(".coinItem")
-			.querySelector(".coinName").innerHTML;
-		dispatch(addPieItem(item));
+		dispatch(addPieItem(name));
+		dispatch(setCryptoDropName(id))
+		dispatch(setCurrentCoin(id))
+
 	};
 	return (
 		<>

@@ -12,15 +12,22 @@ const App = () => {
 		return state.currency.currency;
 	});
 
+	const currentCoin= useSelector((state)=>{
+		return state.chart.currentCoin
+	})
+	const timePeriod= useSelector((state)=>{
+		return state.chart.timePeriod;
+	})
 	const dispatch = useDispatch();
 
 	useEffect(() => {
-		dispatch(getChartData());
-	}, [dispatch]);
+		dispatch(getChartData({currentCoin, timePeriod}));
+	}, [dispatch,currentCoin,timePeriod]);
 
 	useEffect(() => {
 		dispatch(getCoins(currency));
-	}, [currency]);
+	}, [dispatch, currency]);
+
 	return (
 		<>
 			{/*lg for pc*/}
@@ -58,7 +65,7 @@ const App = () => {
 				{/* this is the coins component  */}
 				<div
 					id="coins"
-					className={` lg:col-span-1 lg:row-span-2 lg:min-w-300 lg:w-full lg:rounded-lg  md:row-span-2 md:col-span-1  sm:row-span-1 sm:col-span-1  
+					className={` lg:col-span-1 lg:row-span-2 lg:min-w-300 lg:w-full lg:rounded-lg  md:row-span-2 md:col-span-1  sm:row-span-1 sm:col-span-1 sm:border-t-2 sm:border-y-coinsBorder
 					${theme === "dark" ? "bg-boxDark" : "bg-boxLight"} 
 					${theme === "dark" ? " text-textLight" : " text-textDark"}`}>
 					<Coins />

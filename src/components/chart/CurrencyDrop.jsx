@@ -31,9 +31,9 @@ const CurrencyDrop = (props) => {
 	
   return (
 		<div
-			className={`dropdown flex col-span-2 justify-between  md:p-2 lg:p-2 sm:p-1 h-auto rounded-lg ${
+			className={`dropdown flex col-span-2 justify-between  md:p-2 lg:p-2 sm:p-1 h-auto lg:rounded md:rounded sm:rounded ${
 				theme === "dark" ? " bg-dropdownBoxDark" : " bg-dropdownBoxLight"
-			} ${theme==='dark'? ' text-textLight':'text-textDark'}`}>
+			} ${theme === "dark" ? " text-textLight" : "text-textDark"}`}>
 			<input
 				type="text"
 				className="drop-input sm:px-1  lg:w-24 sm:w-16 md:w-24 bg-transparent focus:outline-none "
@@ -42,7 +42,7 @@ const CurrencyDrop = (props) => {
 				onFocus={handleFocus}
 			/>
 			<span
-				className="sm:w-5 flex justify-center items-center text-2xl"
+				className="sm:w-5 flex justify-center items-center text-2xl cursor-pointer"
 				onClick={showList}>
 				<IoMdArrowDropdown />
 			</span>
@@ -50,11 +50,19 @@ const CurrencyDrop = (props) => {
 				id="currencyDroplist"
 				className="droplist absolute -translate-x-1 translate-y-12 bg-dropdownListDark w-28 h-48 flex-col rounded overflow-scroll"
 				style={{ display: "none" }}
-				onMouseLeave={showList}>
-				{currencies? currencies.map((item) => {
-					return <CurrencyItem key={item.currency} currency={item.currency} symbol={item.symbol} />;
-				}):"loading..."
-			}
+				onMouseLeave={showList}
+				onClick={showList}>
+				{currencies
+					? currencies.map((item) => {
+							return (
+								<CurrencyItem
+									key={item.currency}
+									currency={item.currency}
+									symbol={item.symbol}
+								/>
+							);
+					  })
+					: "loading..."}
 			</div>
 		</div>
 	);
