@@ -22,7 +22,7 @@ const Chart = () => {
 	});
 
 	const chartData = useSelector((state) => {
-		return state.chart.data;
+		return state.chart;
 	});
 
 	const dispatch = useDispatch()
@@ -120,7 +120,7 @@ const Chart = () => {
 						id="cryptoDroplist"
 						className={`droplist absolute ${
 							theme === "dark" ? " bg-dropdownBoxDark" : " bg-dropdownBoxLight"
-						}  -translate-x-1 translate-y-32 w-28 h-48 flex-col rounded overflow-scroll`}
+						}  -translate-x-1 translate-y-32 w-28 h-48 flex-col rounded overflow-scroll overflow-x-hidden`}
 						style={{ display: "none" }}
 						onMouseLeave={showCryptoList}
 						onClick={showCryptoList}>
@@ -165,7 +165,13 @@ const Chart = () => {
 				{/* chartType dropdown  */}
 			</div>
 			<div className=" w-full col-span-9 md:col-span-8 sm:row-start-2 sm:col-start-1 sm:row-span-4 lg:col-span-9 md:row-span-5 ">
-				{chartData && <LineChart />}
+				{chartData.isLoading === false ? (
+					chartData.data && <LineChart />
+				) : (
+					<div className="w-full h-full flex justify-center items-center">
+						<img className="w-20" src="https://i.gifer.com/XOsX.gif" alt="" />
+					</div>
+				)}
 			</div>
 		</>
 	);

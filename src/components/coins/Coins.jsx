@@ -14,7 +14,7 @@ const Coins = () => {
 
 	const dispatch = useDispatch();
 	const coins = useSelector((state) => {
-		return state.coins.data;
+		return state.coins
 	});
 	
 
@@ -45,13 +45,13 @@ const Coins = () => {
 
 				{theme === "dark" ? (
 					<div
-						className=" ml-auto w-12 text-xl flex item-end bg-transparent text-fuchsia-600"
+						className=" ml-auto w-12 text-xl flex item-end bg-transparent text-fuchsia-600 cursor-pointer"
 						onClick={setMode}>
 						<MdLightMode size={30} />
 					</div>
 				) : (
 					<div
-						className=" ml-auto w-12 text-xl flex item-end bg-transparent text-textDark"
+						className=" ml-auto w-12 text-xl flex item-end bg-transparent text-textDark cursor-pointer"
 						onClick={setMode}>
 						<MdModeNight size={30} />
 					</div>
@@ -61,23 +61,27 @@ const Coins = () => {
 
 			{/* coinlist  */}
 			<div className="coinlist pb-4 h-5/6 overflow-scroll">
-				{coins
-					? coins.map((item, index) => {
-							return (
-								<CoinItem
-									key={index}
-									id={item.id}
-									name={item.name}
-									current_price={item.current_price}
-									market_cap_change_percentage_24h={
-										item.market_cap_change_percentage_24h
-									}
-									image={item.image}
-									symbol={item.symbol}
-								/>
-							);
-					  })
-					: "loading..."}
+				{coins.isLoading === false ? (
+					coins.data.map((item, index) => {
+						return (
+							<CoinItem
+								key={index}
+								id={item.id}
+								name={item.name}
+								current_price={item.current_price}
+								market_cap_change_percentage_24h={
+									item.market_cap_change_percentage_24h
+								}
+								image={item.image}
+								symbol={item.symbol}
+							/>
+						);
+					})
+				) : (
+					<div className="w-full h-full flex justify-center items-center">
+						<img className="w-20" src="https://i.gifer.com/XOsX.gif" alt="" />
+					</div>
+				)}
 			</div>
 			{/* coinlist  */}
 		</>

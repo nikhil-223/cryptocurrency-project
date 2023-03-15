@@ -33,7 +33,7 @@ const App = () => {
 			{/*lg for pc*/}
 			{/* md for tablet */}
 			{/* sm for phone */}
-			<div className="lg:dashboard grid lg:grid-rows-dashPc lg:grid-cols-dashPc lg:p-4 lg:content-center lg:justify-center lg:w-auto lg:h-screen lg:gap-1 lg:grid-flow-col lg:bg-sky-300 md:dashboard  md:grid-rows-dashTab md:grid-cols-dashTab md:p-0 md:w-full md:h-auto md:gap-1 md:grid-flow-col md:bg-dropdownBoxDark  sm:dashboard   sm:grid-rows-dashMob sm:grid-cols-dashMob sm:p-0 sm:w-full sm:h-93vh sm:overflow-hidden sm:gap-0 sm:grid-flow-col sm:text-sm lg:text-base md:text-base sm:bg-sky-300">
+			<div className="lg:dashboard grid lg:grid-rows-dashPc lg:grid-cols-dashPc lg:p-4 lg:content-center lg:justify-center lg:w-auto lg:h-screen lg:gap-1 lg:grid-flow-col lg:bg-sky-300 md:dashboard  md:grid-rows-dashTab md:grid-cols-dashTab md:p-0 md:w-full md:h-auto md:gap-1 md:grid-flow-col md:bg-dropdownBoxDark  sm:dashboard   sm:grid-rows-dashMob sm:grid-cols-dashMob sm:p-0 sm:w-full sm:h-98vh sm:overflow-hidden sm:gap-0 sm:grid-flow-col sm:text-sm lg:text-base md:text-base sm:bg-sky-300">
 				{/* menu for phone size  */}
 				<div className="sm:flex lg:hidden md:hidden fixed bottom-0">
 					<PhoneMenu />
