@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getCoins } from "../../api";
 import CoinItem from "./CoinItem";
 import {AiOutlineSearch} from "react-icons/ai"
 import { MdLightMode, MdModeNight } from "react-icons/md";
@@ -17,13 +16,7 @@ const Coins = () => {
 	const coins = useSelector((state) => {
 		return state.coins.data;
 	});
- 
-	const [first, setfirst] = useState("")
-	useEffect(() => {
-		dispatch(getCoins());
-	    setfirst()
-		// eslint-disable-next-line
-	}, [first]);
+	
 
 	const setMode=()=>{
 		theme==='dark'?

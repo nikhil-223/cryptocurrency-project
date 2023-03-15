@@ -1,14 +1,16 @@
 import React from "react";
+import { useSelector } from "react-redux";
 
 const PhoneMenuItem = (props) => {
-    let theme='dark'
 	const { name, icon } = props;
+	const theme=useSelector((state)=>{
+		return state.theme
+	})
 
 	const item_show = (e) => {
 		let itemName = e.target
 			.closest(".phoneMenu__item")
 			.getElementsByTagName("span")[0].innerHTML;
-		// setPhoneMenuItemActive(itemName);
 
 		if (itemName === "Markets") {
 			document.querySelector(".exchange-coins").style.zIndex = "-10";
@@ -40,7 +42,7 @@ const PhoneMenuItem = (props) => {
 			<div className="text-xl phoneMenu__item__icon-home">
 				{icon}
 			</div>
-			<span className="text-sm">{name}</span>
+			<span className=" text-xs">{name}</span>
 		</div>
 	);
 };

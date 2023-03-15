@@ -12,13 +12,12 @@ const PieChart = () => {
   const coins=useSelector((state)=>{
     return state.coins.data;
   })
-  const arr=[]
-  PieItem.map((item)=>{
 
+  const arr=PieItem.map((item)=>{
      let found= coins.find(function (element) {
           return element.name === item;
       });
-    arr.push(found)
+    return found
   })
   
 

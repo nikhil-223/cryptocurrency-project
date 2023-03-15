@@ -1,25 +1,25 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getCurrencies } from "../../api";
 
 const CurrencySlice = createSlice({
 	name: "currency",
 	initialState: {
-		isLoading: false,
-		data: [],
-		isError: false,
+		currencyDropdownName: "Usd ($)",
+		currency: "usd",
+		symbol: "$",
 	},
-	extraReducers: (builder) => {
-		builder.addCase(getCurrencies.fulfilled, (state, action) => {
-			state.isLoading = false;
-			state.data = action.payload;
-		});
-		builder.addCase(getCurrencies.pending, (state, action) => {
-			state.isLoading = true;
-		});
-		builder.addCase(getCurrencies.rejected, (state, action) => {
-			state.isError = true;
-		});
+	reducers: {
+		setSymbol(state, action) {
+			state.symbol = action.payload;
+		},
+		setCurrency(state, action) {
+			state.currency = action.payload;
+		},
+		setCurrencyDropdownName(state, action) {
+			state.currencyDropdownName = action.payload;
+		},
 	},
 });
 
 export default CurrencySlice.reducer;
+export const { setCurrency, setSymbol, setCurrencyDropdownName } =
+	CurrencySlice.actions;

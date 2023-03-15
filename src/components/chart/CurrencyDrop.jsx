@@ -1,17 +1,19 @@
-import React,{useState} from 'react'
+import React from 'react'
 import CurrencyItem from './CurrencyItem'
 import {IoMdArrowDropdown} from 'react-icons/io'
-import { useSelector } from 'react-redux';
+import { currencies } from '../../assets'
+import { useDispatch, useSelector } from 'react-redux'
+import { setCurrencyDropdownName } from '../../store/slices/CurrencySlice'
 
 const CurrencyDrop = (props) => {
 
 	const{theme}=props;
 
-	const currencies = useSelector((state)=>{
-		return state.currency.data
+	const dispatch= useDispatch()
+	
+    const currencyDropName=useSelector((state)=>{
+		return state.currency.currencyDropdownName;
 	})
-
-	const [dropdownName, setDropdownName] = useState('USD $')
     const showList=()=>{
 		const dropListState =
 			document.getElementById("currencyDroplist").style.display;
@@ -20,11 +22,11 @@ const CurrencyDrop = (props) => {
 				: (document.getElementById("currencyDroplist").style.display = "none");
     }
 	const handleChange=(e)=>{
-		setDropdownName(e.target.value)
+		dispatch(setCurrencyDropdownName(e.target.value))
 	}
 	const handleFocus=(e)=>{
 		document.getElementById("currencyDroplist").style.display = "flex";
-		setDropdownName(e.target.value)
+		dispatch(setCurrencyDropdownName(e.target.value));
 	}
 	
   return (
@@ -34,8 +36,8 @@ const CurrencyDrop = (props) => {
 			} ${theme==='dark'? ' text-textLight':'text-textDark'}`}>
 			<input
 				type="text"
-				className="drop-input  w-20 p-2 bg-transparent focus:outline-none "
-				value={dropdownName}
+				className="drop-input  w-24 p-2 bg-transparent focus:outline-none "
+				value={currencyDropName}
 				onChange={handleChange}
 				onFocus={handleFocus}
 			/>
@@ -50,7 +52,7 @@ const CurrencyDrop = (props) => {
 				style={{ display: "none" }}
 				onMouseLeave={showList}>
 				{currencies? currencies.map((item) => {
-					return <CurrencyItem key={item} itemname={item} />;
+					return <CurrencyItem key={item.currency} currency={item.currency} symbol={item.symbol} />;
 				}):"loading..."
 			}
 			</div>

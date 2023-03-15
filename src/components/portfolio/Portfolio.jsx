@@ -28,7 +28,7 @@ const Portfolio = () => {
 				<div className='ml-4 text-lg font-bold'>Portfolio</div>
 				<div>Total Value : {Math.floor(tv)}</div>
 			</div>
-			<div className=' row-span-5 mr-12'>
+			<div className=' row-span-5 md:mr-12 lg:mr-0'>
 				{coins[0] && <PieChart/>}
 			</div>
 	</>

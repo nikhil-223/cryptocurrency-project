@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { IoMdArrowDropdown } from "react-icons/io";
-import { useDispatch, useSelector } from "react-redux";
+import {  useSelector } from "react-redux";
 
-import { getChartData, getCurrencies } from "../../api";
 import ChartType from "./ChartType";
 import CryptoItem from "./CryptoItem";
 import CurrencyDrop from "./CurrencyDrop";
@@ -14,13 +13,7 @@ const Chart = () => {
 		return state.theme;
 	});
 
-	const dispatch = useDispatch();
-
-	useEffect(() => {
-		dispatch(getChartData());
-		dispatch(getCurrencies())
-		// eslint-disable-next-line
-	}, []);
+	
 
 	const chartData = useSelector((state) => {
 		return state.chart.data;
@@ -109,11 +102,9 @@ const Chart = () => {
 
 					<div
 						id="cryptoDroplist"
-						className={`droplist absolute${
+						className={`droplist absolute ${
 							theme === "dark" ? " bg-dropdownBoxDark" : " bg-dropdownBoxLight"
-						} ${
-							theme === "dark" ? " text-textLight" : "text-textDark"
-						} -translate-x-1 translate-y-32 w-36 h-48 flex-col rounded overflow-scroll`}
+						}  -translate-x-1 translate-y-32 w-36 h-48 flex-col rounded overflow-scroll`}
 						style={{ display: "none" }}>
 						{arr.map((item) => {
 							return (
@@ -128,8 +119,6 @@ const Chart = () => {
 				<div
 					className={` dropdown flex items-center justify-between  w-44 h-xs p-2 ${
 						theme === "dark" ? " bg-dropdownBoxDark" : " bg-dropdownBoxLight"
-					} ${
-						theme === "dark" ? " text-textLight" : "text-textDark"
 					} rounded-lg`}>
 					<input
 						type="text"
@@ -145,10 +134,8 @@ const Chart = () => {
 
 					<div
 						id="chartTypeDroplist"
-						className={`droplist absolute${
+						className={`droplist absolute ${
 							theme === "dark" ? " bg-dropdownBoxDark" : " bg-dropdownBoxLight"
-						} ${
-							theme === "dark" ? " text-textLight" : "text-textDark"
 						} -translate-x-1 translate-y-32 w-36 h-48 flex-col rounded overflow-scroll`}
 						style={{ display: "none" }}>
 						{arr.map((item) => {

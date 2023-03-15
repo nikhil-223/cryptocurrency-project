@@ -1,28 +1,35 @@
-import React from 'react'
-import { useDispatch } from 'react-redux';
-import { addPieItem } from '../../store/slices/PieItemSlice';
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { addPieItem } from "../../store/slices/PieItemSlice";
 
 const CoinItem = (props) => {
-	const dispatch=useDispatch()
-    const {
-			name,
-			current_price,
-			market_cap_change_percentage_24h,
-			image,
-			symbol,
-		} = props;
-    
+	const dispatch = useDispatch();
+	const {
+		name,
+		current_price,
+		market_cap_change_percentage_24h,
+		image,
+		symbol,
+	} = props;
+
 	const market_cap_change_percentage_24h_toString = `${market_cap_change_percentage_24h}`;
-const aboutItem=((e)=>{
-let item=e.target.closest(".coinItem").querySelector('.coinName').innerHTML
-dispatch(addPieItem(item))
-})
-  return (
+
+	const currencySymbol = useSelector((state) => {
+		return state.currency.symbol;
+	});
+
+	const aboutItem = (e) => {
+		let item = e.target
+			.closest(".coinItem")
+			.querySelector(".coinName").innerHTML;
+		dispatch(addPieItem(item));
+	};
+	return (
 		<>
 			<div
 				className="coinItem  cursor-pointer w-full h-auto py-4 px-6 flex justify-between"
-				data-tracker={name} onClick={aboutItem}>
-
+				data-tracker={name}
+				onClick={aboutItem}>
 				{/* coin details  */}
 				<div className="flex items-center gap-4">
 					{/* coin image  */}
@@ -31,8 +38,8 @@ dispatch(addPieItem(item))
 					</div>
 					{/* coin name and symbol  */}
 					<div>
-						<div className=' coinName text-md'>{name}</div>
-						<div className=' opacity-50'>{symbol}</div>
+						<div className=" coinName text-md">{name}</div>
+						<div className=" opacity-50">{symbol}</div>
 					</div>
 				</div>
 				{/* coin details  */}
@@ -40,7 +47,7 @@ dispatch(addPieItem(item))
 				{/* coin value and changes  */}
 				<div className={`flex flex-col items-end`}>
 					{/* coin value  */}
-					<div>{`$ ${current_price}`}</div>
+					<div>{`${currencySymbol} ${current_price}`}</div>
 					{/* changes  */}
 					<div
 						className={
@@ -57,6 +64,6 @@ dispatch(addPieItem(item))
 			</div>
 		</>
 	);
-}
+};
 
-export default CoinItem
+export default CoinItem;

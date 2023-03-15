@@ -1,9 +1,18 @@
 import React from 'react'
+import { useDispatch } from 'react-redux';
+import { setCurrency, setCurrencyDropdownName, setSymbol } from '../../store/slices/CurrencySlice';
 
 const CurrencyItem = (props) => {
-    const {itemname}=props;
+
+  const dispatch = useDispatch()
+    const {currency,symbol}=props;
+    const handleClick=(e)=>{
+      dispatch(setSymbol(symbol))
+      dispatch(setCurrency(currency))
+      dispatch(setCurrencyDropdownName(e.target.innerHTML))
+    }
   return (
-    <div className='p-2 w-full bg-dropdownListItemDark'>{itemname.charAt(0).toUpperCase().concat(itemname.slice(1))}</div>
+    <div className='p-2 w-full cursor-pointer bg-dropdownListItemDark' onClick={handleClick}>{currency.charAt(0).toUpperCase().concat(currency.slice(1))} {`(${symbol})`}</div>
   )
 }
 
