@@ -23,9 +23,9 @@ const PhoneMenu = () => {
 	return (
 		<div
 			// class name that determines background color and text color based on theme variable
-			className={` bg-white flex p-2 py-3 w-screen justify-evenly bg-phoneMenu-${
-				theme === "dark" ? "dark" : "light"
-			} text-phoneMenu-${theme === "dark" ? "light" : "dark"}`}>
+			className={` shadow-phoneMenu flex h-14 w-screen justify-evenly ${
+				theme === "dark" ? "bg-phoneMenuDark" : "bg-phoneMenuLight"
+			} ${theme === "dark" ? " text-boxLight" : "text-boxDark"}`} style={{zIndex:'500'}}>
 			{phoneMenuItems.map((item) => {
 				return (
 					<PhoneMenuItem

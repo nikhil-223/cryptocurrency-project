@@ -39,7 +39,9 @@ const CoinItem = (props) => {
 					{/* coin name and symbol  */}
 					<div>
 						<div className=" coinName text-md">{name}</div>
-						<div className=" opacity-50">{symbol}</div>
+						<div className=" text-phoneSpan" >
+							{symbol}
+						</div>
 					</div>
 				</div>
 				{/* coin details  */}

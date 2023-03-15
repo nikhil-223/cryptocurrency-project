@@ -62,7 +62,7 @@ const Chart = () => {
 			{/* Currency Dropdown  */}
 
 			{/* timePeriod  */}
-			<div className="lg:flex md:hidden sm:hidden col-span-3 justify-end items-center gap-3">
+			<div className="lg:flex md:hidden sm:hidden min-w-fit col-span-3 justify-end items-center gap-3">
 				{timeperiods.map((item, index) => {
 					return <TimePeriodItem key={index} timePeriod={item.timePeriod} />;
 				})}
@@ -72,7 +72,7 @@ const Chart = () => {
 					return <TimePeriodItem key={index} timePeriod={item.timePeriod} />;
 				})}
 			</div>
-			<div className="lg:hidden md:hidden sm:flex col-span-9 col-start-1 row-start-6 justify-center items-center gap-4">
+			<div className="lg:hidden md:hidden sm:flex h-auto col-span-9 col-start-1 row-start-6 justify-center items-center gap-4">
 				{timeperiods.map((item, index) => {
 					return <TimePeriodItem key={index} timePeriod={item.timePeriod} />;
 				})}
@@ -80,22 +80,22 @@ const Chart = () => {
 
 			{/* timePeriod  */}
 
-			<div className=" lg:col-span-4 md:col-span-7 sm:col-span-6 sm:col-start-4 flex items-center justify-end gap-4 sm:gap-1 lg:gap-4">
+			<div className=" lg:col-span-4 md:col-span-7 sm:col-span-6 sm:col-start-4 flex items-center justify-end gap-4 lg:w-4/5 justify-self-end md:w-auto sm:gap-1 lg:gap-4">
 				{/* crypto dropdown */}
 				<div
-					className={`dropdown flex items-center justify-between  w-44 h-xs p-2 ${
+					className={`dropdown flex items-center justify-between  lg:w-44 md:w-44 lg:p-2 md:p-2 sm:p-1 sm:w-28 ${
 						theme === "dark" ? " bg-dropdownBoxDark" : " bg-dropdownBoxLight"
 					} ${
 						theme === "dark" ? " text-textLight" : "text-textDark"
 					} rounded-lg`}>
 					<input
 						type="text"
-						className="drop-input w-4/5 p-2 bg-transparent focus:outline-none "
+						className="drop-input w-4/5 lg:px-1 md:px-1 sm:px-1 bg-transparent focus:outline-none "
 						value={cryptoInput}
 						onChange={handleCryptoChange}
 					/>
 					<span
-						className="w-1/5 flex justify-center items-center text-2xl"
+						className="w-1/5 sm:w-5 flex justify-center items-center text-2xl"
 						onClick={showCryptoList}>
 						<IoMdArrowDropdown />
 					</span>
@@ -117,17 +117,17 @@ const Chart = () => {
 
 				{/* chartType dropdown  */}
 				<div
-					className={` dropdown flex items-center justify-between  w-44 h-xs p-2 ${
+					className={` dropdown flex items-center justify-between  lg:w-24 md:w-24 sm:w-20 lg:p-2 md:p-2 sm:p-1 ${
 						theme === "dark" ? " bg-dropdownBoxDark" : " bg-dropdownBoxLight"
 					} rounded-lg`}>
 					<input
 						type="text"
-						className={`drop-input w-4/5 p-2 bg-transparent focus:outline-none`}
+						className={`drop-input w-3/5 sm:px-1 bg-transparent focus:outline-none`}
 						value={chartTypeInput}
 						onChange={handleChartTypeChange}
 					/>
 					<span
-						className="w-1/5 flex justify-center items-center text-2xl"
+						className="lg:w-2/5 sm:w-5 flex justify-center items-center text-2xl"
 						onClick={showChartList}>
 						<IoMdArrowDropdown />
 					</span>

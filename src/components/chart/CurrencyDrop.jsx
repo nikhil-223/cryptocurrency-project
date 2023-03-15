@@ -31,18 +31,18 @@ const CurrencyDrop = (props) => {
 	
   return (
 		<div
-			className={`dropdown flex col-span-2 justify-between gap-2 px-2 py-2 h-xs rounded-lg ${
+			className={`dropdown flex col-span-2 justify-between  md:p-2 lg:p-2 sm:p-1 h-auto rounded-lg ${
 				theme === "dark" ? " bg-dropdownBoxDark" : " bg-dropdownBoxLight"
 			} ${theme==='dark'? ' text-textLight':'text-textDark'}`}>
 			<input
 				type="text"
-				className="drop-input  w-24 p-2 bg-transparent focus:outline-none "
+				className="drop-input sm:px-1  lg:w-24 sm:w-16 md:w-24 bg-transparent focus:outline-none "
 				value={currencyDropName}
 				onChange={handleChange}
 				onFocus={handleFocus}
 			/>
 			<span
-				className="w-6 flex justify-center items-center text-5xl"
+				className="sm:w-5 flex justify-center items-center text-2xl"
 				onClick={showList}>
 				<IoMdArrowDropdown />
 			</span>

@@ -13,22 +13,22 @@ const PhoneMenuItem = (props) => {
 			.getElementsByTagName("span")[0].innerHTML;
 
 		if (itemName === "Markets") {
-			document.querySelector(".exchange-coins").style.zIndex = "-10";
-			document.querySelector(".portfolio").style.zIndex = "-10";
+			document.querySelector("#exchange-coins").style.zIndex = "-10";
+			document.querySelector("#portfolio").style.zIndex = "-10";
 		} else if (itemName === "Home") {
-			document.querySelector(".exchange-coins").style.zIndex = "-10";
-			document.querySelector(".portfolio").style.zIndex = "-10";
+			document.querySelector("#exchange-coins").style.zIndex = "-10";
+			document.querySelector("#portfolio").style.zIndex = "-10";
 		} else if (itemName === "Exchange") {
-			document.querySelector(".exchange-coins").style.zIndex = "90";
-			document.querySelector(".portfolio").style.zIndex = "-10";
+			document.querySelector("#exchange-coins").style.zIndex = "90";
+			document.querySelector("#portfolio").style.zIndex = "-10";
 		} else {
-			document.querySelector(".exchange-coins").style.zIndex = "-10";
-			document.querySelector(".portfolio").style.zIndex = "90";
+			document.querySelector("#exchange-coins").style.zIndex = "-10";
+			document.querySelector("#portfolio").style.zIndex = "90";
 		}
 	};
 	return (
 		<div
-			className={`flex flex-col items-center text-phoneMenu-${
+			className={`phoneMenu__item flex flex-col items-center justify-center text-phoneMenu-${
 				theme === "dark" ? "light" : "dark"
 			}`}
 			// style={
@@ -42,7 +42,7 @@ const PhoneMenuItem = (props) => {
 			<div className="text-xl phoneMenu__item__icon-home">
 				{icon}
 			</div>
-			<span className=" text-xs">{name}</span>
+			<span className=" text-phoneSpan">{name}</span>
 		</div>
 	);
 };

@@ -85,17 +85,15 @@ module.exports = {
 				dropdownListLight: "#9dd5d53b",
 				dropdownListItemDark: "#0c375e",
 				dropdownListItemLight: "#9dd5d53b",
-				headingColor: "#2e2e2e",
-				textColor: "#515151",
-				cartNumBg: "#e80013",
-				primary: "#f5f3f3",
-				cardOverlay: "rgba(256,256,256,0.4)",
-				lighttextGray: "#9ca0ab",
-				card: "rgba(256,256,256,0.8)",
-				cartBg: "#282a2c",
-				cartItem: "#2e3033",
-				cartTotal: "#343739",
+				phoneMenuDark: "#081c35",
+				phoneMenuLight: "#fff",
 			},
+			boxShadow: {
+				phoneMenu: "-0.1rem 0 0.8rem 0 rgba(0,0,0,.3)",
+			},
+			fontSize:{
+				phoneSpan:'0.6rem'
+			}
 		},
 	},
 	plugins: [],

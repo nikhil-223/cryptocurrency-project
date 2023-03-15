@@ -34,7 +34,7 @@ const App = () => {
 				{/* this is the chart component  */}
 				<div
 					id="chart"
-					className={`grid row-span-1 lg:col-span-2 lg:min-w-600 lg:rounded-lg lg:grid-rows-6 lg:grid-cols-9 lg:grid-flow-row lg:gap-2  lg:pt-2 lg:p-5 md:col-span-2 md:grid-rows-6 md:grid-cols-9 md:grid-flow-row md:gap-2 md:pt-2 md:p-5   sm:col-start-1 sm:row-start-1 sm:col-span-1 sm:grid-rows-6 sm:grid-cols-9 sm:grid-flow-row sm:gap-2 sm:pt-2 sm:p-5 
+					className={` z-0 grid row-span-1 lg:col-span-2 lg:min-w-600 lg:rounded-lg lg:grid-rows-6 lg:grid-cols-9 lg:grid-flow-row lg:gap-2  lg:pt-2 lg:p-5 md:col-span-2 md:grid-rows-6 md:grid-cols-9 md:grid-flow-row md:gap-2 md:pt-2 md:p-5   sm:col-start-1 sm:row-start-1 sm:col-span-1 sm:grid-rows-6 sm:grid-cols-9 sm:grid-flow-row sm:gap-1 sm:pt-2 sm:p-3 
 					${theme === "dark" ? "bg-boxDark" : "bg-boxLight"} 
 					${theme === "dark" ? " text-textLight" : " text-textDark"}`}>
 					<Chart />
@@ -49,8 +49,8 @@ const App = () => {
 				</div>
 				{/* this is the exchange component  */}
 				<div
-					id="exchange"
-					className={`lg:row-span-1 lg:w-full lg:flex lg:flex-col lg:justify-between lg:p-4 lg:col-span-1 lg:min-w-fit lg:rounded-lg md:row-span-1 md:w-full md:flex md:flex-col md:justify-between md:p-4 md:col-span-1 md:min-w-fit md:rounded-lg  sm:col-start-1 sm:row-start-1 sm:w-full sm:hidden sm:flex-col sm:justify-between sm:p-4 sm:col-span-1 sm:min-w-fit sm:rounded-lg  
+					id="exchange-coins"
+					className={` lg:row-span-1 lg:w-full lg:flex lg:flex-col lg:justify-between lg:p-4 lg:col-span-1 lg:min-w-fit lg:rounded-lg md:row-span-1 md:w-full md:flex md:flex-col md:justify-between md:p-4 md:col-span-1 md:min-w-fit md:rounded-lg  sm:col-start-1 sm:row-start-1 sm:w-full sm:flex sm:flex-col sm:justify-between sm:p-4 sm:col-span-1 sm:min-w-fit sm:rounded-lg  
 					${theme === "dark" ? "bg-boxDark" : "bg-boxLight"}
 					${theme === "dark" ? " text-textLight" : " text-textDark"}`}>
 					<Exchange />
