@@ -39,13 +39,9 @@ const Chart = () => {
 	});
 
 
-	const timeperiods = [
-		{ timePeriod: "1D" },
-		{ timePeriod: "1W" },
-		{ timePeriod: "1M" },
-		{ timePeriod: "6M" },
-		{ timePeriod: "1Y" },
-	];
+	const timePeriodList = useSelector((state)=>{
+		return state.drop.timePeriod.timePeriodList
+	})
 
 	const arr = [{ itemname: "Line" }, { itemname: "Bar" }];
 
@@ -101,17 +97,17 @@ const Chart = () => {
 
 			{/* timePeriod  */}
 			<div className="lg:flex md:hidden sm:hidden min-w-fit col-span-3 justify-end items-center gap-3">
-				{timeperiods.map((item, index) => {
+				{timePeriodList.map((item, index) => {
 					return <TimePeriodItem key={index} timePeriod={item.timePeriod} />;
 				})}
 			</div>
 			<div className="lg:hidden md:flex sm:hidden col-span-1 col-start-9 row-start-2 flex-col row-span-5  justify-center items-center gap-3">
-				{timeperiods.map((item, index) => {
+				{timePeriodList.map((item, index) => {
 					return <TimePeriodItem key={index} timePeriod={item.timePeriod} />;
 				})}
 			</div>
 			<div className="lg:hidden md:hidden sm:flex h-auto col-span-9 col-start-1 row-start-6 justify-center items-center gap-4">
-				{timeperiods.map((item, index) => {
+				{timePeriodList.map((item, index) => {
 					return <TimePeriodItem key={index} timePeriod={item.timePeriod} />;
 				})}
 			</div>

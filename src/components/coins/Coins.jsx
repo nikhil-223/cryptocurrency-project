@@ -13,6 +13,9 @@ const Coins = () => {
 	const theme= useSelector((state)=>{
 		return state.theme
 	})
+	const range= useSelector((state)=>{
+		return state.drop.timePeriod.range
+	})
 	const coinSearchName= useSelector((state)=>{
 		return state.drop.coinSearch.dropName
 	})
@@ -24,6 +27,11 @@ const Coins = () => {
 		return state.coins
 	});
 
+	
+	const timePeriodList = useSelector((state) => {
+		return state.drop.timePeriod.timePeriodList;
+	});
+
 	useEffect(() => {
 		 dispatch(setSearchList(coins.data));
 	}, [dispatch,coins.data])
@@ -33,6 +41,21 @@ const Coins = () => {
 		theme==='dark'?
 		dispatch(setThemeLight('light')):
 		dispatch(setThemeDark('dark'))
+		let time_period_items = Array.from(
+			document.getElementsByClassName("timePeriodItem")
+		);
+		timePeriodList.map((item, index) => {
+			if (theme === "dark") {
+				time_period_items[index].style.background =
+					item.time === range
+						? "rgba(205, 88, 136, 0.5)"
+						: "rgb(123 181 196 / 70%)";
+			} else {
+				time_period_items[index].style.background =
+					item.time === range ? "rgba(205, 88, 136, 1)" : "#174d79";
+			}
+			return 0;
+		});
 	}
 	
 	const handleChange = (e) => {

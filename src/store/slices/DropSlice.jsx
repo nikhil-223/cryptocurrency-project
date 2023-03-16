@@ -12,6 +12,13 @@ const DropSlice = createSlice({
 		timePeriod: {
 			time: 1,
 			range: "1D",
+			timePeriodList: [
+				{ timePeriod: "1D" },
+				{ timePeriod: "1W" },
+				{ timePeriod: "1M" },
+				{ timePeriod: "6M" },
+				{ timePeriod: "1Y" },
+			],
 		},
 		crypto: {
 			dropName: "Bitcoin",

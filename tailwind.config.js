@@ -80,7 +80,7 @@ module.exports = {
 				exchBtnLight: "rgb(228 34 99 / 30%)",
 				dropdownBoxDark: "#14446b",
 				dropdownBoxLight: "rgb(177 227 225)",
-				timePeriodDark: "#14446b",
+				timePeriodDark: "#174d79",
 				timePeriodLight: "rgb(123 181 196 / 70%)",
 				dropdownListDark: "#19476e",
 				dropdownListLight: "#9dd5d53b",
