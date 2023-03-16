@@ -37,36 +37,49 @@ const Chart = () => {
 
 	const arr = [{ itemname: "Line" }, { itemname: "Bar" }];
 
-	const showCryptoList = () => {
+	const showCryptoList=()=>{
+			(document.getElementById("cryptoDroplist").style.display = "flex")
+	}
+	const hideCryptoList=()=>{
+			(document.getElementById("cryptoDroplist").style.display = "none")
+	}
+
+	const handleCryptoClick = () => {
 		const dropListState =
 			document.getElementById("cryptoDroplist").style.display;
 		dropListState === "none"
-			? (document.getElementById("cryptoDroplist").style.display = "flex")
-			: (document.getElementById("cryptoDroplist").style.display = "none");
+			? showCryptoList()
+			: hideCryptoList()
 	};
-
-	const showChartList = () => {
-		const dropListState =
-			document.getElementById("chartTypeDroplist").style.display;
-		dropListState === "none"
-			? (document.getElementById("chartTypeDroplist").style.display = "flex")
-			: (document.getElementById("chartTypeDroplist").style.display = "none");
-	};
-	const [chartTypeInput, setChartTypeInput] = useState("Line");
 	const handleCryptoFocus=()=>{
-		document.getElementById("cryptoDroplist").style.display = "flex";
+		showCryptoList()
 	}
 	const handleCryptoChange = (e) => {
 		handleCryptoFocus()
 		dispatch(setCryptoDropName(e.target.value))
 	};
-	const handleChartFocus=()=>{
+
+	const showChartList = () => {
 		document.getElementById("chartTypeDroplist").style.display = "flex";
+	};
+	const hideChartList = () => {
+		document.getElementById("chartTypeDroplist").style.display = "none";
+	};
+	const handleChartClick = () => {
+		const dropListState =
+			document.getElementById("chartTypeDroplist").style.display;
+		dropListState === "none"
+			? showChartList()
+			: hideChartList()
+	};
+	const handleChartFocus=()=>{
+		showChartList()
 	}
 	const handleChartTypeChange = (e) => {
 		handleChartFocus()
 		setChartTypeInput(e.target.value);
 	};
+	const [chartTypeInput, setChartTypeInput] = useState("Line");
 
 	return (
 		<>
@@ -112,7 +125,7 @@ const Chart = () => {
 					/>
 					<span
 						className="w-1/5 sm:w-5 flex justify-center items-center text-2xl cursor-pointer"
-						onClick={showCryptoList}>
+						onClick={handleCryptoClick}>
 						<IoMdArrowDropdown />
 					</span>
 
@@ -122,8 +135,8 @@ const Chart = () => {
 							theme === "dark" ? " bg-dropdownBoxDark" : " bg-dropdownBoxLight"
 						}  -translate-x-1 translate-y-32 w-28 h-48 flex-col rounded overflow-scroll overflow-x-hidden`}
 						style={{ display: "none" }}
-						onMouseLeave={showCryptoList}
-						onClick={showCryptoList}>
+						onMouseLeave={hideCryptoList}
+						onClick={handleCryptoClick}>
 						{coins.map((item) => {
 							return <CryptoItem key={item.name} name={item.id} />;
 						})}
@@ -155,8 +168,8 @@ const Chart = () => {
 							theme === "dark" ? " bg-dropdownBoxDark" : " bg-dropdownBoxLight"
 						} -translate-x-1 translate-y-20 w-20 h-24 flex-col rounded overflow-scroll`}
 						style={{ display: "none" }}
-						onMouseLeave={showChartList}
-						onClick={showChartList}>
+						onMouseLeave={hideChartList}
+						onClick={handleChartClick}>
 						{arr.map((item) => {
 							return <ChartType key={item.itemname} itemname={item.itemname} />;
 						})}

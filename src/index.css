@@ -37,3 +37,6 @@ code {
     display: none;
 }
 
+*{
+	user-select: none;
+}

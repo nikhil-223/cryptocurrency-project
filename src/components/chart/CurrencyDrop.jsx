@@ -14,18 +14,24 @@ const CurrencyDrop = (props) => {
     const currencyDropName=useSelector((state)=>{
 		return state.drop.currency.dropName;
 	})
-    const showList=()=>{
+	const hideList=()=>{
+		document.getElementById("currencyDroplist").style.display = "none";
+	}
+	const showList=()=>{
+		document.getElementById("currencyDroplist").style.display = "flex";
+	}
+    const handleClick=()=>{
 		const dropListState =
 			document.getElementById("currencyDroplist").style.display;
 			dropListState === "none"
-				? (document.getElementById("currencyDroplist").style.display = "flex")
-				: (document.getElementById("currencyDroplist").style.display = "none");
+				? showList()
+				: hideList();
     }
 	const handleChange=(e)=>{
 		dispatch(setCurrencyDropdownName(e.target.value))
 	}
 	const handleFocus=(e)=>{
-		document.getElementById("currencyDroplist").style.display = "flex";
+		showList()
 		dispatch(setCurrencyDropdownName(e.target.value));
 	}
 	
@@ -50,8 +56,8 @@ const CurrencyDrop = (props) => {
 				id="currencyDroplist"
 				className="droplist absolute -translate-x-1 translate-y-12 bg-dropdownListDark w-28 h-48 flex-col rounded overflow-scroll"
 				style={{ display: "none" }}
-				onMouseLeave={showList}
-				onClick={showList}>
+				onMouseLeave={hideList}
+				onClick={handleClick}>
 				{currencies
 					? currencies.map((item) => {
 							return (
