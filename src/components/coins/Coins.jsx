@@ -17,7 +17,7 @@ const Coins = () => {
 		return state.drop.coinSearch.dropName
 	})
 	const searchList= useSelector((state)=>{
-		return state.drop.coinSearch.searchList
+		return state.drop.coinSearch.dropList
 	})
 
 	const coins = useSelector((state) => {

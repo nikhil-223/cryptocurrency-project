@@ -7,12 +7,14 @@ const DropSlice = createSlice({
 			dropName: "Usd ($)",
 			currency: "usd",
 			symbol: "$",
+			dropList: [],
 		},
 		timePeriod: {
 			time: 1,
 		},
 		crypto: {
 			dropName: "Bitcoin",
+			dropList: [],
 			currentCoin: "bitcoin",
 		},
 		chartType: {
@@ -20,9 +22,19 @@ const DropSlice = createSlice({
 			currentChartType: "Line",
 			dropList: [],
 		},
+		sell: {
+			dropName: "Bitcoin",
+			coin: "Bitcoin",
+			dropList: [],
+		},
+		buy: {
+			dropName: "Ethereum",
+			coin: "Ethereum",
+			dropList: [],
+		},
 		coinSearch: {
 			dropName: "",
-			searchList: [],
+			dropList: [],
 		},
 	},
 	reducers: {
@@ -49,6 +61,27 @@ const DropSlice = createSlice({
 			action.payload.toLowerCase();
 		},
 
+		// sell drop
+		setSellDropName(state, action) {
+			state.sell.dropName = action.payload;
+		},
+		setSellList(state, action) {
+			state.sell.dropList = action.payload;
+		},
+		setSellCoin(state, action) {
+			state.sell.coin = action.payload;
+		},
+		// buy drop
+		setBuyDropName(state, action) {
+			state.buy.dropName = action.payload;
+		},
+		setBuyList(state, action) {
+			state.buy.dropList = action.payload;
+		},
+		setBuyCoin(state, action) {
+			state.buy.coin = action.payload;
+		},
+
 		// time period
 		setTimePeriod(state, action) {
 			state.timePeriod.time = action.payload;
@@ -59,7 +92,7 @@ const DropSlice = createSlice({
 			state.coinSearch.dropName = action.payload;
 		},
 		setSearchList(state, action) {
-			state.coinSearch.searchList = action.payload;
+			state.coinSearch.dropList = action.payload;
 		},
 	},
 });
@@ -74,4 +107,10 @@ export const {
 	setTimePeriod,
 	setCoinSearchName,
 	setSearchList,
+	setSellDropName,
+	setSellList,
+	setBuyDropName,
+	setBuyList,
+	setSellCoin,
+	setBuyCoin
 } = DropSlice.actions;
