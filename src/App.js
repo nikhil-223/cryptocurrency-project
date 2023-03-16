@@ -9,23 +9,23 @@ const App = () => {
 		return state.theme;
 	});
 	const currency = useSelector((state) => {
-		return state.currency.currency;
+		return state.drop.currency.currency;
 	});
 
 	const currentCoin= useSelector((state)=>{
-		return state.chart.currentCoin
+		return state.drop.crypto.currentCoin
 	})
 	const timePeriod= useSelector((state)=>{
-		return state.chart.timePeriod;
+		return state.drop.timePeriod.time;
 	})
 	const dispatch = useDispatch();
 
 	useEffect(() => {
-		dispatch(getChartData({currentCoin, timePeriod}));
-	}, [dispatch,currentCoin,timePeriod]);
+		dispatch(getChartData({currentCoin, timePeriod,currency}));
+	}, [dispatch,currentCoin,timePeriod,currency]);
 
 	useEffect(() => {
-		dispatch(getCoins(currency));
+		dispatch(getCoins(currency)); 
 	}, [dispatch, currency]);
 
 	return (

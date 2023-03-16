@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import { setCryptoDropName, setCurrentCoin } from '../../store/slices/ChartSlice'
+import { setCryptoDropName, setCurrentCoin } from '../../store/slices/DropSlice'
 
 const CryptoItem = (props) => {
     const {name}=props

@@ -3,7 +3,7 @@ import CurrencyItem from './CurrencyItem'
 import {IoMdArrowDropdown} from 'react-icons/io'
 import { currencies } from '../../assets'
 import { useDispatch, useSelector } from 'react-redux'
-import { setCurrencyDropdownName } from '../../store/slices/CurrencySlice'
+import { setCurrencyDropdownName } from "../../store/slices/DropSlice";
 
 const CurrencyDrop = (props) => {
 
@@ -12,7 +12,7 @@ const CurrencyDrop = (props) => {
 	const dispatch= useDispatch()
 	
     const currencyDropName=useSelector((state)=>{
-		return state.currency.currencyDropdownName;
+		return state.drop.currency.dropName;
 	})
     const showList=()=>{
 		const dropListState =

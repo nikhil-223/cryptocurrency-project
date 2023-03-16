@@ -14,16 +14,17 @@ export const getCoins = createAsyncThunk("getCoins", async (currency) => {
 		}
 	);
 	// Convert the response to a JSON object and return it
+	console.log('coin');
 	return response.json();
 });
 
 // Define another async thunk to fetch data for a single coin's market chart
 export const getChartData = createAsyncThunk(
 	"getChartData",
-	async ({currentCoin,timePeriod}) => {
+	async ({currentCoin,timePeriod,currency}) => {
 		// Make a fetch request to the Coingecko API with the specified parameters
 		const response = await fetch(
-			`https://api.coingecko.com/api/v3/coins/${currentCoin}/market_chart?vs_currency=usd&days=${timePeriod}&interval=hourly`,
+			`https://api.coingecko.com/api/v3/coins/${currentCoin}/market_chart?vs_currency=${currency}&days=${timePeriod}&interval=hourly`,
 			{
 				method: "GET",
 				headers: {
@@ -32,6 +33,7 @@ export const getChartData = createAsyncThunk(
 			}
 		);
 		// Convert the response to a JSON object and return it
+		console.log('chart');
 		return response.json();
 	}
 );

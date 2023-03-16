@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { IoMdArrowDropdown } from "react-icons/io";
 import {  useDispatch, useSelector } from "react-redux";
-import { setCryptoDropName } from "../../store/slices/ChartSlice";
+import { setCryptoDropName } from "../../store/slices/DropSlice";
 
 import ChartType from "./ChartType";
 import CryptoItem from "./CryptoItem";
@@ -18,7 +18,7 @@ const Chart = () => {
 		return state.coins.data;
 	});
 	const cryptoDropName = useSelector((state) => {
-		return state.chart.cryptoDropName;
+		return state.drop.crypto.dropName;
 	});
 
 	const chartData = useSelector((state) => {

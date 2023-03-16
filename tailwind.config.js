@@ -59,7 +59,7 @@ module.exports = {
 				10: "repeat(10, minmax(0, 1fr))",
 				dashPc: " 55vh 40vh ",
 				dashTab: " minmax(43vh,25rem)  minmax(30vh,20rem) minmax(30vh,20rem) ",
-				dashMob: " 43vh 82vh",
+				dashMob: " 43vh 57vh",
 				// Complex site-specific row configuration
 				layout: "200px minmax(900px, 1fr) 100px",
 			},

@@ -1,21 +1,32 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import CoinItem from "./CoinItem";
 import {AiOutlineSearch} from "react-icons/ai"
 import { MdLightMode, MdModeNight } from "react-icons/md";
 import { setThemeDark } from "../../store/slices/ThemeSlice";
 import { setThemeLight } from "../../store/slices/ThemeSlice";
+import { setCoinSearchName, setSearchList } from "../../store/slices/DropSlice";
 
 const Coins = () => {
 	
+	const dispatch = useDispatch();
 	const theme= useSelector((state)=>{
 		return state.theme
 	})
+	const coinSearchName= useSelector((state)=>{
+		return state.drop.coinSearch.dropName
+	})
+	const searchList= useSelector((state)=>{
+		return state.drop.coinSearch.searchList
+	})
 
-	const dispatch = useDispatch();
 	const coins = useSelector((state) => {
 		return state.coins
 	});
+
+	useEffect(() => {
+		 dispatch(setSearchList(coins.data));
+	}, [dispatch,coins.data])
 	
 
 	const setMode=()=>{
@@ -24,6 +35,15 @@ const Coins = () => {
 		dispatch(setThemeDark('dark'))
 	}
 	
+	const handleChange = (e) => {
+		dispatch(setCoinSearchName(e.target.value))
+		let rahul = coins.data.filter((element) => {
+			return element.name.toLowerCase().includes(e.target.value.toLowerCase());
+		});
+		!rahul[0] || e.target.value === ""
+			? dispatch(setSearchList(coins.data))
+			: dispatch(setSearchList(rahul)); 
+	};
 
 	return (
 		<>
@@ -39,6 +59,8 @@ const Coins = () => {
 					className="h-full w-3/5 bg-transparent outline-none "
 					type="text"
 					placeholder="Search by Coin"
+					value={coinSearchName}
+					onChange={handleChange}
 				/>
 
 				{/* theme button */}
@@ -61,8 +83,8 @@ const Coins = () => {
 
 			{/* coinlist  */}
 			<div className="coinlist pb-4 h-5/6 overflow-scroll">
-				{coins.isLoading === false ? (
-					coins.data.map((item, index) => {
+				{coins.isLoading === false  ? (
+					searchList.map((item, index) => {
 						return (
 							<CoinItem
 								key={index}

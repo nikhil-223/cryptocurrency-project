@@ -1,6 +1,10 @@
 import React from 'react'
 import { useDispatch } from 'react-redux';
-import { setCurrency, setCurrencyDropdownName, setSymbol } from '../../store/slices/CurrencySlice';
+import {
+	setCurrency,
+	setCurrencyDropdownName,
+	setSymbol,
+} from "../../store/slices/DropSlice";
 
 const CurrencyItem = (props) => {
 

@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { setTimePeriod } from '../../store/slices/ChartSlice';
+import { setTimePeriod } from '../../store/slices/DropSlice';
 
 const TimePeriodItem = (props) => {
     const {timePeriod}=props;

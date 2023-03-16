@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setCryptoDropName, setCurrentCoin } from "../../store/slices/ChartSlice";
+import { setCryptoDropName, setCurrentCoin } from "../../store/slices/DropSlice";
 import { addPieItem } from "../../store/slices/PieItemSlice";
 
 const CoinItem = (props) => {
@@ -17,7 +17,7 @@ const CoinItem = (props) => {
 	const market_cap_change_percentage_24h_toString = `${market_cap_change_percentage_24h}`;
 
 	const currencySymbol = useSelector((state) => {
-		return state.currency.symbol;
+		return state.drop.currency.symbol;
 	});
 
 	const aboutItem = (e) => {
