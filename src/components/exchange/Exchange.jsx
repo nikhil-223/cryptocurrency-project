@@ -62,14 +62,14 @@ const Exchange = () => {
 			<div className="flex justify-evenly w-full">
 				{/* Enter value  */}
 				<div className="flex flex-col gap-2 w-2/6 min-w-ex">
-					<span className=" opacity-70 " style={{ zIndex: "-1" }}>
+					<span className="  text-xs">
 						Enter Value
 					</span>
 					<input className=" bg-transparent" type="text" placeholder="Avl:0" />
 				</div>
 				{/* Buy vaule  */}
 				<div className="flex flex-col gap-2 w-2/6 min-w-ex">
-					<span className=" w-full opacity-70" style={{ zIndex: "-1" }}>
+					<span className=" w-full text-xs">
 						Buy Value
 					</span>
 					<span>0</span>

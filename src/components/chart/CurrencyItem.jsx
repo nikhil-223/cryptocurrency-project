@@ -1,5 +1,5 @@
 import React from 'react'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {
 	setCurrency,
 	setCurrencyDropdownName,
@@ -7,6 +7,9 @@ import {
 } from "../../store/slices/DropSlice";
 
 const CurrencyItem = (props) => {
+  const theme= useSelector((state)=>{
+    return state.theme
+  })
 
   const dispatch = useDispatch()
     const {currency,symbol}=props;
@@ -16,7 +19,7 @@ const CurrencyItem = (props) => {
       dispatch(setCurrencyDropdownName(e.target.innerHTML))
     }
   return (
-    <div className='p-2 w-full cursor-pointer bg-dropdownListItemDark' onClick={handleClick}>{currency.charAt(0).toUpperCase().concat(currency.slice(1))} {`(${symbol})`}</div>
+    <div className={`p-2 w-full cursor-pointer ${theme==='dark'?'hover:bg-dropdownListItemDark':'hover:bg-dropdownListItemLight'} `} onClick={handleClick}>{currency.charAt(0).toUpperCase().concat(currency.slice(1))} {`(${symbol})`}</div>
   )
 }
 

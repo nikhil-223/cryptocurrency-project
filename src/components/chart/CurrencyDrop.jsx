@@ -49,12 +49,14 @@ const CurrencyDrop = (props) => {
 			/>
 			<span
 				className="sm:w-5 flex justify-center items-center text-2xl cursor-pointer"
-				onClick={showList}>
+				onClick={handleClick}>
 				<IoMdArrowDropdown />
 			</span>
 			<div
 				id="currencyDroplist"
-				className="droplist absolute -translate-x-1 translate-y-12 bg-dropdownListDark w-28 h-48 flex-col rounded overflow-scroll"
+				className={`droplist absolute -translate-x-1 translate-y-12 ${
+					theme === "dark" ? "bg-dropdownBoxDark" : "bg-dropdownBoxLight"
+				}  w-28 h-48 flex-col rounded overflow-scroll`}
 				style={{ display: "none" }}
 				onMouseLeave={hideList}
 				onClick={handleClick}>
