@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import { IoMdArrowDropdown } from "react-icons/io";
 import {  useDispatch, useSelector } from "react-redux";
-import { setCryptoDropName } from "../../store/slices/DropSlice";
+import { setCryptoDropName, setCryptoList } from "../../store/slices/DropSlice";
 
 import ChartType from "./ChartType";
 import CryptoItem from "./CryptoItem";
@@ -21,11 +21,23 @@ const Chart = () => {
 		return state.drop.crypto.dropName;
 	});
 
+	const cryptoList= useSelector((state)=>{
+		return state.drop.crypto.dropList
+	})
+
+	const chartType= useSelector((state)=>{
+		return state.drop.chartType.dropName
+	})
+
+	const dispatch = useDispatch()
+	useEffect(() => {
+	  dispatch(setCryptoList(coins))
+	}, [dispatch,coins])
+	
 	const chartData = useSelector((state) => {
 		return state.chart;
 	});
 
-	const dispatch = useDispatch()
 
 	const timeperiods = [
 		{ timePeriod: "1D" },
@@ -57,6 +69,12 @@ const Chart = () => {
 	const handleCryptoChange = (e) => {
 		handleCryptoFocus()
 		dispatch(setCryptoDropName(e.target.value))
+		let rahul = coins.filter((element) => {
+			return element.name.toLowerCase().includes(e.target.value.toLowerCase());
+		});
+		!rahul[0] || e.target.value === ""
+			? dispatch(setCryptoList(coins))
+			: dispatch(setCryptoList(rahul));
 	};
 
 	const showChartList = () => {
@@ -72,14 +90,6 @@ const Chart = () => {
 			? showChartList()
 			: hideChartList()
 	};
-	const handleChartFocus=()=>{
-		showChartList()
-	}
-	const handleChartTypeChange = (e) => {
-		handleChartFocus()
-		setChartTypeInput(e.target.value);
-	};
-	const [chartTypeInput, setChartTypeInput] = useState("Line");
 
 	return (
 		<>
@@ -137,7 +147,7 @@ const Chart = () => {
 						style={{ display: "none" }}
 						onMouseLeave={hideCryptoList}
 						onClick={handleCryptoClick}>
-						{coins.map((item) => {
+						{cryptoList.map((item) => {
 							return <CryptoItem key={item.name} name={item.id} />;
 						})}
 					</div>
@@ -149,13 +159,10 @@ const Chart = () => {
 					className={` dropdown flex items-center justify-between  lg:w-24 md:w-24 sm:w-20 lg:p-2 md:p-2 sm:p-1 ${
 						theme === "dark" ? " bg-dropdownBoxDark" : " bg-dropdownBoxLight"
 					}  lg:rounded md:rounded sm:rounded`}>
-					<input
-						type="text"
+					<div
 						className={`drop-input w-3/5 sm:px-1 bg-transparent focus:outline-none`}
-						value={chartTypeInput}
-						onChange={handleChartTypeChange}
-						onFocus={handleChartFocus}
-					/>
+						
+					>{chartType}</div>
 					<span
 						className="lg:w-5 sm:w-5 flex justify-center items-center text-2xl cursor-pointer"
 						onClick={showChartList}>

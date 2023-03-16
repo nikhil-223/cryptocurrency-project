@@ -47,6 +47,12 @@ const Exchange = () => {
 	const handleSellChange = (e) => {
 		showSellList();
 		dispatch(setSellDropName(e.target.value));
+		let rahul = coins.filter((element) => {
+			return element.name.toLowerCase().includes(e.target.value.toLowerCase());
+		});
+		!rahul[0] || e.target.value === ""
+			? dispatch(setSellList(coins))
+			: dispatch(setSellList(rahul));
 	};
 
 	useEffect(() => {
@@ -70,6 +76,14 @@ const Exchange = () => {
 	const handleBuyChange = (e) => {
 		showBuyList();
 		dispatch(setBuyDropName(e.target.value));
+		let rahul = coins.filter((element) => {
+			return element.name
+				.toLowerCase()
+				.includes(e.target.value.toLowerCase());
+		});
+		!rahul[0] || e.target.value === ""
+			? dispatch(setBuyList(coins))
+			: dispatch(setBuyList(rahul));
 	};
 
 	// enter value 

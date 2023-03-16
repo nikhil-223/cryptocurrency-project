@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { setTimePeriod } from '../../store/slices/DropSlice';
+import { setRange, setTimePeriod } from '../../store/slices/DropSlice';
 
 const TimePeriodItem = (props) => {
     const {timePeriod}=props;
@@ -32,6 +32,7 @@ const TimePeriodItem = (props) => {
           break;
       }
       dispatch(setTimePeriod(time))
+      dispatch(setRange(timePeriod))
     }
   return (
     <div className={`timePeriodItem flex justify-center items-center rounded w-11 h-9 ${theme==='dark' ? ' bg-timePeriodDark' : ' bg-timePeriodLight' } cursor-pointer`} onClick={handleClick}>{timePeriod}</div>

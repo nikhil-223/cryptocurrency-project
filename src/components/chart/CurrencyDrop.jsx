@@ -1,41 +1,58 @@
-import React from 'react'
-import CurrencyItem from './CurrencyItem'
-import {IoMdArrowDropdown} from 'react-icons/io'
-import { currencies } from '../../assets'
-import { useDispatch, useSelector } from 'react-redux'
-import { setCurrencyDropdownName } from "../../store/slices/DropSlice";
+import React, { useEffect } from "react";
+import CurrencyItem from "./CurrencyItem";
+import { IoMdArrowDropdown } from "react-icons/io";
+import { currencies } from "../../assets";
+import { useDispatch, useSelector } from "react-redux";
+import {
+	setCurrencyDropdownName,
+	setCurrencyList,
+} from "../../store/slices/DropSlice";
 
 const CurrencyDrop = (props) => {
+	const { theme } = props;
 
-	const{theme}=props;
+	const dispatch = useDispatch();
 
-	const dispatch= useDispatch()
-	
-    const currencyDropName=useSelector((state)=>{
+	const currencyList = useSelector((state) => {
+		return state.drop.currency.dropList;
+	});
+	useEffect(() => {
+		dispatch(setCurrencyList(currencies));
+		// eslint-disable-next-line
+	}, []);
+
+	const currencyDropName = useSelector((state) => {
 		return state.drop.currency.dropName;
-	})
-	const hideList=()=>{
+	});
+	const hideList = () => {
 		document.getElementById("currencyDroplist").style.display = "none";
-	}
-	const showList=()=>{
+	};
+	const showList = () => {
 		document.getElementById("currencyDroplist").style.display = "flex";
-	}
-    const handleClick=()=>{
+	};
+	const handleClick = () => {
 		const dropListState =
 			document.getElementById("currencyDroplist").style.display;
-			dropListState === "none"
-				? showList()
-				: hideList();
-    }
-	const handleChange=(e)=>{
-		dispatch(setCurrencyDropdownName(e.target.value))
-	}
-	const handleFocus=(e)=>{
-		showList()
+		dropListState === "none" ? showList() : hideList();
+	};
+	const handleChange = (e) => {
 		dispatch(setCurrencyDropdownName(e.target.value));
-	}
-	
-  return (
+		let rahul = currencies.filter((element) => {
+			return element.currency
+				.toLowerCase()
+				.includes(e.target.value.toLowerCase());
+		});
+		!rahul[0] || e.target.value === ""
+			? dispatch(setCurrencyList(currencies))
+			: dispatch(setCurrencyList(rahul));
+	};
+
+	const handleFocus = (e) => {
+		showList();
+		dispatch(setCurrencyDropdownName(e.target.value));
+	};
+
+	return (
 		<div
 			className={`dropdown flex col-span-2 justify-between  md:p-2 lg:p-2 sm:p-1 h-auto lg:rounded md:rounded sm:rounded ${
 				theme === "dark" ? " bg-dropdownBoxDark" : " bg-dropdownBoxLight"
@@ -60,8 +77,8 @@ const CurrencyDrop = (props) => {
 				style={{ display: "none" }}
 				onMouseLeave={hideList}
 				onClick={handleClick}>
-				{currencies
-					? currencies.map((item) => {
+				{currencyList
+					? currencyList.map((item) => {
 							return (
 								<CurrencyItem
 									key={item.currency}
@@ -74,6 +91,6 @@ const CurrencyDrop = (props) => {
 			</div>
 		</div>
 	);
-}
+};
 
-export default CurrencyDrop
+export default CurrencyDrop;

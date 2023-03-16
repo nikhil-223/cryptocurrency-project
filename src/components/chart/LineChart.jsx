@@ -31,6 +31,9 @@ const LineChart = () => {
     const chartData = useSelector((state) => {
 			return state.chart.data;
 		});
+	const chartRange= useSelector((state)=>{
+		return state.drop.timePeriod.range
+	})
 
     let theme="dark";
 	// lables
@@ -55,10 +58,9 @@ const LineChart = () => {
 			"Dec",
 		];
 
-		let day = weekday[timestamp.getMonth()];
+		let day = weekday[timestamp.getDay()];
 		let month = yearMonth[timestamp.getMonth()];
         // dummy 
-        let chartRange="1D"
 		switch (chartRange) {
 			case "1D":
 				labels.push(`${timestamp.getHours()}:${timestamp.getMinutes()}`);
