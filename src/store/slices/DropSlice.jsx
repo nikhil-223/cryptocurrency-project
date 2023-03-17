@@ -29,10 +29,10 @@ const DropSlice = createSlice({
 		phoneMenu: {
 			path:"Home",
 			phoneMenuList: [
-				{ itemName: "Home", icon: <AiFillHome /> }, // object for Home menu item
-				{ itemName: "Markets", icon: <BsFillBarChartFill /> }, // object for Markets menu item
-				{ itemName: "Exchange", icon: <FaCoins /> }, // object for Exchange menu item
-				{ itemName: "Portfolio", icon: <RiPieChart2Fill /> }, // object for Portfolio menu item
+				{ itemName: "Home", icon: (<AiFillHome />) }, // object for Home menu item
+				{ itemName: "Markets", icon: (<BsFillBarChartFill />) }, // object for Markets menu item
+				{ itemName: "Exchange", icon: (<FaCoins />) }, // object for Exchange menu item
+				{ itemName: "Portfolio", icon: (<RiPieChart2Fill />) }, // object for Portfolio menu item
 			],
 		},
 		crypto: {

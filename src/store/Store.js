@@ -10,6 +10,10 @@ const store = configureStore({
 		drop: DropSlice,
 		pieItem: PieItemSlice,
 	},
+	middleware: (getDefaultMiddleware) =>
+		getDefaultMiddleware({
+			serializableCheck: false,
+		}),
 });
 
 export default store;

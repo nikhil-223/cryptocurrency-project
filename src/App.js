@@ -22,10 +22,12 @@ const App = () => {
 
 	useEffect(() => {
 		dispatch(getChartData({ currentCoin, timePeriod, currency }));
+		console.log("chart");
 	}, [dispatch, currentCoin, timePeriod, currency]);
-
+	
 	useEffect(() => {
 		dispatch(getCoins(currency));
+		console.log("coins");
 	}, [dispatch, currency]);
 
 	return (
@@ -34,8 +36,8 @@ const App = () => {
 			{/* md for tablet */}
 			{/* sm for phone */}
 			<div
-				className="lg:dashboard grid lg:grid-rows-dashPc lg:grid-cols-dashPc lg:p-4 lg:content-center lg:justify-center lg:w-auto lg:h-screen lg:gap-1 lg:grid-flow-col lg:bg-dashboard
-			 md:dashboard  md:grid-rows-dashTab md:grid-cols-dashTab md:p-0 md:w-full md:h-auto md:gap-1 md:grid-flow-col md:bg-dropdownBoxDark  
+				className="lg:dashboard grid lg:grid-rows-dashPc lg:grid-cols-dashPc lg:p-4 lg:content-center lg:justify-center lg:w-auto lg:h-screen lg:overflow-hidden lg:gap-1 lg:grid-flow-col lg:bg-dashboard
+			 md:dashboard  md:grid-rows-dashTab md:grid-cols-dashTab md:p-0 md:w-full md:h-auto md:gap-1 md:grid-flow-col md:bg-dropdownBoxDark md:overflow-x-hidden  
 			 sm:dashboard   sm:grid-rows-dashMob sm:grid-cols-dashMob sm:p-0 sm:w-full sm:h-98vh sm:overflow-scroll sm:gap-0 sm:grid-flow-col sm:text-sm lg:text-base md:text-base sm:bg-sky-300">
 				{/* menu for phone size  */}
 				<div className="sm:flex lg:hidden md:hidden fixed bottom-0">
@@ -65,8 +67,8 @@ const App = () => {
 				<div
 					id="exchange-coins"
 					className={`w-full lg:row-span-1  lg:flex lg:flex-col lg:p-4 lg:col-span-1 lg:min-w-fit lg:rounded-lg
-					md:row-span-1  md:flex md:flex-col  md:p-4 md:col-span-1 md:min-w-fit md:rounded-lg 
-					sm:col-start-1 sm:row-start-1  sm:flex sm:flex-col  sm:p-4 sm:col-span-1 sm:rounded-lg  
+					md:row-span-1  md:flex md:flex-col  md:p-4 md:col-span-1 md:min-w-fit 
+					sm:col-start-1 sm:row-start-1  sm:flex sm:flex-col  sm:p-4 sm:col-span-1   
 					${theme === "dark" ? "bg-boxDark" : "bg-boxLight"}
 					${theme === "dark" ? " text-textLight" : " text-textDark"}`}>
 					<Exchange />
