@@ -114,7 +114,7 @@ const Exchange = () => {
 			{/* Title  */}
 
 			{/* dropdowns  */}
-			<div className=" flex justify-evenly pt-4">
+			<div className=" flex justify-evenly">
 				{/* Sell */}
 				<div className="flex flex-col gap-2 w-2/6 min-w-ex">
 					<h1 className=" text-red-600">Sell</h1>
@@ -196,7 +196,7 @@ const Exchange = () => {
 			{/* dropdowns  */}
 
 			{/* showing values */}
-			<div className="flex justify-evenly w-full  pt-8">
+			<div className="flex justify-evenly w-full ">
 				{/* Enter value  */}
 				<div className="flex flex-col gap-2 w-2/6 min-w-ex">
 					<span className="  text-xs">Enter Value</span>
@@ -219,7 +219,7 @@ const Exchange = () => {
 			{/* showing values */}
 
 			{/* Exchange Button  */}
-			<div className="w-full flex items-center justify-center  pt-9">
+			<div className="w-full flex items-center justify-center">
 				<button
 					className={`exchangeBtn ${
 						theme === "dark" ? "bg-exchBtnDark" : "bg-exchBtnLight"

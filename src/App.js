@@ -66,9 +66,9 @@ const App = () => {
 				{/* this is the exchange component  */}
 				<div
 					id="exchange-coins"
-					className={`w-full lg:row-span-1  lg:flex lg:flex-col lg:p-4 lg:col-span-1 lg:min-w-fit lg:rounded-lg
-					md:row-span-1  md:flex md:flex-col  md:p-4 md:col-span-1 md:min-w-fit 
-					sm:col-start-1 sm:row-start-1  sm:flex sm:flex-col  sm:p-4 sm:col-span-1   
+					className={`w-full justify-between p-4 pb-9 lg:row-span-1  lg:flex lg:flex-col lg:col-span-1 lg:min-w-fit lg:rounded-lg
+					md:row-span-1  md:flex md:flex-col  md:col-span-1 md:min-w-fit 
+					sm:col-start-1 sm:row-start-1  sm:flex sm:flex-col  sm:col-span-1   
 					${theme === "dark" ? "bg-boxDark" : "bg-boxLight"}
 					${theme === "dark" ? " text-textLight" : " text-textDark"}`}>
 					<Exchange />
