@@ -76,19 +76,26 @@ module.exports = {
 				boxLight: "#fafafa",
 				textLight: "#f8e5e4",
 				textDark: "#0b3e43",
+				coinsBorder: "rgb(83 107 147 / 50%)",
 				exchBtnDark: "rgb(43 129 143)",
 				exchBtnLight: "rgb(228 34 99 / 30%)",
 				dropdownBoxDark: "#14446b",
-				dropdownBoxLight: "rgb(177 227 225)",
+				dropdownBoxLight: "rgb(123 181 196 / 70%)",
+				// timeperiod
 				timePeriodDark: "#174d79",
 				timePeriodLight: "rgb(123 181 196 / 70%)",
+				activeTimePeriodDark: "rgba(205, 88, 136,1)",
+				activeTimePeriodLight: "rgba(205, 88, 136,0.5)",
+				// dropdown list
 				dropdownListDark: "#19476e",
 				dropdownListLight: "#9dd5d53b",
 				dropdownListItemDark: "#0c375e",
 				dropdownListItemLight: "rgb(128 222 220)",
+				// phone menu
 				phoneMenuDark: "#081c35",
-				coinsBorder: "rgb(83 107 147 / 50%)",
 				phoneMenuLight: "#fff",
+				textActivePhoneMenuDark: "rgb(8, 149, 149)",
+				textActivePhoneMenuLight: "rgb(87, 168, 235)",
 			},
 			boxShadow: {
 				phoneMenu: "-0.1rem 0 0.8rem 0 rgba(0,0,0,.3)",

@@ -1,24 +1,27 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { setPhoneMenuPath } from "../../store/slices/DropSlice";
 
 const PhoneMenuItem = (props) => {
 	const { name, icon } = props;
-	const theme=useSelector((state)=>{
-		return state.theme
+	const theme = useSelector((state) => {
+		return state.theme;
+	});
+	const phoneMenuPath= useSelector((state)=>{
+		return state.drop.phoneMenu.path
 	})
+	const dispatch= useDispatch()
 
 	const item_show = (e) => {
-		let itemName = e.target
-			.closest(".phoneMenu__item")
-			.getElementsByTagName("span")[0].innerHTML;
-
-		if (itemName === "Markets") {
+		dispatch(setPhoneMenuPath(name))
+		
+		if (name === "Markets") {
 			document.querySelector("#exchange-coins").style.zIndex = "-10";
 			document.querySelector("#portfolio").style.zIndex = "-10";
-		} else if (itemName === "Home") {
+		} else if (name === "Home") {
 			document.querySelector("#exchange-coins").style.zIndex = "-10";
 			document.querySelector("#portfolio").style.zIndex = "-10";
-		} else if (itemName === "Exchange") {
+		} else if (name === "Exchange") {
 			document.querySelector("#exchange-coins").style.zIndex = "90";
 			document.querySelector("#portfolio").style.zIndex = "-10";
 		} else {
@@ -28,20 +31,17 @@ const PhoneMenuItem = (props) => {
 	};
 	return (
 		<div
-			className={`phoneMenu__item flex flex-col items-center justify-center text-phoneMenu-${
-				theme === "dark" ? "light" : "dark"
+			className={`phoneMenu__item flex flex-col items-center justify-center ${
+				name === phoneMenuPath
+					? theme === "dark"
+						? "text-textActivePhoneMenuLight"
+						: "text-textActivePhoneMenuDark"
+					: theme === "dark"
+					? " text-textLight"
+					: " text-textDark"
 			}`}
-			// style={
-			// 	name === phoneMenuItemActive
-			// 		? {
-			// 				color: theme === "dark" ? "rgb(87 168 235)" : "#089595",
-			// 		  }
-			// 		: {}
-			// }
 			onClick={item_show}>
-			<div className="text-xl phoneMenu__item__icon-home">
-				{icon}
-			</div>
+			<div className="text-xl phoneMenu__item__icon-home">{icon}</div>
 			<span className=" text-phoneSpan">{name}</span>
 		</div>
 	);

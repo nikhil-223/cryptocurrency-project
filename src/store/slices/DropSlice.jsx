@@ -1,5 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+// Importing icon from react-icons
+import { AiFillHome } from "react-icons/ai";
+import { BsFillBarChartFill } from "react-icons/bs";
+import { FaCoins } from "react-icons/fa";
+import { RiPieChart2Fill } from "react-icons/ri";
+
 const DropSlice = createSlice({
 	name: "drop",
 	initialState: {
@@ -18,6 +24,15 @@ const DropSlice = createSlice({
 				{ timePeriod: "1M" },
 				{ timePeriod: "6M" },
 				{ timePeriod: "1Y" },
+			],
+		},
+		phoneMenu: {
+			path:"Home",
+			phoneMenuList: [
+				{ itemName: "Home", icon: <AiFillHome /> }, // object for Home menu item
+				{ itemName: "Markets", icon: <BsFillBarChartFill /> }, // object for Markets menu item
+				{ itemName: "Exchange", icon: <FaCoins /> }, // object for Exchange menu item
+				{ itemName: "Portfolio", icon: <RiPieChart2Fill /> }, // object for Portfolio menu item
 			],
 		},
 		crypto: {
@@ -78,6 +93,10 @@ const DropSlice = createSlice({
 		setChartType(state, action) {
 			state.chartType.dropName = action.payload;
 		},
+		// phone menu 
+		setPhoneMenuPath(state,action){
+			state.phoneMenu.path=action.payload
+		},
 		// sell drop
 		setSellDropName(state, action) {
 			state.sell.dropName = action.payload;
@@ -137,4 +156,5 @@ export const {
 	setCurrencyList,
 	setCryptoList,
 	setChartType,
+	setPhoneMenuPath,
 } = DropSlice.actions;

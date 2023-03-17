@@ -1,71 +1,46 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import CoinItem from "./CoinItem";
-import {AiOutlineSearch} from "react-icons/ai"
+import { AiOutlineSearch } from "react-icons/ai";
 import { MdLightMode, MdModeNight } from "react-icons/md";
 import { setThemeDark } from "../../store/slices/ThemeSlice";
 import { setThemeLight } from "../../store/slices/ThemeSlice";
 import { setCoinSearchName, setSearchList } from "../../store/slices/DropSlice";
 
 const Coins = () => {
-	
 	const dispatch = useDispatch();
-	const theme= useSelector((state)=>{
-		return state.theme
-	})
-	const range= useSelector((state)=>{
-		return state.drop.timePeriod.range
-	})
-	const coinSearchName= useSelector((state)=>{
-		return state.drop.coinSearch.dropName
-	})
-	const searchList= useSelector((state)=>{
-		return state.drop.coinSearch.dropList
-	})
-
-	const coins = useSelector((state) => {
-		return state.coins
+	const theme = useSelector((state) => {
+		return state.theme;
+	});
+	const coinSearchName = useSelector((state) => {
+		return state.drop.coinSearch.dropName;
+	});
+	const searchList = useSelector((state) => {
+		return state.drop.coinSearch.dropList;
 	});
 
-	
-	const timePeriodList = useSelector((state) => {
-		return state.drop.timePeriod.timePeriodList;
+	const coins = useSelector((state) => {
+		return state.coins;
 	});
 
 	useEffect(() => {
-		 dispatch(setSearchList(coins.data));
-	}, [dispatch,coins.data])
-	
+		dispatch(setSearchList(coins.data));
+	}, [dispatch, coins.data]);
 
-	const setMode=()=>{
-		theme==='dark'?
-		dispatch(setThemeLight('light')):
-		dispatch(setThemeDark('dark'))
-		let time_period_items = Array.from(
-			document.getElementsByClassName("timePeriodItem")
-		);
-		timePeriodList.map((item, index) => {
-			if (theme === "dark") {
-				time_period_items[index].style.background =
-					item.time === range
-						? "rgba(205, 88, 136, 0.5)"
-						: "rgb(123 181 196 / 70%)";
-			} else {
-				time_period_items[index].style.background =
-					item.time === range ? "rgba(205, 88, 136, 1)" : "#174d79";
-			}
-			return 0;
-		});
-	}
-	
+	const setMode = () => {
+		theme === "dark"
+			? dispatch(setThemeLight("light"))
+			: dispatch(setThemeDark("dark"));
+	};
+
 	const handleChange = (e) => {
-		dispatch(setCoinSearchName(e.target.value))
+		dispatch(setCoinSearchName(e.target.value));
 		let rahul = coins.data.filter((element) => {
 			return element.name.toLowerCase().includes(e.target.value.toLowerCase());
 		});
 		!rahul[0] || e.target.value === ""
 			? dispatch(setSearchList(coins.data))
-			: dispatch(setSearchList(rahul)); 
+			: dispatch(setSearchList(rahul));
 	};
 
 	return (
@@ -106,7 +81,7 @@ const Coins = () => {
 
 			{/* coinlist  */}
 			<div className="coinlist pb-4 h-5/6 overflow-scroll">
-				{coins.isLoading === false  ? (
+				{coins.isLoading === false ? (
 					searchList.map((item, index) => {
 						return (
 							<CoinItem

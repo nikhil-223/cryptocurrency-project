@@ -1,11 +1,6 @@
 import React from "react";
 import PhoneMenuItem from "./PhoneMenuItem";
 
-// Importing icon from react-icons
-import { AiFillHome } from "react-icons/ai";
-import { BsFillBarChartFill } from "react-icons/bs";
-import { FaCoins } from "react-icons/fa";
-import { RiPieChart2Fill } from "react-icons/ri";
 import { useSelector } from "react-redux";
 
 const PhoneMenu = () => {
@@ -14,12 +9,9 @@ const PhoneMenu = () => {
 	const theme=useSelector((state)=>{
 		return state.theme
 	})
-	const phoneMenuItems = [
-		{ itemName: "Home", icon: <AiFillHome /> }, // object for Home menu item
-		{ itemName: "Markets", icon: <BsFillBarChartFill /> }, // object for Markets menu item
-		{ itemName: "Exchange", icon: <FaCoins /> }, // object for Exchange menu item
-		{ itemName: "Portfolio", icon: <RiPieChart2Fill /> }, // object for Portfolio menu item
-	];
+	const phoneMenuItems =useSelector((state)=>{
+		return state.drop.phoneMenu.phoneMenuList
+	});
 	return (
 		<div
 			// class name that determines background color and text color based on theme variable
