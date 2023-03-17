@@ -114,7 +114,7 @@ const Exchange = () => {
 			{/* Title  */}
 
 			{/* dropdowns  */}
-			<div className=" flex justify-evenly ">
+			<div className=" flex justify-evenly pt-4">
 				{/* Sell */}
 				<div className="flex flex-col gap-2 w-2/6 min-w-ex">
 					<h1 className=" text-red-600">Sell</h1>
@@ -196,22 +196,30 @@ const Exchange = () => {
 			{/* dropdowns  */}
 
 			{/* showing values */}
-			<div className="flex justify-evenly w-full">
+			<div className="flex justify-evenly w-full  pt-8">
 				{/* Enter value  */}
 				<div className="flex flex-col gap-2 w-2/6 min-w-ex">
 					<span className="  text-xs">Enter Value</span>
-					<input className="outline-none bg-transparent" type="text" placeholder="Avl:0"  value={sellValue} onChange={handleSellValueChange}/>
+					<input
+						className="outline-none bg-transparent"
+						type="text"
+						placeholder="Avl:0"
+						value={sellValue}
+						onChange={handleSellValueChange}
+					/>
 				</div>
 				{/* Buy vaule  */}
 				<div className="flex flex-col gap-2 w-2/6 min-w-ex">
 					<span className=" w-full text-xs">Buy</span>
-					<span>{buyValue.toFixed(3)} {buyCoin}s</span>
+					<span>
+						{buyValue.toFixed(3)} {buyCoin}s
+					</span>
 				</div>
 			</div>
 			{/* showing values */}
 
 			{/* Exchange Button  */}
-			<div className="w-full flex items-center justify-center">
+			<div className="w-full flex items-center justify-center  pt-9">
 				<button
 					className={`exchangeBtn ${
 						theme === "dark" ? "bg-exchBtnDark" : "bg-exchBtnLight"

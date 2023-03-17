@@ -72,6 +72,7 @@ module.exports = {
 				layout: "200px minmax(900px, 1fr) 100px",
 			},
 			colors: {
+				dashboard: "#833e58",
 				boxDark: "#07182d",
 				boxLight: "#fafafa",
 				textLight: "#f8e5e4",
