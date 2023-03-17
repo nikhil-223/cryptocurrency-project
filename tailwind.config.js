@@ -97,6 +97,8 @@ module.exports = {
 				phoneMenuLight: "#fff",
 				textActivePhoneMenuDark: "rgb(8, 149, 149)",
 				textActivePhoneMenuLight: "rgb(87, 168, 235)",
+				// alert
+				alert: "#eb455f",
 			},
 			boxShadow: {
 				phoneMenu: "-0.1rem 0 0.8rem 0 rgba(0,0,0,.3)",

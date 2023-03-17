@@ -17,8 +17,8 @@ const CoinSlice = createSlice({
 			state.isLoading=true;
 		});
 		builder.addCase(getCoins.rejected, (state, action) => {
-			console.log('Error',action.payload);
 			state.isError=true
+			state.isLoading=false
 		});
 	},
 });

@@ -40,3 +40,9 @@ code {
 *{
 	user-select: none;
 }
+
+@media only screen and (max-width:600px){
+    .alert{
+        bottom:6rem;
+    }
+}

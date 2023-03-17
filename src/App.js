@@ -2,7 +2,9 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getChartData, getCoins } from "./api";
 import { Chart, Coins, Exchange, Portfolio } from "./components";
+import Alert from "./components/alert/Alert";
 import PhoneMenu from "./components/phoneMenu/PhoneMenu";
+import { setAlert } from "./store/slices/AlertSlice";
 
 const App = () => {
 	const theme = useSelector((state) => {
@@ -10,6 +12,12 @@ const App = () => {
 	});
 	const currency = useSelector((state) => {
 		return state.drop.currency.currency;
+	});
+	const coins = useSelector((state) => {
+		return state.coins;
+	});
+	const chart = useSelector((state) => {
+		return state.chart;
 	});
 
 	const currentCoin = useSelector((state) => {
@@ -22,13 +30,24 @@ const App = () => {
 
 	useEffect(() => {
 		dispatch(getChartData({ currentCoin, timePeriod, currency }));
-		console.log("chart");
 	}, [dispatch, currentCoin, timePeriod, currency]);
-	
+
 	useEffect(() => {
 		dispatch(getCoins(currency));
-		console.log("coins");
 	}, [dispatch, currency]);
+
+	useEffect(() => {
+		coins.isError === true
+			? dispatch(
+					setAlert({ type: "warning", message: "failed to fetch coin data" })
+			  )
+			: dispatch(setAlert({ type: "", message: "" }));
+		chart.isError === true
+			? dispatch(
+					setAlert({ type: "warning", message: "failed to fetch chart data" })
+			  )
+			: dispatch(setAlert({ type: "", message: "" }));
+	}, [dispatch, coins, chart]);
 
 	return (
 		<>
@@ -43,6 +62,7 @@ const App = () => {
 				<div className="sm:flex lg:hidden md:hidden fixed bottom-0">
 					<PhoneMenu />
 				</div>
+				<Alert />
 				{/* this is the chart component  */}
 				<div
 					id="chart"

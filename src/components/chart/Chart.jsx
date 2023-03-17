@@ -182,7 +182,7 @@ const Chart = () => {
 			</div>
 			<div className=" w-full col-span-9 md:col-span-8 sm:row-start-2 sm:col-start-1 sm:row-span-4 lg:col-span-9 md:row-span-5 ">
 				{chartData.isLoading === false ? (
-					chartData.data && <LineChart />
+					chartData.data.prices && <LineChart />
 				) : (
 					<div className="w-full h-full flex justify-center items-center">
 						<img className="w-20" src="https://i.gifer.com/XOsX.gif" alt="" />
