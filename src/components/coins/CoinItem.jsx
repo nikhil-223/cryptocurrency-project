@@ -2,6 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setCryptoDropName, setCurrentCoin } from "../../store/slices/DropSlice";
 import { addPieItem } from "../../store/slices/PieItemSlice";
+import { addRecentCoin } from "../../store/slices/RecentSlice";
 
 const CoinItem = (props) => {
 	const dispatch = useDispatch();
@@ -20,11 +21,21 @@ const CoinItem = (props) => {
 		return state.drop.currency.symbol;
 	});
 
+	const coins=useSelector((state)=>{
+		return state.coins.data
+	})
+
 	const aboutItem = (e) => {
 		dispatch(addPieItem(name));
 		dispatch(setCryptoDropName(id))
 		dispatch(setCurrentCoin(id))
 
+		let addRecentItem= coins.filter((item)=>{
+			return item.name===name
+		})
+		console.log(addRecentItem);
+
+		dispatch(addRecentCoin(addRecentItem[0]))
 	};
 	return (
 		<>
