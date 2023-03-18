@@ -31,14 +31,15 @@ const CoinDetail = () => {
 		})[0];
 	}
 	let iconFilled = WatchList.filter((item) => {
-		return item.name === coinDetails.name;
+		return item === coinDetails.name;
 	})[0];
+
 	const handleClick = () => {
 		let found = WatchList.filter((item) => {
-			return item.name === coinDetails.name;
+			return item === coinDetails.name;
 		})[0];
-		if (!found) dispatch(addWatchItem(coinDetails));
-		else dispatch(removeWatchItem(coinDetails));
+		if (!found) dispatch(addWatchItem(coinDetails.name));
+		else dispatch(removeWatchItem(coinDetails.name));
 	};
 	return (
 		<>

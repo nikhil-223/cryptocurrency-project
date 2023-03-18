@@ -82,6 +82,9 @@ const Chart = () => {
 			document.getElementById("chartTypeDroplist").style.display;
 		dropListState === "none" ? showChartList() : hideChartList();
 	};
+	const chartDisplay = useSelector((state) => {
+		return state.phone.chartDisplay;
+	});
 
 	return (
 		<>
@@ -187,18 +190,20 @@ const Chart = () => {
 					} rounded-md text-sm shadow-coinDetails lg:flex md:flex sm:hidden`}>
 					{coins[0] && <CoinDetail />}
 				</div>
-				{chartData.isLoading === false ? (
-					chartData.data.prices &&
-					coins[0] && (
-						<div className="LineChart h-full lg:w-3/4 md:w-3/4 sm:w-full">
-							<LineChart />
+				{
+					chartData.isLoading === false ? (
+						chartData.data.prices &&
+						coins[0] && (
+							<div className={`LineChart h-full lg:w-3/4 md:w-3/4 sm:w-full sm:${chartDisplay}`}>
+								<LineChart />
+							</div>
+						)
+					) : (
+						<div className={`w-full h-full ${chartDisplay} justify-center items-center`}>
+							<img className="w-20" src="https://i.gifer.com/XOsX.gif" alt="" />
 						</div>
 					)
-				) : (
-					<div className="w-full h-full flex justify-center items-center">
-						<img className="w-20" src="https://i.gifer.com/XOsX.gif" alt="" />
-					</div>
-				)}
+				}
 			</div>
 		</>
 	);

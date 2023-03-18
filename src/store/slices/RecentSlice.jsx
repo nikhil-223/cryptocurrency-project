@@ -10,8 +10,6 @@ const RecentSlice = createSlice({
 		removeRecentCoin(state,action){
 
         return state.filter((item)=>{
-			console.log(item.name);
-			console.log(action.payload);
 			return item.name!==action.payload.name
 		 })
         }

@@ -36,10 +36,14 @@ const App = () => {
 
 	useEffect(() => {
 		dispatch(getCoins(currency));
-		let watchlist=JSON.parse(localStorage.getItem("watchlist"))
-		dispatch(setWatchList(watchlist))
 	}, [dispatch, currency]);
 
+	useEffect(() => {
+		let watchlist=JSON.parse(localStorage.getItem("watchlist"))
+		if(watchlist)
+		dispatch(setWatchList(watchlist))
+	}, [dispatch])
+	
 	useEffect(() => {
 		coins.isError === true
 			? dispatch(

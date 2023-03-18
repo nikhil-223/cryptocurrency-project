@@ -10,11 +10,19 @@ const WatchList = () => {
 	const coins = useSelector((state) => {
 		return state.coins;
 	});
+
+	let watchlistData = [];
+	WatchList.map((item) => {
+		for (const element of coins.data) {
+			if (element.name === item) watchlistData.push(element);
+		}
+	});
+	console.log(watchlistData);
 	return (
 		<div className="coinlist pb-4 h-5/6 overflow-scroll">
 			{coins.isLoading === false ? (
 				WatchList[0] ? (
-					WatchList.map((item, index) => {
+					watchlistData.map((item, index) => {
 						return (
 							<CoinItem
 								key={index}
@@ -31,9 +39,7 @@ const WatchList = () => {
 					})
 				) : (
 					<div className="w-full h-full flex items-center justify-center">
-						<span className=" px-10">
-							there is no coin in your watchlist
-						</span>
+						<span className=" px-10">there is no coin in your watchlist</span>
 					</div>
 				)
 			) : (

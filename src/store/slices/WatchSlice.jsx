@@ -10,7 +10,9 @@ const WatchSlice = createSlice({
 			state.list.unshift(action.payload);
 		},
 		removeWatchItem(state, action) {
-			state.list.shift(action.payload);
+			 state.list= state.list.filter((item) => {
+					return item !== action.payload;
+				});
 		},
 		setWatchList(state,action){
 			state.list=action.payload
