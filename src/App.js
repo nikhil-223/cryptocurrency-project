@@ -2,9 +2,11 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getChartData, getCoins } from "./api";
 import { Chart, Coins, Exchange, Portfolio } from "./components";
+import { BrowserRouter } from "react-router-dom";
 import Alert from "./components/alert/Alert";
 import PhoneMenu from "./components/phoneMenu/PhoneMenu";
 import { setAlert } from "./store/slices/AlertSlice";
+import { setWatchList } from "./store/slices/WatchSlice";
 
 const App = () => {
 	const theme = useSelector((state) => {
@@ -34,6 +36,8 @@ const App = () => {
 
 	useEffect(() => {
 		dispatch(getCoins(currency));
+		let watchlist=JSON.parse(localStorage.getItem("watchlist"))
+		dispatch(setWatchList(watchlist))
 	}, [dispatch, currency]);
 
 	useEffect(() => {
@@ -51,6 +55,7 @@ const App = () => {
 
 	return (
 		<>
+		<BrowserRouter>
 			{/*lg for pc*/}
 			{/* md for tablet */}
 			{/* sm for phone */}
@@ -103,7 +108,7 @@ const App = () => {
 					${theme === "dark" ? " text-textLight" : " text-textDark"}`}>
 					<Coins />
 				</div>
-			</div>
+			</div></BrowserRouter>
 		</>
 	);
 };

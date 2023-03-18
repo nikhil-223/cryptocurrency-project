@@ -11,7 +11,6 @@ const Alert = () => {
 		return state.theme;
 	});
 	useEffect(() => {
-		console.log(alert);
 		if (alert.message !== "") {
 			setTimeout(() => {
 				document

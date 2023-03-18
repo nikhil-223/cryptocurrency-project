@@ -25,6 +25,10 @@ code {
 	transition: all 0.2s linear;
 }
 
+.tracker{
+	transition: all 0.1s linear;
+}
+
 #root{
 	font-family: 'Poppins', sans-serif;
 	font-weight: 700;

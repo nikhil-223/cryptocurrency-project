@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setCryptoDropName, setCurrentCoin } from "../../store/slices/DropSlice";
 import { addPieItem } from "../../store/slices/PieItemSlice";
-import { addRecentCoin } from "../../store/slices/RecentSlice";
+import { addRecentCoin, removeRecentCoin } from "../../store/slices/RecentSlice";
 
 const CoinItem = (props) => {
 	const dispatch = useDispatch();
@@ -24,18 +24,25 @@ const CoinItem = (props) => {
 	const coins=useSelector((state)=>{
 		return state.coins.data
 	})
-
+	const recentList=useSelector((state)=>{
+		return state.recent
+	})
+	
 	const aboutItem = (e) => {
 		dispatch(addPieItem(name));
 		dispatch(setCryptoDropName(id))
 		dispatch(setCurrentCoin(id))
-
-		let addRecentItem= coins.filter((item)=>{
+		
+		let recentItem= coins.filter((item)=>{
 			return item.name===name
 		})
-		console.log(addRecentItem);
-
-		dispatch(addRecentCoin(addRecentItem[0]))
+		let coinIndex=recentList.indexOf(recentItem[0])
+		console.log(coinIndex);
+		if (coinIndex===(-1)) dispatch(addRecentCoin(recentItem[0]));
+		else {
+			dispatch(removeRecentCoin(recentItem[0]));
+			dispatch(addRecentCoin(recentItem[0]));
+		}
 	};
 	return (
 		<>
@@ -52,8 +59,8 @@ const CoinItem = (props) => {
 					{/* coin name and symbol  */}
 					<div>
 						<div className=" coinName text-md">{name}</div>
-						<div className=" text-phoneSpan" >
-							{symbol}
+						<div className="flex items-center gap-1 text-phoneSpan" >
+							<span>{symbol}</span>
 						</div>
 					</div>
 				</div>

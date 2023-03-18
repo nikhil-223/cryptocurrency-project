@@ -1,9 +1,10 @@
 import React, { useEffect } from "react";
 import { IoMdArrowDropdown } from "react-icons/io";
-import {  useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setCryptoDropName, setCryptoList } from "../../store/slices/DropSlice";
 
 import ChartType from "./ChartType";
+import CoinDetail from "./CoinDetail";
 import CryptoItem from "./CryptoItem";
 import CurrencyDrop from "./CurrencyDrop";
 import LineChart from "./LineChart";
@@ -21,50 +22,47 @@ const Chart = () => {
 		return state.drop.crypto.dropName;
 	});
 
-	const cryptoList= useSelector((state)=>{
-		return state.drop.crypto.dropList
-	})
+	const cryptoList = useSelector((state) => {
+		return state.drop.crypto.dropList;
+	});
 
-	const chartType= useSelector((state)=>{
-		return state.drop.chartType.dropName
-	})
+	const chartType = useSelector((state) => {
+		return state.drop.chartType.dropName;
+	});
 
-	const dispatch = useDispatch()
+	const dispatch = useDispatch();
 	useEffect(() => {
-	  dispatch(setCryptoList(coins))
-	}, [dispatch,coins])
-	
+		dispatch(setCryptoList(coins));
+	}, [dispatch, coins]);
+
 	const chartData = useSelector((state) => {
 		return state.chart;
 	});
 
-
-	const timePeriodList = useSelector((state)=>{
-		return state.drop.timePeriod.timePeriodList
-	})
+	const timePeriodList = useSelector((state) => {
+		return state.drop.timePeriod.timePeriodList;
+	});
 
 	const arr = [{ itemname: "Line" }, { itemname: "Bar" }];
 
-	const showCryptoList=()=>{
-			(document.getElementById("cryptoDroplist").style.display = "flex")
-	}
-	const hideCryptoList=()=>{
-			(document.getElementById("cryptoDroplist").style.display = "none")
-	}
+	const showCryptoList = () => {
+		document.getElementById("cryptoDroplist").style.display = "flex";
+	};
+	const hideCryptoList = () => {
+		document.getElementById("cryptoDroplist").style.display = "none";
+	};
 
 	const handleCryptoClick = () => {
 		const dropListState =
 			document.getElementById("cryptoDroplist").style.display;
-		dropListState === "none"
-			? showCryptoList()
-			: hideCryptoList()
+		dropListState === "none" ? showCryptoList() : hideCryptoList();
 	};
-	const handleCryptoFocus=()=>{
-		showCryptoList()
-	}
+	const handleCryptoFocus = () => {
+		showCryptoList();
+	};
 	const handleCryptoChange = (e) => {
-		handleCryptoFocus()
-		dispatch(setCryptoDropName(e.target.value))
+		handleCryptoFocus();
+		dispatch(setCryptoDropName(e.target.value));
 		let rahul = coins.filter((element) => {
 			return element.name.toLowerCase().includes(e.target.value.toLowerCase());
 		});
@@ -82,9 +80,7 @@ const Chart = () => {
 	const handleChartClick = () => {
 		const dropListState =
 			document.getElementById("chartTypeDroplist").style.display;
-		dropListState === "none"
-			? showChartList()
-			: hideChartList()
+		dropListState === "none" ? showChartList() : hideChartList();
 	};
 
 	return (
@@ -156,9 +152,9 @@ const Chart = () => {
 						theme === "dark" ? " bg-dropdownBoxDark" : " bg-dropdownBoxLight"
 					}  lg:rounded md:rounded sm:rounded`}>
 					<div
-						className={`drop-input w-3/5 sm:px-1 bg-transparent focus:outline-none`}
-						
-					>{chartType}</div>
+						className={`drop-input w-3/5 sm:px-1 bg-transparent focus:outline-none`}>
+						{chartType}
+					</div>
 					<span
 						className="lg:w-5 sm:w-5 flex justify-center items-center text-2xl cursor-pointer"
 						onClick={showChartList}>
@@ -180,9 +176,24 @@ const Chart = () => {
 				</div>
 				{/* chartType dropdown  */}
 			</div>
-			<div className=" w-full col-span-9 md:col-span-8 sm:row-start-2 sm:col-start-1 sm:row-span-4 lg:col-span-9 md:row-span-5 ">
+
+			{/* chart  */}
+			<div className=" flex w-full justify-between gap-4 col-span-9 md:col-span-8 sm:row-start-2 sm:col-start-1 sm:row-span-4 lg:col-span-9 md:row-span-5 ">
+				<div
+					className={`coinDetails min-w-250 flex flex-col gap-2 p-4 h-full ${
+						theme !== "dark"
+							? "bg-coinDetailsLight text-textDark"
+							: "bg-coinDetailsDark text-textLight"
+					} rounded-md text-sm`}>
+					{chartData.data.prices && coins[0] && <CoinDetail />}
+				</div>
 				{chartData.isLoading === false ? (
-					chartData.data.prices && <LineChart />
+					chartData.data.prices &&
+					coins[0] && (
+						<div className="h-full w-3/4">
+							<LineChart />
+						</div>
+					)
 				) : (
 					<div className="w-full h-full flex justify-center items-center">
 						<img className="w-20" src="https://i.gifer.com/XOsX.gif" alt="" />

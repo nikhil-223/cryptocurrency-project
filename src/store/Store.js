@@ -2,6 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 
 import { ChartSlice, CoinSlice, DropSlice, ThemeSlice,PieItemSlice, AlertSlice } from "./slices";
 import RecentSlice from "./slices/RecentSlice";
+import WatchSlice from "./slices/WatchSlice";
 
 const store = configureStore({
 	reducer: {
@@ -11,7 +12,8 @@ const store = configureStore({
 		alert:AlertSlice,
 		drop: DropSlice,
 		pieItem: PieItemSlice,
-		recent:RecentSlice
+		recent:RecentSlice,
+		watch:WatchSlice
 	},
 	middleware: (getDefaultMiddleware) =>
 		getDefaultMiddleware({

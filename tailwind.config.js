@@ -39,6 +39,7 @@ module.exports = {
 			},
 			minWidth: {
 				210: "210px",
+				250: "250px",
 				350: "350px",
 				300: "300px",
 				620: "620px",
@@ -99,6 +100,8 @@ module.exports = {
 				textActivePhoneMenuLight: "rgb(87, 168, 235)",
 				// alert
 				alert: "#eb455f",
+				coinDetailsLight: "rgb(233 132 132 / 50%)",
+				coinDetailsDark: "rgb(23 98 121)",
 			},
 			boxShadow: {
 				phoneMenu: "-0.1rem 0 0.8rem 0 rgba(0,0,0,.3)",

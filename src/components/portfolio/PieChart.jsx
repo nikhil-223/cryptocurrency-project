@@ -38,7 +38,11 @@ const PieChart = () => {
 			{
 				label: "",
 				data: Values,
-				backgroundColor: ["#378f95", "#216698", "#833e58"],
+				backgroundColor: [
+					"rgb(55 143 149 / 80%)",
+					"rgb(33 102 152 / 80%)",
+					"rgb(131 62 88 / 80%)",
+				],
 				borderColor: [
 					"rgba(255, 99, 132, 1)",
 					"rgba(54, 162, 235, 1)",

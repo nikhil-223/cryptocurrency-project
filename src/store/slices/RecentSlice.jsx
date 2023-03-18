@@ -6,9 +6,17 @@ const RecentSlice = createSlice({
 	reducers: {
 		addRecentCoin(state,action){
          state.unshift(action.payload)
+        },
+		removeRecentCoin(state,action){
+
+        return state.filter((item)=>{
+			console.log(item.name);
+			console.log(action.payload);
+			return item.name!==action.payload.name
+		 })
         }
 	},
 });
 
 export default RecentSlice.reducer;
-export const {addRecentCoin}=RecentSlice.actions
+export const {addRecentCoin,removeRecentCoin}=RecentSlice.actions
