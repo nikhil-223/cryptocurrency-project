@@ -5,8 +5,13 @@ const PieItemSlice=createSlice({
     initialState:['Bitcoin','Ethereum','Lido Staked Ether'],
     reducers:{
     addPieItem(state,action){
-        state.pop()
-        state.unshift(action.payload)
+        
+        let index= state.findIndex((item)=>{
+            return item===action.payload
+        })
+        if(index===(-1))
+        {state.pop()
+        state.unshift(action.payload)}
          return state
     }
     }

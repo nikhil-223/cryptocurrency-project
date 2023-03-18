@@ -105,6 +105,7 @@ module.exports = {
 			},
 			boxShadow: {
 				phoneMenu: "-0.1rem 0 0.8rem 0 rgba(0,0,0,.3)",
+				coinDetails: "0.3rem 0.3rem 0.5rem 0 rgba(0,0,0,.3)",
 			},
 			fontSize: {
 				phoneSpan: "0.6rem",

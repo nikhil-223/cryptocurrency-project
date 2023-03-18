@@ -59,7 +59,7 @@ const Coins = () => {
 	return (
 		<>
 			{/* title  */}
-			<div className=" my-2 h-12 border-b-2 border-gray-400 w-full flex items-center justify-start ">
+			<div className=" my-2 mx-auto h-12 border-b-2 border-gray-400 w-11/12 flex items-center justify-start ">
 				{/* search icon  */}
 				<div className=" m-3 mx-5 text-xl">
 					<AiOutlineSearch size={25} />
@@ -93,7 +93,7 @@ const Coins = () => {
 			{/* title  */}
 
 			{/* list options  */}
-			<div className="w-full h-10 flex flex-wrap">
+			<div className="w-full h-10 flex flex-wrap shadow-md">
 				<Link
 					className={`w-1/3 h-9 flex justify-center items-center cursor-pointer bg-transparent`}
 					to="/coins">

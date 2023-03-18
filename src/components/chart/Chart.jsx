@@ -180,17 +180,17 @@ const Chart = () => {
 			{/* chart  */}
 			<div className=" flex w-full justify-between gap-4 col-span-9 md:col-span-8 sm:row-start-2 sm:col-start-1 sm:row-span-4 lg:col-span-9 md:row-span-5 ">
 				<div
-					className={`coinDetails min-w-250 flex flex-col gap-2 p-4 h-full ${
+					className={`coinDetails lg:min-w-250 md:min-w-250 sm:w-full lg:w-auto md:w-auto flex-col gap-2 p-4 h-full ${
 						theme !== "dark"
 							? "bg-coinDetailsLight text-textDark"
 							: "bg-coinDetailsDark text-textLight"
-					} rounded-md text-sm`}>
-					{chartData.data.prices && coins[0] && <CoinDetail />}
+					} rounded-md text-sm shadow-coinDetails lg:flex md:flex sm:hidden`}>
+					{coins[0] && <CoinDetail />}
 				</div>
 				{chartData.isLoading === false ? (
 					chartData.data.prices &&
 					coins[0] && (
-						<div className="h-full w-3/4">
+						<div className="LineChart h-full lg:w-3/4 md:w-3/4 sm:w-full">
 							<LineChart />
 						</div>
 					)
