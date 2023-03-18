@@ -16,6 +16,7 @@ const WatchList = () => {
 		for (const element of coins.data) {
 			if (element.name === item) watchlistData.push(element);
 		}
+		return 0
 	});
 	console.log(watchlistData);
 	return (
