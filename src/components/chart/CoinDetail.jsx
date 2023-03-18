@@ -22,26 +22,23 @@ const CoinDetail = () => {
 	const WatchList = useSelector((state) => {
 		return state.watch.list;
 	});
-	localStorage.setItem("watchlist",JSON.stringify(WatchList));
+	localStorage.setItem("watchlist", JSON.stringify(WatchList));
 
-    
 	let coinDetails;
 	if (coins[0] !== undefined) {
-        coinDetails = coins.filter((item) => {
-            return item.id === currentCoin;
+		coinDetails = coins.filter((item) => {
+			return item.id === currentCoin;
 		})[0];
 	}
-    let iconFilled=WatchList.filter((item)=>{
-        return item.name===coinDetails.name
-    })[0]
+	let iconFilled = WatchList.filter((item) => {
+		return item.name === coinDetails.name;
+	})[0];
 	const handleClick = () => {
-		let found =WatchList.filter((item)=>{
-			return item.name===coinDetails.name
-		})[0]
-		if (!found)
-		dispatch(addWatchItem(coinDetails));
-		else
-		dispatch(removeWatchItem(coinDetails))
+		let found = WatchList.filter((item) => {
+			return item.name === coinDetails.name;
+		})[0];
+		if (!found) dispatch(addWatchItem(coinDetails));
+		else dispatch(removeWatchItem(coinDetails));
 	};
 	return (
 		<>
@@ -50,11 +47,20 @@ const CoinDetail = () => {
 					<img src={coinDetails.image} alt="logo" />
 				</div>
 				<span className=" text-lg">{coinDetails.name}</span>
-				<span
-					className="watchListIcon ml-auto w-5 text-lg"
-					onClick={handleClick}>
-					{iconFilled? <AiFillHeart /> : <AiOutlineHeart />}
-				</span>
+
+				{iconFilled ? (
+					<span
+						className="watchListIcon ml-auto w-5 text-lg text-red-700"
+						onClick={handleClick}>
+						<AiFillHeart />
+					</span>
+				) : (
+					<span
+						className="watchListIcon ml-auto w-5 text-lg "
+						onClick={handleClick}>
+						<AiOutlineHeart />
+					</span>
+				)}
 			</div>
 			<div className="flex gap-3">
 				<span>Symbol :</span>

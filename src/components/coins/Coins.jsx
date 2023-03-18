@@ -31,7 +31,6 @@ const Coins = () => {
 
 	useEffect(() => {
 
-		console.log(location);
 		if (location.pathname === "/coins"){
 			document.querySelector(".tracker").style.transform = "translate(0)";
 		}else if (location.pathname === "/recent")

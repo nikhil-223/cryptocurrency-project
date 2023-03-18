@@ -37,7 +37,6 @@ const CoinItem = (props) => {
 			return item.name===name
 		})
 		let coinIndex=recentList.indexOf(recentItem[0])
-		console.log(coinIndex);
 		if (coinIndex===(-1)) dispatch(addRecentCoin(recentItem[0]));
 		else {
 			dispatch(removeRecentCoin(recentItem[0]));
