@@ -187,7 +187,7 @@ const Chart = () => {
 						theme !== "dark"
 							? "bg-coinDetailsLight text-textDark"
 							: "bg-coinDetailsDark text-textLight"
-					} rounded-md text-sm shadow-coinDetails lg:flex md:flex sm:hidden`}>
+					} rounded-md text-sm shadow-coinDetails lg:flex md:flex sm:${chartDisplay==='flex'?"hidden":'flex'}`}>
 					{coins[0] && <CoinDetail />}
 				</div>
 				{
