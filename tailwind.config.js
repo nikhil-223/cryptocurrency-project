@@ -82,7 +82,7 @@ module.exports = {
 				exchBtnDark: "rgb(43 129 143)",
 				exchBtnLight: "rgb(228 34 99 / 30%)",
 				dropdownBoxDark: "#14446b",
-				dropdownBoxLight: "rgb(123 181 196 / 70%)",
+				dropdownBoxLight: "rgb(185 213 220)",
 				// timeperiod
 				timePeriodDark: "#174d79",
 				timePeriodLight: "rgb(123 181 196 / 70%)",
@@ -90,7 +90,7 @@ module.exports = {
 				activeTimePeriodLight: "rgba(205, 88, 136,0.5)",
 				// dropdown list
 				dropdownListDark: "#19476e",
-				dropdownListLight: "#9dd5d53b",
+				dropdownListLight: "#9dd5d5",
 				dropdownListItemDark: "#0c375e",
 				dropdownListItemLight: "rgb(128 222 220)",
 				// phone menu

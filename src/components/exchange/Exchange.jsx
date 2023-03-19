@@ -138,7 +138,7 @@ const Exchange = () => {
 						</span>
 						<div
 							id="sellDropList"
-							className={`sellDroplist droplist absolute ${
+							className={`sellDroplist overflow-x-hidden droplist absolute ${
 								theme === "dark"
 									? " bg-dropdownBoxDark"
 									: " bg-dropdownBoxLight"
@@ -178,7 +178,7 @@ const Exchange = () => {
 						</span>
 						<div
 							id="buyDropList"
-							className={`buyDroplist droplist absolute ${
+							className={`buyDroplist droplist overflow-x-hidden absolute ${
 								theme === "dark"
 									? " bg-dropdownBoxDark"
 									: " bg-dropdownBoxLight"
