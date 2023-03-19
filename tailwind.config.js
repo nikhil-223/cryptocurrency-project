@@ -99,7 +99,10 @@ module.exports = {
 				textActivePhoneMenuDark: "rgb(8, 149, 149)",
 				textActivePhoneMenuLight: "rgb(87, 168, 235)",
 				// alert
-				alert: "#eb455f",
+				alertWarningLight: "#eb455f",
+				alertWarningDark: "#eb455f",
+				alertSuccessLight: "#8FE3CF",
+				alertSuccessDark: "#1F8A70",
 				coinDetailsLight: "rgb(233 132 132 / 50%)",
 				coinDetailsDark: "rgb(23 98 121)",
 			},

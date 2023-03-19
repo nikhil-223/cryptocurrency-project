@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { FaRegStar } from "react-icons/fa";
 import { BsFillStarFill } from "react-icons/bs";
 import { addWatchItem, removeWatchItem } from "../../store/slices/WatchSlice";
+import { setAlert } from "../../store/slices/AlertSlice";
 
 const CoinDetail = () => {
 	const dispatch = useDispatch();
@@ -38,8 +39,23 @@ const CoinDetail = () => {
 		let found = WatchList.filter((item) => {
 			return item === coinDetails.name;
 		})[0];
-		if (!found) dispatch(addWatchItem(coinDetails.name));
-		else dispatch(removeWatchItem(coinDetails.name));
+		if (!found) {
+			dispatch(addWatchItem(coinDetails.name));
+			dispatch(
+				setAlert({
+					type: "success",
+					message: `${coinDetails.name} added to watchlist`,
+				})
+			);
+		} else {
+			dispatch(removeWatchItem(coinDetails.name));
+			dispatch(
+				setAlert({
+					type: "success",
+					message: `${coinDetails.name} removed from watchlist`,
+				})
+			);
+		}
 	};
 	return (
 		<>

@@ -25,7 +25,15 @@ const Alert = () => {
 
 	return (
 		<div
-			className={`alert fixed w-60 h-auto p-4 bottom-8 left-4 -translate-x-72 rounded z-20 transition-all bg-alert ${theme==="dark"?'text-textLight':'text-textDark'}`}>
+			className={`alert fixed w-60 h-auto p-4 bottom-8 left-4 -translate-x-72 rounded z-20 transition-all ${
+				alert.type === "warning"
+					? theme === "dark"
+						? "bg-alertWarningDark"
+						: "bg-alertWarningLight"
+					: theme === "dark"
+					? "bg-alertSuccessDark"
+					: "bg-alertSuccessLight"
+			}  ${theme === "dark" ? "text-textLight" : "text-textDark"}`}>
 			{alert.message}
 		</div>
 	);

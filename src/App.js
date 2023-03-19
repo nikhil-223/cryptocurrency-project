@@ -5,7 +5,7 @@ import { Chart, Coins, Exchange, Portfolio } from "./components";
 import { BrowserRouter } from "react-router-dom";
 import Alert from "./components/alert/Alert";
 import PhoneMenu from "./components/phoneMenu/PhoneMenu";
-import { setAlert } from "./store/slices/AlertSlice";
+// import { setAlert } from "./store/slices/AlertSlice";
 import { setWatchList } from "./store/slices/WatchSlice";
 
 const App = () => {
@@ -45,16 +45,16 @@ const App = () => {
 	}, [dispatch])
 	
 	useEffect(() => {
-		coins.isError === true
-			? dispatch(
-					setAlert({ type: "warning", message: "failed to fetch coin data" })
-			  )
-			: dispatch(setAlert({ type: "", message: "" }));
-		chart.isError === true
-			? dispatch(
-					setAlert({ type: "warning", message: "failed to fetch chart data" })
-			  )
-			: dispatch(setAlert({ type: "", message: "" }));
+		// coins.isError === true
+		// 	? dispatch(
+		// 			setAlert({ type: "warning", message: "failed to fetch coin data" })
+		// 	  )
+		// 	: dispatch(setAlert({ type: "", message: "" }));
+		// chart.isError === true
+		// 	? dispatch(
+		// 			setAlert({ type: "warning", message: "failed to fetch chart data" })
+		// 	  )
+		// 	: dispatch(setAlert({ type: "", message: "" }));
 	}, [dispatch, coins, chart]);
 
 	return (
