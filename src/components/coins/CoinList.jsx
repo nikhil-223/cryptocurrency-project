@@ -30,7 +30,7 @@ const CoinList = () => {
 				})
 			) : (
 				<div className="w-full h-full flex justify-center items-center">
-					<img className="w-20" src="https://i.gifer.com/XOsX.gif" alt="" />
+					<img className="w-28" src="https://i.gifer.com/yy3.gif" alt="" />
 				</div>
 			)}
 		</div>

@@ -187,23 +187,25 @@ const Chart = () => {
 						theme !== "dark"
 							? "bg-coinDetailsLight text-textDark"
 							: "bg-coinDetailsDark text-textLight"
-					} rounded-md text-sm shadow-coinDetails lg:flex md:flex sm:${chartDisplay==='flex'?"hidden":'flex'}`}>
-					{coins[0] && <CoinDetail />}
+					} rounded-md text-sm shadow-coinDetails lg:flex md:flex sm:${
+						chartDisplay === "flex" ? "hidden" : "flex"
+					}`}>
+					{ <CoinDetail />}
 				</div>
-				{
-					chartData.isLoading === false ? (
-						chartData.data.prices &&
-						coins[0] && (
-							<div className={`LineChart h-full lg:w-3/4 md:w-3/4 sm:w-full sm:${chartDisplay}`}>
-								<LineChart />
-							</div>
-						)
-					) : (
-						<div className={`w-full h-full ${chartDisplay} justify-center items-center`}>
-							<img className="w-20" src="https://i.gifer.com/XOsX.gif" alt="" />
+				{chartData.isLoading === false ? (
+					chartData.data.prices &&
+					coins[0] && (
+						<div
+							className={`LineChart h-full lg:w-3/4 md:w-3/4 sm:w-full sm:${chartDisplay}`}>
+							<LineChart />
 						</div>
 					)
-				}
+				) : (
+					<div
+						className={`w-full h-full ${chartDisplay} justify-center items-center`}>
+						<img className="w-28" src="https://i.gifer.com/yy3.gif" alt="" />
+					</div>
+				)}
 			</div>
 		</>
 	);
