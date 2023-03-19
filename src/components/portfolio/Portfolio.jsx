@@ -5,7 +5,9 @@ import {useSelector} from 'react-redux'
 
 const Portfolio = () => {
 	
-
+const currencySymbol = useSelector((state) => {
+	return state.drop.currency.symbol;
+});
 	  const PieItem=useSelector((state)=>{
 		return state.pieItem
 	  })
@@ -27,7 +29,7 @@ const Portfolio = () => {
 	<>
 		<div className='flex justify-between items-center row-span-1 '>
 				<div className='ml-4 text-lg font-bold'>Portfolio</div>
-				<div>Total Value : {Math.floor(tv)}</div>
+				<div>Total Value : {currencySymbol} {Math.floor(tv)}</div>
 			</div>
 			<div className=' row-span-5 md:mr-12 lg:mr-0'>
 				{coins[0] && <PieChart/>}
