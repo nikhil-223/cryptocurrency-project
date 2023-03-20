@@ -91,6 +91,8 @@ const Chart = () => {
 	const chartList = useSelector((state) => {
 		return state.chart.chartList;
 	});
+	const firstchartitem = chartList[0];
+	const secondchartitem = chartList[1];
 	const timePeriod = useSelector((state) => {
 		return state.drop.timePeriod.time;
 	});
@@ -99,19 +101,23 @@ const Chart = () => {
 		return state.drop.currency.currency;
 	});
 	const currentCoin = useSelector((state) => {
-		return state.drop.crypto.currentCoin
+		return state.drop.crypto.currentCoin;
 	});
 
 	useEffect(() => {
-		for (const currentCoin of chartList) {
-			dispatch(getChartData({ currentCoin, timePeriod, currency }));
-		}
-	}, [dispatch,chartList,timePeriod,currency]);
+		let currentCoin = firstchartitem;
+		dispatch(getChartData({ currentCoin, timePeriod, currency }));
+	}, [dispatch, firstchartitem, timePeriod, currency]);
 
 	useEffect(() => {
-	  dispatch(setFirstItemChartList(currentCoin))
-	}, [dispatch,currentCoin])
-	
+		let currentCoin = secondchartitem;
+		dispatch(getChartData({ currentCoin, timePeriod, currency }));
+	}, [dispatch, secondchartitem, timePeriod, currency]);
+
+	useEffect(() => {
+		dispatch(setFirstItemChartList(currentCoin));
+	}, [dispatch, currentCoin]);
+
 	return (
 		<>
 			{/* Currency Dropdown  */}
@@ -169,7 +175,9 @@ const Chart = () => {
 						onMouseLeave={hideCryptoList}
 						onClick={handleCryptoClick}>
 						{cryptoList.map((item) => {
-							return <CryptoItem key={item.name} id={item.id} name={item.name} />;
+							return (
+								<CryptoItem key={item.name} id={item.id} name={item.name} />
+							);
 						})}
 					</div>
 				</div>
@@ -218,8 +226,9 @@ const Chart = () => {
 					}`}>
 					{<CoinDetail />}
 				</div>
-				{chart.coin2.isLoading === false && chart.coin1.isLoading===false ? (
-					chart.coin1.data!==[] && chart.coin2.data!==[] &&
+				{chart.coin2.isLoading === false && chart.coin1.isLoading === false ? (
+					chart.coin1.data !== [] &&
+					chart.coin2.data !== [] &&
 					coins[0] && (
 						<div
 							className={`LineChart h-full lg:w-3/4 md:w-3/4 sm:w-full sm:${chartDisplay}`}>
