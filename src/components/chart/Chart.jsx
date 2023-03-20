@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { IoMdArrowDropdown } from "react-icons/io";
 import { useDispatch, useSelector } from "react-redux";
+import { getChartData } from "../../api";
 import { setCryptoDropName, setCryptoList } from "../../store/slices/DropSlice";
 
 import ChartType from "./ChartType";
@@ -35,9 +36,10 @@ const Chart = () => {
 		dispatch(setCryptoList(coins));
 	}, [dispatch, coins]);
 
-	const chartData = useSelector((state) => {
+	const chart = useSelector((state) => {
 		return state.chart;
 	});
+	// console.log(chart);
 
 	const timePeriodList = useSelector((state) => {
 		return state.drop.timePeriod.timePeriodList;
@@ -85,6 +87,23 @@ const Chart = () => {
 	const chartDisplay = useSelector((state) => {
 		return state.phone.chartDisplay;
 	});
+	const chartList = useSelector((state) => {
+		return state.chart.chartList;
+	});
+	const timePeriod = useSelector((state) => {
+		return state.drop.timePeriod.time;
+	});
+
+	const currency = useSelector((state) => {
+		return state.drop.currency.currency;
+	});
+
+	useEffect(() => {
+		for (const currentCoin of chartList) {
+			dispatch(getChartData({ currentCoin, timePeriod, currency }));
+		}
+	}, [dispatch,chartList,timePeriod,currency]);
+
 
 	return (
 		<>
@@ -190,10 +209,10 @@ const Chart = () => {
 					} rounded-md text-sm shadow-coinDetails lg:flex md:flex sm:${
 						chartDisplay === "flex" ? "hidden" : "flex"
 					}`}>
-					{ <CoinDetail />}
+					{<CoinDetail />}
 				</div>
-				{chartData.isLoading === false ? (
-					chartData.data.prices &&
+				{chart.coin2.isLoading === false && chart.coin1.isLoading===false ? (
+					chart.coin1.data!==[] && chart.coin2.data!==[] &&
 					coins[0] && (
 						<div
 							className={`LineChart h-full lg:w-3/4 md:w-3/4 sm:w-full sm:${chartDisplay}`}>

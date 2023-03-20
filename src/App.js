@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getChartData, getCoins } from "./api";
+import { getCoins } from "./api";
 import { Chart, Coins, Exchange, Portfolio } from "./components";
 import { BrowserRouter } from "react-router-dom";
 import Alert from "./components/alert/Alert";
@@ -15,24 +15,7 @@ const App = () => {
 	const currency = useSelector((state) => {
 		return state.drop.currency.currency;
 	});
-	const coins = useSelector((state) => {
-		return state.coins;
-	});
-	const chart = useSelector((state) => {
-		return state.chart;
-	});
-
-	const currentCoin = useSelector((state) => {
-		return state.drop.crypto.currentCoin;
-	});
-	const timePeriod = useSelector((state) => {
-		return state.drop.timePeriod.time;
-	});
 	const dispatch = useDispatch();
-
-	useEffect(() => {
-		dispatch(getChartData({ currentCoin, timePeriod, currency }));
-	}, [dispatch, currentCoin, timePeriod, currency]);
 
 	useEffect(() => {
 		dispatch(getCoins(currency));
@@ -44,18 +27,6 @@ const App = () => {
 		dispatch(setWatchList(watchlist))
 	}, [dispatch])
 	
-	useEffect(() => {
-		// coins.isError === true
-		// 	? dispatch(
-		// 			setAlert({ type: "warning", message: "failed to fetch coin data" })
-		// 	  )
-		// 	: dispatch(setAlert({ type: "", message: "" }));
-		// chart.isError === true
-		// 	? dispatch(
-		// 			setAlert({ type: "warning", message: "failed to fetch chart data" })
-		// 	  )
-		// 	: dispatch(setAlert({ type: "", message: "" }));
-	}, [dispatch, coins, chart]);
 
 	return (
 		<>
