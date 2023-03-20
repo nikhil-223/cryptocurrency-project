@@ -30,6 +30,9 @@ const LineChart = () => {
 	const chart = useSelector((state) => {
 		return state.chart;
 	});
+	const coins = useSelector((state) => {
+		return state.coins.data;
+	});
 
 	const chartRange = useSelector((state) => {
 		return state.drop.timePeriod.range;
@@ -90,6 +93,17 @@ const LineChart = () => {
 			// eslint-disable-next-line
 		}
 	let datasets = [];
+	let cryptoname = [];
+	coins.map((coin) => {
+		if (coin.id === chartList[0]) cryptoname[0]=coin;
+		return 0;
+	});
+	coins.map((coin) => {
+		if (coin.id === chartList[1]) {
+			cryptoname[1]=coin;
+		}
+		return 0;
+	});
 	
 	if (chart.coin2.data !== undefined && chart.coin1.data!== undefined)
 		for (const chartitemindex in chartList) {
@@ -100,9 +114,9 @@ const LineChart = () => {
 			for (const element of coindata[chartitemindex]) {
 				dataArray.push(element[1]);
 			}
-			console.log(coindata);
+			
 			datasets.push({
-				label: chartList[chartitemindex],
+				label: cryptoname[chartitemindex].name,
 				data: dataArray,
 				borderColor:color[chartitemindex],
 				borderWidth: 1.5,
@@ -118,7 +132,7 @@ const LineChart = () => {
 				spanGaps: true,
 			});
 		}
-console.log(datasets);
+
 	const data = {
 		labels,
 		datasets,

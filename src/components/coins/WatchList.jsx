@@ -18,7 +18,7 @@ const WatchList = () => {
 		}
 		return 0
 	});
-	console.log(watchlistData);
+	
 	return (
 		<div className="coinlist pb-4 h-5/6 overflow-scroll">
 			{coins.isLoading === false ? (

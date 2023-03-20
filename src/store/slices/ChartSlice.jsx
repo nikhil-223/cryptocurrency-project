@@ -8,6 +8,13 @@ const ChartSlice = createSlice({
 		coin1: { isLoading: false, data: [], isError: false },
 		coin2: { isLoading: false, data: [], isError: false },
 		chartList: ["tether", "usd-coin"],
+	},reducers:{
+		setFirstItemChartList(state,action){
+			state.chartList[0]=action.payload
+		},
+		setSecondItemChartList(state,action){
+			state.chartList[1]=action.payload
+		}
 	},
 	extraReducers: (builder) => {
 		builder.addCase(getChartData.fulfilled, (state, action) => {
@@ -46,4 +53,5 @@ const ChartSlice = createSlice({
 	},
 });
 
+export const {setFirstItemChartList,setSecondItemChartList}=ChartSlice.actions
 export default ChartSlice.reducer;

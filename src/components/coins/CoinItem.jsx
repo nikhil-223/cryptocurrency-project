@@ -1,8 +1,14 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setCryptoDropName, setCurrentCoin } from "../../store/slices/DropSlice";
+import {
+	setCryptoDropName,
+	setCurrentCoin,
+} from "../../store/slices/DropSlice";
 import { addPieItem } from "../../store/slices/PieItemSlice";
-import { addRecentCoin, removeRecentCoin } from "../../store/slices/RecentSlice";
+import {
+	addRecentCoin,
+	removeRecentCoin,
+} from "../../store/slices/RecentSlice";
 
 const CoinItem = (props) => {
 	const dispatch = useDispatch();
@@ -21,23 +27,42 @@ const CoinItem = (props) => {
 		return state.drop.currency.symbol;
 	});
 
-	const coins=useSelector((state)=>{
-		return state.coins.data
-	})
-	const recentList=useSelector((state)=>{
-		return state.recent
-	})
-	
+	const coins = useSelector((state) => {
+		return state.coins.data;
+	});
+	const recentList = useSelector((state) => {
+		return state.recent;
+	});
+	const chartList = useSelector((state) => {
+		return state.chart.chartList;
+	});
+	let cryptofirstname = [];
+	let cryptosecondname = [];
+
 	const aboutItem = (e) => {
 		dispatch(addPieItem(name));
-		dispatch(setCryptoDropName(id))
-		dispatch(setCurrentCoin(id))
-		
-		let recentItem= coins.filter((item)=>{
-			return item.name===name
-		})
-		let coinIndex=recentList.indexOf(recentItem[0])
-		if (coinIndex===(-1)) dispatch(addRecentCoin(recentItem[0]));
+		coins.map((coin) => {
+			if (coin.id === id) cryptofirstname.push(coin);
+			return 0;
+		});
+		coins.map((coin) => {
+			if (coin.id === chartList[1]) {
+				cryptosecondname.push(coin);
+			}
+			return 0;
+		});
+		dispatch(
+			setCryptoDropName(
+				`${cryptofirstname[0].name}, ${cryptosecondname[0].name}`
+			)
+		);
+		dispatch(setCurrentCoin(id));
+
+		let recentItem = coins.filter((item) => {
+			return item.name === name;
+		});
+		let coinIndex = recentList.indexOf(recentItem[0]);
+		if (coinIndex === -1) dispatch(addRecentCoin(recentItem[0]));
 		else {
 			dispatch(removeRecentCoin(recentItem[0]));
 			dispatch(addRecentCoin(recentItem[0]));
@@ -58,7 +83,7 @@ const CoinItem = (props) => {
 					{/* coin name and symbol  */}
 					<div>
 						<div className=" coinName text-md">{name}</div>
-						<div className="flex items-center gap-1 text-phoneSpan" >
+						<div className="flex items-center gap-1 text-phoneSpan">
 							<span>{symbol}</span>
 						</div>
 					</div>

@@ -36,8 +36,8 @@ const DropSlice = createSlice({
 			],
 		},
 		crypto: {
-			dropName: "Bitcoin",
-			currentCoin: "bitcoin",
+			dropName: "Tether, USD Coin",
+			currentCoin: "tether",
 			dropList: [],
 		},
 		chartType: {

@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { IoMdArrowDropdown } from "react-icons/io";
 import { useDispatch, useSelector } from "react-redux";
 import { getChartData } from "../../api";
+import { setFirstItemChartList } from "../../store/slices/ChartSlice";
 import { setCryptoDropName, setCryptoList } from "../../store/slices/DropSlice";
 
 import ChartType from "./ChartType";
@@ -97,6 +98,9 @@ const Chart = () => {
 	const currency = useSelector((state) => {
 		return state.drop.currency.currency;
 	});
+	const currentCoin = useSelector((state) => {
+		return state.drop.crypto.currentCoin
+	});
 
 	useEffect(() => {
 		for (const currentCoin of chartList) {
@@ -104,7 +108,10 @@ const Chart = () => {
 		}
 	}, [dispatch,chartList,timePeriod,currency]);
 
-
+	useEffect(() => {
+	  dispatch(setFirstItemChartList(currentCoin))
+	}, [dispatch,currentCoin])
+	
 	return (
 		<>
 			{/* Currency Dropdown  */}
@@ -157,12 +164,12 @@ const Chart = () => {
 						id="cryptoDroplist"
 						className={`droplist absolute ${
 							theme === "dark" ? " bg-dropdownBoxDark" : " bg-dropdownBoxLight"
-						}  -translate-x-1 translate-y-32 w-28 h-48 flex-col rounded overflow-scroll overflow-x-hidden`}
+						}  -translate-x-1 translate-y-32 w-40 h-48 flex-col rounded overflow-scroll overflow-x-hidden`}
 						style={{ display: "none" }}
 						onMouseLeave={hideCryptoList}
 						onClick={handleCryptoClick}>
 						{cryptoList.map((item) => {
-							return <CryptoItem key={item.name} name={item.id} />;
+							return <CryptoItem key={item.name} id={item.id} name={item.name} />;
 						})}
 					</div>
 				</div>
