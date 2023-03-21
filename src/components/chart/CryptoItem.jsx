@@ -23,10 +23,12 @@ const CryptoItem = (props) => {
         })
 
 	const handleClick = () => {
+		// second item clicked        if second item already exist     then remove it 
 		if(chartList[1]===id)
 		{dispatch(removeSecondItemChartList())
 			cryptosecondname[0]=undefined;
 		}
+		// first item clicked          add second item to first      then remove first 
 		else if(chartList[0]===id && chartList[1]!==undefined){ 
 			dispatch(setFirstItemChartList(chartList[1]))
 			dispatch(removeSecondItemChartList())
@@ -37,6 +39,7 @@ const CryptoItem = (props) => {
 			});
 			dispatch(setCryptoDropName(cryptofirstname[0].name))
 		}
+		// second item does not exist   any item clicked          add second item    
 		else if (chartList[1] === undefined && chartList[0]!==id) {
 			dispatch(setSecondItemChartList(id));
 			coins.data.map((coin) => {
@@ -46,8 +49,26 @@ const CryptoItem = (props) => {
 				return 0;
 			});
 		}
-		else{
-			dispatch(setAlert({type:"success",message:'Choose atleast one coin'}))
+		else if (chartList[1] !== undefined && chartList[0] !== id) {
+			dispatch(setSecondItemChartList(id));
+			coins.data.map((coin) => {
+				if (coin.id === id) {
+					cryptosecondname.push(coin);
+				}
+				return 0;
+			});
+			dispatch(
+				setCryptoDropName(
+					`${cryptofirstname[0].name} ${
+						cryptosecondname[0] ? `,${cryptosecondname[0].name}` : ""
+					}`
+				)
+			); 
+
+		} else {
+			dispatch(
+				setAlert({ type: "success", message: "Choose atleast one coin" })
+			);
 		}
 		dispatch(
 			setCryptoDropName(

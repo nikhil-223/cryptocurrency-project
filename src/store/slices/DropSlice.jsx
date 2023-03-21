@@ -92,6 +92,7 @@ const DropSlice = createSlice({
 		// chart drop
 		setChartType(state, action) {
 			state.chartType.dropName = action.payload;
+			state.chartType.currentChartType=action.payload
 		},
 		// phone menu 
 		setPhoneMenuPath(state,action){
