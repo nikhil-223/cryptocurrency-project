@@ -1,7 +1,11 @@
 
 import { useSelector } from "react-redux";
 
+// This custom hook is named useAppSelector and it uses the useSelector hook from the react-redux library to select and return parts of the state.
 export const useAppSelector = () => {
+	// Here, the state is destructured to obtain the necessary parts.
+	// The state object has a property called 'drop', which has nested objects and arrays.
+	// These nested objects and arrays contain properties that are needed by the component that uses this hook.
 	const {
 		drop: {
 			currency: {
@@ -28,11 +32,15 @@ export const useAppSelector = () => {
 		pieItem: PieItem,
 	} = useSelector((state) => state);
 
+	// Another way of selecting a specific property from the state is by calling useSelector and passing in a function that returns the desired property. 
+	// Here, the chart object is selected from the state.
     const chart= useSelector(state=>state.chart)
     
+	// These variables are assigned values from the first two items in the chartList array.
 		const firstchartitem = chartList[0];
 		const secondchartitem = chartList[1];
 
+		// The parts of the state that are needed by the component that uses this hook are returned as an object.
 	return {
 		currency,
 		alert,
@@ -68,92 +76,3 @@ export const useAppSelector = () => {
 		PieItem,
 	};
 };
-
-
-
-
-
-// import { useSelector } from "react-redux";
-
-// export const useAppSelector = () => {
-
-// 	const currency = useSelector((state) => state.drop.currency.currency);
-//     const currencySymbol = useSelector((state) => state.drop.currency.symbol);
-//     const currencyList = useSelector((state) => state.drop.currency.dropList);
-//     const currencyDropName = useSelector((state) => state.drop.currency.dropName);
-
-// 	const cryptoDropName = useSelector((state) => state.drop.crypto.dropName);
-// 	const cryptoList = useSelector((state) => state.drop.crypto.dropList);
-// 	const currentCoin = useSelector((state) => state.drop.crypto.currentCoin);
-
-// 	const chartType = useSelector((state) => state.drop.chartType.dropName);
-
-// 	const timePeriod = useSelector((state) => state.drop.timePeriod.time);
-//     const chartRange = useSelector((state) => state.drop.timePeriod.range);
-//     const timePeriodList = useSelector(
-//         (state) => state.drop.timePeriod.timePeriodList
-//     );
-
-//     const searchList = useSelector((state) => state.drop.coinSearch.dropList);
-//     const coinSearchName = useSelector((state) => state.drop.coinSearch.dropName);
-
-//     const sellDropName = useSelector((state) => state.drop.sell.dropName);
-//     const sellList = useSelector((state) => state.drop.sell.dropList);
-//     const sellCoin = useSelector((state) => state.drop.sell.coin);
-
-//     const buyDropName = useSelector((state) => state.drop.buy.dropName);
-//     const buyList = useSelector((state) => state.drop.buy.dropList);
-//     const buyCoin = useSelector((state) => state.drop.buy.coin);
-//     const phoneMenuItems = useSelector(
-//         (state) => state.drop.phoneMenu.phoneMenuList
-//     );
-//     const phoneMenuPath = useSelector((state) => state.drop.phoneMenu.path);
-    
-//     const chart = useSelector((state) => state.chart);
-//     const chartList = useSelector((state) => state.chart.chartList);
-
-// 	const firstchartitem = chartList[0];
-// 	const secondchartitem = chartList[1];
-//     const coins = useSelector((state) => state.coins);
-// 	const alert = useSelector((state) => state.alert);
-// 	const theme = useSelector((state) => state.theme);
-// 	const chartDisplay = useSelector((state) => state.phone.chartDisplay);
-// 	const WatchList = useSelector((state) => state.watch.list);
-// 	const recentList = useSelector((state) => state.recent);
-// 	const PieItem = useSelector((state) => state.pieItem);
-
-// 	return {
-// 		currency,
-// 		alert,
-// 		theme,
-// 		cryptoDropName,
-// 		cryptoList,
-// 		chartType,
-// 		chartDisplay,
-// 		firstchartitem,
-// 		secondchartitem,
-// 		timePeriod,
-// 		currentCoin,
-// 		timePeriodList,
-// 		chart,
-// 		coins,
-// 		currencySymbol,
-// 		WatchList,
-// 		currencyList,
-// 		currencyDropName,
-// 		chartRange,
-// 		recentList,
-// 		chartList,
-// 		searchList,
-// 		coinSearchName,
-// 		sellDropName,
-// 		sellList,
-// 		sellCoin,
-// 		buyDropName,
-// 		buyList,
-// 		buyCoin,
-// 		phoneMenuItems,
-// 		phoneMenuPath,
-// 		PieItem,
-// 	};
-// };

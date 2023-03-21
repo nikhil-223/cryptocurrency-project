@@ -2,13 +2,17 @@ import React from "react";
 import { useAppSelector } from "../../store/storeAccess";
 import CoinItem from './CoinItem'
 
+// Create a functional component called CoinList
 const CoinList = () => {
+	// Use the useAppSelector hook to extract the searchList and coins state
 	const {searchList,coins}=useAppSelector()
 	return (
+		// Render a div that displays the searchList of coins or a loading spinner
 		<div className="coinlist pb-4 h-5/6 overflow-scroll">
 			{coins.isLoading === false ? (
 				searchList.map((item, index) => {
 					return (
+						// Render the CoinItem component and pass in props
 						<CoinItem
 							key={index}
 							id={item.id}
@@ -31,4 +35,5 @@ const CoinList = () => {
 	);
 };
 
+// Export the CoinList component
 export default CoinList;

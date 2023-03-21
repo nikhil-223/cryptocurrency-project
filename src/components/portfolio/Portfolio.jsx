@@ -3,17 +3,20 @@ import PieChart from './PieChart';
 import { useAppSelector } from '../../store/storeAccess';
 
 const Portfolio = () => {
+	// Get currencySymbol, PieItem and coins from the global store
 	const {currencySymbol,PieItem,coins}=useAppSelector()
 	
-
+      // Initialize total value variable to 0
 	  let tv=0;
 	
-	 
+	  // If coins array is not empty, loop through PieItem array
 	 coins.data[0] && PieItem.map((item)=>{
+		// Find the corresponding coin data from the coins array
 	
 	 let found= coins.data.find(function (element) {
 			  return element.name === item;
 		  });
+		  // Add the current price of the coin to the total value
 		tv= tv + found.current_price
 		return 0
 	  })

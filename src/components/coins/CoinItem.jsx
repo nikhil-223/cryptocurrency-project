@@ -1,4 +1,4 @@
-import React from "react";
+import React from "react"; // import React and necessary components
 import { useDispatch } from "react-redux";
 import {
 	setCryptoDropName,
@@ -11,9 +11,9 @@ import {
 } from "../../store/slices/RecentSlice";
 import { useAppSelector } from "../../store/storeAccess";
 
-const CoinItem = (props) => {
-	const dispatch = useDispatch();
-	const {currencySymbol,coins,recentList,chartList}=useAppSelector();
+const CoinItem = (props) => {  // define a functional component called CoinItem that takes in props
+	const dispatch = useDispatch();  // retrieve the dispatch function from react-redux
+	const {currencySymbol,coins,recentList,chartList}=useAppSelector(); // retrieve the state variables from the Redux store
 	const {
 		name,
 		current_price,
@@ -21,20 +21,20 @@ const CoinItem = (props) => {
 		image,
 		symbol,
 		id,
-	} = props;
+	} = props;  // retrieve data from the props object passed to the component
 
 	const market_cap_change_percentage_24h_toString = `${market_cap_change_percentage_24h}`;
 
-	let cryptofirstname = [];
-	let cryptosecondname = [];
+	let cryptofirstname = []; // initialize an empty array to store crypto name
+	let cryptosecondname = []; // initialize an empty array to store crypto name
 
-	const aboutItem = (e) => {
-		dispatch(addPieItem(name));
-		coins.data.map((coin) => {
+	const aboutItem = (e) => { // define an event handler function called aboutItem
+		dispatch(addPieItem(name)); // dispatch an action to add a pie item with the given name
+		coins.data.map((coin) => { // loop through the coins data to find the first crypto name
 			if (coin.id === id) cryptofirstname.push(coin);
 			return 0;
 		});
-		coins.data.map((coin) => {
+		coins.data.map((coin) => { // loop through the coins data to find the second crypto name
 			if (coin.id === chartList[1]) {
 				cryptosecondname.push(coin);
 			}
@@ -44,17 +44,17 @@ const CoinItem = (props) => {
 			setCryptoDropName(
 				`${cryptofirstname[0].name}, ${cryptosecondname[0].name}`
 			)
-		);
-		dispatch(setCurrentCoin(id));
+		); // dispatch an action to set the crypto drop name with the names of the two cryptocurrencies
+		dispatch(setCurrentCoin(id)); // dispatch an action to set the current coin to the given id
 
-		let recentItem = coins.data.filter((item) => {
+		let recentItem = coins.data.filter((item) => { // find the most recent item
 			return item.name === name;
 		});
-		let coinIndex = recentList.indexOf(recentItem[0]);
-		if (coinIndex === -1) dispatch(addRecentCoin(recentItem[0]));
+		let coinIndex = recentList.indexOf(recentItem[0]); // get the index of the most recent item in the recent list
+		if (coinIndex === -1) dispatch(addRecentCoin(recentItem[0])); // if the item is not in the list, add it
 		else {
-			dispatch(removeRecentCoin(recentItem[0]));
-			dispatch(addRecentCoin(recentItem[0]));
+			dispatch(removeRecentCoin(recentItem[0])); // if the item is in the list, remove it first
+			dispatch(addRecentCoin(recentItem[0])); // then add it back to the beginning of the list
 		}
 	};
 	return (

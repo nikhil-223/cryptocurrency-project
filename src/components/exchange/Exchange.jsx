@@ -27,14 +27,16 @@ const Exchange = () => {
 	const handleSellChange = (e) => {
 		showSellList();
 		dispatch(setSellDropName(e.target.value));
-		let rahul = coins.data.filter((element) => {
+		let dummyList = coins.data.filter((element) => {
 			return element.name.toLowerCase().includes(e.target.value.toLowerCase());
 		});
-		!rahul[0] || e.target.value === ""
+		// If no items match the user's search or the search field is empty, display all items in the dropdown
+		!dummyList[0] || e.target.value === ""
 			? dispatch(setSellList(coins.data))
-			: dispatch(setSellList(rahul));
+			: dispatch(setSellList(dummyList));
 	};
 
+	// Update sell dropdown and buy dropdown items when the component first renders or when the list of coins in the store changes
 	useEffect(() => {
 	  dispatch(setSellList(coins.data))
 	  dispatch(setBuyList(coins.data))
@@ -56,14 +58,14 @@ const Exchange = () => {
 	const handleBuyChange = (e) => {
 		showBuyList();
 		dispatch(setBuyDropName(e.target.value));
-		let rahul = coins.data.filter((element) => {
+		let dummyList = coins.data.filter((element) => {
 			return element.name
 				.toLowerCase()
 				.includes(e.target.value.toLowerCase());
 		});
-		!rahul[0] || e.target.value === ""
+		!dummyList[0] || e.target.value === ""
 			? dispatch(setBuyList(coins.data))
-			: dispatch(setBuyList(rahul));
+			: dispatch(setBuyList(dummyList));
 	};
 
 	// enter value 

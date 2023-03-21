@@ -2,14 +2,17 @@ import React from "react";
 import { useDispatch} from "react-redux";
 import { setRange, setTimePeriod } from "../../store/slices/DropSlice";
 import { useAppSelector } from "../../store/storeAccess";
+// Define the TimePeriodItem component
 
 const TimePeriodItem = (props) => {
+	// Destructure the props and get necessary values from the store using the useAppSelector hook
 	const { timePeriod } = props;
 	const {theme,chartRange}=useAppSelector()
 
-
+    // Create a dispatch variable using the useDispatch hook
 	const dispatch = useDispatch();
 	const handleClick = (e) => {
+		// Set the time period based on the timePeriod prop passed to the component
 		let time;
 		switch (timePeriod) {
 			case "1D":
@@ -31,6 +34,7 @@ const TimePeriodItem = (props) => {
 				time = 1;
 				break;
 		}
+		// Dispatch an action to set the time period and chart range in the store
 		dispatch(setTimePeriod(time));
 		dispatch(setRange(timePeriod));
 	};
