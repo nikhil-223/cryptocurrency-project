@@ -12,7 +12,7 @@ import {
 	LineController,
 } from "chart.js";
 import { Line } from "react-chartjs-2";
-import { useSelector } from "react-redux";
+import { useAppSelector } from "../../store/storeAccess";
 
 ChartJS.register(
 	CategoryScale,
@@ -27,19 +27,8 @@ ChartJS.register(
 );
 
 const LineChart = () => {
-	const chart = useSelector((state) => {
-		return state.chart;
-	});
-	const coins = useSelector((state) => {
-		return state.coins.data;
-	});
-
-	const chartRange = useSelector((state) => {
-		return state.drop.timePeriod.range;
-	});
-	const chartList = useSelector((state) => {
-		return state.chart.chartList;
-	});
+	const {chart,coins,chartRange,chartList}=useAppSelector()
+	
 
 	let theme = "dark";
 	// lables
@@ -94,11 +83,11 @@ const LineChart = () => {
 		}
 	let datasets = [];
 	let cryptoname = [];
-	coins.map((coin) => {
+	coins.data.map((coin) => {
 		if (coin.id === chartList[0]) cryptoname[0]=coin;
 		return 0;
 	});
-	coins.map((coin) => {
+	coins.data.map((coin) => {
 		if (coin.id === chartList[1]) {
 			cryptoname[1]=coin;
 		}

@@ -10,6 +10,7 @@ import { setCoinSearchName, setSearchList } from "../../store/slices/DropSlice";
 import CoinList from "./CoinList";
 import WatchList from "./WatchList";
 import RecentList from "./RecentList";
+import { useAppSelector } from "../../store/storeAccess";
 
 const Coins = () => {
 	let location = useLocation();
@@ -17,13 +18,8 @@ const Coins = () => {
 	const theme = useSelector((state) => {
 		return state.theme;
 	});
-	const coinSearchName = useSelector((state) => {
-		return state.drop.coinSearch.dropName;
-	});
+	const {coinSearchName,coins}=useAppSelector()
 
-	const coins = useSelector((state) => {
-		return state.coins;
-	});
 
 	useEffect(() => {
 		dispatch(setSearchList(coins.data));

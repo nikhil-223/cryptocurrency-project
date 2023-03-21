@@ -1,9 +1,10 @@
 import React, { useEffect } from "react";
 import { IoMdArrowDropdown } from "react-icons/io";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch} from "react-redux";
 import { getChartData } from "../../api";
 import { setFirstItemChartList } from "../../store/slices/ChartSlice";
 import { setCryptoDropName, setCryptoList } from "../../store/slices/DropSlice";
+import { useAppSelector } from "../../store/storeAccess";
 
 import ChartType from "./ChartType";
 import CoinDetail from "./CoinDetail";
@@ -13,38 +14,13 @@ import LineChart from "./LineChart";
 import TimePeriodItem from "./TimePeriodItem";
 
 const Chart = () => {
-	const theme = useSelector((state) => {
-		return state.theme;
-	});
-
-	const coins = useSelector((state) => {
-		return state.coins.data;
-	});
-	const cryptoDropName = useSelector((state) => {
-		return state.drop.crypto.dropName;
-	});
-
-	const cryptoList = useSelector((state) => {
-		return state.drop.crypto.dropList;
-	});
-
-	const chartType = useSelector((state) => {
-		return state.drop.chartType.dropName;
-	});
+	const {theme,coins,cryptoDropName,cryptoList,chartType,chartDisplay,firstchartitem,secondchartitem,timePeriod,currency,currentCoin,timePeriodList,chart}=useAppSelector()
 
 	const dispatch = useDispatch();
 	useEffect(() => {
-		dispatch(setCryptoList(coins));
-	}, [dispatch, coins]);
+		dispatch(setCryptoList(coins.data));
+	}, [dispatch, coins.data]);
 
-	const chart = useSelector((state) => {
-		return state.chart;
-	});
-	// console.log(chart);
-
-	const timePeriodList = useSelector((state) => {
-		return state.drop.timePeriod.timePeriodList;
-	});
 
 	const arr = [{ itemname: "Line" }, { itemname: "Bar" }];
 
@@ -66,11 +42,11 @@ const Chart = () => {
 	const handleCryptoChange = (e) => {
 		handleCryptoFocus();
 		dispatch(setCryptoDropName(e.target.value));
-		let rahul = coins.filter((element) => {
+		let rahul = coins.data.filter((element) => {
 			return element.name.toLowerCase().includes(e.target.value.toLowerCase());
 		});
 		!rahul[0] || e.target.value === ""
-			? dispatch(setCryptoList(coins))
+			? dispatch(setCryptoList(coins.data))
 			: dispatch(setCryptoList(rahul));
 	};
 
@@ -85,24 +61,6 @@ const Chart = () => {
 			document.getElementById("chartTypeDroplist").style.display;
 		dropListState === "none" ? showChartList() : hideChartList();
 	};
-	const chartDisplay = useSelector((state) => {
-		return state.phone.chartDisplay;
-	});
-	const chartList = useSelector((state) => {
-		return state.chart.chartList;
-	});
-	const firstchartitem = chartList[0];
-	const secondchartitem = chartList[1];
-	const timePeriod = useSelector((state) => {
-		return state.drop.timePeriod.time;
-	});
-
-	const currency = useSelector((state) => {
-		return state.drop.currency.currency;
-	});
-	const currentCoin = useSelector((state) => {
-		return state.drop.crypto.currentCoin;
-	});
 
 	useEffect(() => {
 		let currentCoin = firstchartitem;
@@ -229,7 +187,7 @@ const Chart = () => {
 				{chart.coin2.isLoading === false && chart.coin1.isLoading === false ? (
 					chart.coin1.data !== [] &&
 					chart.coin2.data !== [] &&
-					coins[0] && (
+					coins.data[0] && (
 						<div
 							className={`LineChart h-full lg:w-3/4 md:w-3/4 sm:w-full sm:${chartDisplay}`}>
 							<LineChart />

@@ -1,29 +1,21 @@
 import React from "react";
 import { BsCheck2Square } from "react-icons/bs";
 import { BiSquareRounded } from "react-icons/bi";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import {
 	setCryptoDropName,
 } from "../../store/slices/DropSlice";
 import { setSecondItemChartList } from "../../store/slices/ChartSlice";
+import { useAppSelector } from "../../store/storeAccess";
 
 const CryptoItem = (props) => {
 	const { name,id } = props;
 	const dispatch = useDispatch();
-	const theme = useSelector((state) => {
-		return state.theme;
-	});
-
-	const chartList = useSelector((state) => {
-		return state.chart.chartList;
-	});
-	const coins = useSelector((state) => {
-		return state.coins.data;
-	});
+	const {theme,chartList,coins}=useAppSelector()
     let cryptofirstname=[]
     let cryptosecondname=[]
     
-         coins.map((coin)=>{
+         coins.data.map((coin)=>{
             if(coin.id===chartList[0])
             cryptofirstname.push(coin)
             return 0
@@ -31,7 +23,7 @@ const CryptoItem = (props) => {
 
 	const handleClick = () => {
 		dispatch(setSecondItemChartList(id));
-        coins.map((coin)=>{
+        coins.data.map((coin)=>{
             if(coin.id===id){
                 cryptosecondname.push(coin)
             }

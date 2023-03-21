@@ -1,16 +1,12 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { setPhoneMenuPath } from "../../store/slices/DropSlice";
 import { setChartDisplay } from "../../store/slices/PhoneSlice";
+import { useAppSelector } from "../../store/storeAccess";
 
 const PhoneMenuItem = (props) => {
 	const { name, icon } = props;
-	const theme = useSelector((state) => {
-		return state.theme;
-	});
-	const phoneMenuPath = useSelector((state) => {
-		return state.drop.phoneMenu.path;
-	});
+	const {theme,phoneMenuPath}=useAppSelector()
 	const dispatch = useDispatch();
 
 	const item_show = (e) => {

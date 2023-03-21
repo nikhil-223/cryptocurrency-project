@@ -1,9 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 
-import { ChartSlice, CoinSlice, DropSlice, ThemeSlice,PieItemSlice, AlertSlice } from "./slices";
-import PhoneSlice from "./slices/PhoneSlice";
-import RecentSlice from "./slices/RecentSlice";
-import WatchSlice from "./slices/WatchSlice";
+import { ChartSlice, CoinSlice, DropSlice, ThemeSlice,PieItemSlice, AlertSlice, RecentSlice, WatchSlice, PhoneSlice } from "./slices";
 
 const store = configureStore({
 	reducer: {

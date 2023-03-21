@@ -1,15 +1,10 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useAppSelector } from "../../store/storeAccess";
 import CoinItem from "./CoinItem";
 
 const RecentList = () => {
-	const recentList = useSelector((state) => {
-		return state.recent;
-	});
-
-	const coins = useSelector((state) => {
-		return state.coins;
-	});
+	const {recentList,coins}=useAppSelector()
+	
 	return (
 		<div className="coinlist pb-4 h-5/6 overflow-scroll">
 			{coins.isLoading === false ? (

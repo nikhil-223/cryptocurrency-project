@@ -1,17 +1,10 @@
 import React from "react";
 import PhoneMenuItem from "./PhoneMenuItem";
-
-import { useSelector } from "react-redux";
+import { useAppSelector } from "../../store/storeAccess";
 
 const PhoneMenu = () => {
-	
+	const {theme,phoneMenuItems}=useAppSelector()
 	//getting access of theme state from store 
-	const theme=useSelector((state)=>{
-		return state.theme
-	})
-	const phoneMenuItems =useSelector((state)=>{
-		return state.drop.phoneMenu.phoneMenuList
-	});
 	return (
 		<div
 			// class name that determines background color and text color based on theme variable

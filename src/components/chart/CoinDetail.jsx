@@ -1,28 +1,15 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { FaRegStar } from "react-icons/fa";
 import { BsFillStarFill } from "react-icons/bs";
 import { addWatchItem, removeWatchItem } from "../../store/slices/WatchSlice";
 import { setAlert } from "../../store/slices/AlertSlice";
+import { useAppSelector } from "../../store/storeAccess";
 
 const CoinDetail = () => {
 	const dispatch = useDispatch();
-	// const theme = useSelector((state) => {
-	// 	return state.theme;
-	// });
-	const coins = useSelector((state) => {
-		return state.coins;
-	});
-	const currentCoin = useSelector((state) => {
-		return state.drop.crypto.currentCoin;
-	});
-
-	const currencySymbol = useSelector((state) => {
-		return state.drop.currency.symbol;
-	});
-	const WatchList = useSelector((state) => {
-		return state.watch.list;
-	});
+	const {coins,currentCoin,currencySymbol,WatchList}=useAppSelector()
+	
 	localStorage.setItem("watchlist", JSON.stringify(WatchList));
 
 	let coinDetails;

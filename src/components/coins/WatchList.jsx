@@ -1,15 +1,10 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useAppSelector } from "../../store/storeAccess";
 import CoinItem from "./CoinItem";
 
 const WatchList = () => {
-	const WatchList = useSelector((state) => {
-		return state.watch.list;
-	});
-
-	const coins = useSelector((state) => {
-		return state.coins;
-	});
+	const {WatchList,coins}=useAppSelector()
+	
 
 	let watchlistData = [];
 	WatchList.map((item) => {

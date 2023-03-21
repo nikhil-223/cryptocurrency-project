@@ -1,20 +1,16 @@
 import React from 'react'
-import {useSelector} from 'react-redux'
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
+import { useAppSelector } from '../../store/storeAccess';
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const PieChart = () => {
+  const {PieItem,coins}=useAppSelector()
 
-  const PieItem=useSelector((state)=>{
-    return state.pieItem
-  })
-  const coins=useSelector((state)=>{
-    return state.coins.data;
-  })
+ 
 
   const arr=PieItem.map((item)=>{
-     let found= coins.find(function (element) {
+     let found= coins.data.find(function (element) {
           return element.name === item;
       });
     return found

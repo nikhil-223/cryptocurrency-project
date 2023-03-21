@@ -1,15 +1,12 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch} from "react-redux";
 import { setRange, setTimePeriod } from "../../store/slices/DropSlice";
+import { useAppSelector } from "../../store/storeAccess";
 
 const TimePeriodItem = (props) => {
 	const { timePeriod } = props;
-	const theme = useSelector((state) => {
-		return state.theme;
-	});
-	const range = useSelector((state) => {
-		return state.drop.timePeriod.range;
-	});
+	const {theme,chartRange}=useAppSelector()
+
 
 	const dispatch = useDispatch();
 	const handleClick = (e) => {
@@ -40,7 +37,7 @@ const TimePeriodItem = (props) => {
 	return (
 		<div
 			className={`timePeriodItem flex justify-center items-center ${
-				timePeriod === range
+				timePeriod === chartRange
 					? theme === "dark"
 						? "bg-activeTimePeriodDark"
 						: "bg-activeTimePeriodLight"

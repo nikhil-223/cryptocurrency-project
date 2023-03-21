@@ -1,15 +1,14 @@
 import React from 'react'
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import {
 	setCurrency,
 	setCurrencyDropdownName,
 	setSymbol,
 } from "../../store/slices/DropSlice";
+import { useAppSelector } from '../../store/storeAccess';
 
 const CurrencyItem = (props) => {
-  const theme= useSelector((state)=>{
-    return state.theme
-  })
+  const {theme}= useAppSelector()
 
   const dispatch = useDispatch()
     const {currency,symbol}=props;

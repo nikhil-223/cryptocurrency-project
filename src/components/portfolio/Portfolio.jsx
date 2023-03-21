@@ -1,25 +1,17 @@
 import React from 'react'
 import PieChart from './PieChart';
-
-import {useSelector} from 'react-redux'
+import { useAppSelector } from '../../store/storeAccess';
 
 const Portfolio = () => {
+	const {currencySymbol,PieItem,coins}=useAppSelector()
 	
-const currencySymbol = useSelector((state) => {
-	return state.drop.currency.symbol;
-});
-	  const PieItem=useSelector((state)=>{
-		return state.pieItem
-	  })
-	  const coins=useSelector((state)=>{
-		return state.coins.data;
-	  })
+
 	  let tv=0;
 	
 	 
-	 coins[0] && PieItem.map((item)=>{
+	 coins.data[0] && PieItem.map((item)=>{
 	
-	 let found= coins.find(function (element) {
+	 let found= coins.data.find(function (element) {
 			  return element.name === item;
 		  });
 		tv= tv + found.current_price
@@ -32,7 +24,7 @@ const currencySymbol = useSelector((state) => {
 				<div>Total Value : {currencySymbol} {Math.floor(tv)}</div>
 			</div>
 			<div className=' row-span-5 md:mr-12 lg:mr-0'>
-				{coins[0] && <PieChart/>}
+				{coins.data[0] && <PieChart/>}
 			</div>
 	</>
 	);

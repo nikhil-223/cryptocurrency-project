@@ -2,28 +2,23 @@ import React, { useEffect } from "react";
 import CurrencyItem from "./CurrencyItem";
 import { IoMdArrowDropdown } from "react-icons/io";
 import { currencies } from "../../assets";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import {
 	setCurrencyDropdownName,
 	setCurrencyList,
 } from "../../store/slices/DropSlice";
+import { useAppSelector } from "../../store/storeAccess";
 
 const CurrencyDrop = (props) => {
 	const { theme } = props;
 
 	const dispatch = useDispatch();
+	const {currencyList,currencyDropName}=useAppSelector()
 
-	const currencyList = useSelector((state) => {
-		return state.drop.currency.dropList;
-	});
 	useEffect(() => {
 		dispatch(setCurrencyList(currencies));
 		// eslint-disable-next-line
 	}, []);
-
-	const currencyDropName = useSelector((state) => {
-		return state.drop.currency.dropName;
-	});
 	const hideList = () => {
 		document.getElementById("currencyDroplist").style.display = "none";
 	};

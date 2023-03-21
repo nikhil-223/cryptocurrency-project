@@ -1,5 +1,5 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import {
 	setCryptoDropName,
 	setCurrentCoin,
@@ -9,9 +9,11 @@ import {
 	addRecentCoin,
 	removeRecentCoin,
 } from "../../store/slices/RecentSlice";
+import { useAppSelector } from "../../store/storeAccess";
 
 const CoinItem = (props) => {
 	const dispatch = useDispatch();
+	const {currencySymbol,coins,recentList,chartList}=useAppSelector();
 	const {
 		name,
 		current_price,
@@ -23,29 +25,16 @@ const CoinItem = (props) => {
 
 	const market_cap_change_percentage_24h_toString = `${market_cap_change_percentage_24h}`;
 
-	const currencySymbol = useSelector((state) => {
-		return state.drop.currency.symbol;
-	});
-
-	const coins = useSelector((state) => {
-		return state.coins.data;
-	});
-	const recentList = useSelector((state) => {
-		return state.recent;
-	});
-	const chartList = useSelector((state) => {
-		return state.chart.chartList;
-	});
 	let cryptofirstname = [];
 	let cryptosecondname = [];
 
 	const aboutItem = (e) => {
 		dispatch(addPieItem(name));
-		coins.map((coin) => {
+		coins.data.map((coin) => {
 			if (coin.id === id) cryptofirstname.push(coin);
 			return 0;
 		});
-		coins.map((coin) => {
+		coins.data.map((coin) => {
 			if (coin.id === chartList[1]) {
 				cryptosecondname.push(coin);
 			}
@@ -58,7 +47,7 @@ const CoinItem = (props) => {
 		);
 		dispatch(setCurrentCoin(id));
 
-		let recentItem = coins.filter((item) => {
+		let recentItem = coins.data.filter((item) => {
 			return item.name === name;
 		});
 		let coinIndex = recentList.indexOf(recentItem[0]);

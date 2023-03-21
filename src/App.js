@@ -9,12 +9,9 @@ import PhoneMenu from "./components/phoneMenu/PhoneMenu";
 import { setWatchList } from "./store/slices/WatchSlice";
 
 const App = () => {
-	const theme = useSelector((state) => {
-		return state.theme;
-	});
-	const currency = useSelector((state) => {
-		return state.drop.currency.currency;
-	});
+	const theme = useSelector((state) => 
+		 state.theme);
+	const currency = useSelector((state) => state.drop.currency.currency);
 	const dispatch = useDispatch();
 
 	useEffect(() => {

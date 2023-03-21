@@ -1,35 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { MdArrowDropDown } from "react-icons/md";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { setBuyDropName, setBuyList, setSellDropName, setSellList } from "../../store/slices/DropSlice";
+import { useAppSelector } from "../../store/storeAccess";
 import BuyListItem from "./BuyListItem";
 import SellListItem from "./SellListItem";
 
 const Exchange = () => {
-	const theme = useSelector((state) => {
-		return state.theme;
-	});
-	const coins = useSelector((state) => {
-		return state.coins.data;
-	});
-	const sellDropName = useSelector((state) => {
-		return state.drop.sell.dropName;
-	});
-	const sellList = useSelector((state) => {
-		return state.drop.sell.dropList;
-	});
-	const sellCoin= useSelector((state)=>{
-		return state.drop.sell.coin
-	})
-	const buyDropName = useSelector((state) => {
-		return state.drop.buy.dropName;
-	});
-	const buyList = useSelector((state) => {
-		return state.drop.buy.dropList;
-	});
-	const buyCoin= useSelector((state)=>{
-		return state.drop.buy.coin
-	})
+	const {theme,coins,sellDropName,sellList,sellCoin,buyDropName,buyList,buyCoin}=useAppSelector()
+	
+	
 	const dispatch = useDispatch();
 
 	// sell drop
@@ -47,18 +27,18 @@ const Exchange = () => {
 	const handleSellChange = (e) => {
 		showSellList();
 		dispatch(setSellDropName(e.target.value));
-		let rahul = coins.filter((element) => {
+		let rahul = coins.data.filter((element) => {
 			return element.name.toLowerCase().includes(e.target.value.toLowerCase());
 		});
 		!rahul[0] || e.target.value === ""
-			? dispatch(setSellList(coins))
+			? dispatch(setSellList(coins.data))
 			: dispatch(setSellList(rahul));
 	};
 
 	useEffect(() => {
-	  dispatch(setSellList(coins))
-	  dispatch(setBuyList(coins))
-	}, [dispatch,coins])
+	  dispatch(setSellList(coins.data))
+	  dispatch(setBuyList(coins.data))
+	}, [dispatch,coins.data])
 	
 
 	// buy drop
@@ -76,13 +56,13 @@ const Exchange = () => {
 	const handleBuyChange = (e) => {
 		showBuyList();
 		dispatch(setBuyDropName(e.target.value));
-		let rahul = coins.filter((element) => {
+		let rahul = coins.data.filter((element) => {
 			return element.name
 				.toLowerCase()
 				.includes(e.target.value.toLowerCase());
 		});
 		!rahul[0] || e.target.value === ""
-			? dispatch(setBuyList(coins))
+			? dispatch(setBuyList(coins.data))
 			: dispatch(setBuyList(rahul));
 	};
 
@@ -90,11 +70,11 @@ const Exchange = () => {
 	const [buyValue,setBuyValue]=useState(0)
 	const [sellValue, setSellValue] = useState(0)
 	const handleExchangeClick=()=>{
-		let sell=coins.filter((item)=>{
+		let sell=coins.data.filter((item)=>{
 			return item.name===sellCoin
 		})
 
-		let buy=coins.filter((item)=>{
+		let buy=coins.data.filter((item)=>{
 			return item.name===buyCoin 
 		})
 
@@ -109,7 +89,7 @@ const Exchange = () => {
 		<>
 			{/* Title  */}
 			<div className=" w-full h-1/6 flex items-center">
-				<div className="ml-4 text-lg font-bold mb-1"> Exchange coins</div>
+				<div className="ml-4 text-lg font-bold mb-1"> Exchange coins.data</div>
 			</div>
 			{/* Title  */}
 

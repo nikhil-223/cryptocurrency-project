@@ -1,12 +1,11 @@
 import React from 'react'
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { setChartType } from '../../store/slices/DropSlice';
+import { useAppSelector } from '../../store/storeAccess';
 
 const ChartType = (props) => {
     const {itemname}=props
-     const theme = useSelector((state) => {
-				return state.theme;
-			});
+     const {theme} = useAppSelector()
 	const dispatch=useDispatch()
 	const handleClick=(e)=>{
 		dispatch(setChartType(itemname))
