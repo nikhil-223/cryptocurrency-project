@@ -69,6 +69,7 @@ const Chart = () => {
 
 	useEffect(() => {
 		let currentCoin = secondchartitem;
+		if(currentCoin!==undefined)
 		dispatch(getChartData({ currentCoin, timePeriod, currency }));
 	}, [dispatch, secondchartitem, timePeriod, currency]);
 

@@ -32,21 +32,19 @@ const CoinItem = (props) => {
 		dispatch(addPieItem(name));
 		coins.data.map((coin) => {
 			if (coin.id === id) cryptofirstname.push(coin);
-			return 0;
-		});
-		coins.data.map((coin) => {
-			if (coin.id === chartList[1]) {
+			else if (coin.id === chartList[1]) {
 				cryptosecondname.push(coin);
 			}
 			return 0;
 		});
 		dispatch(
 			setCryptoDropName(
-				`${cryptofirstname[0].name}, ${cryptosecondname[0].name}`
+				`${cryptofirstname[0].name} ${cryptosecondname[0]?`,${cryptosecondname[0].name}`:""}`
 			)
 		);
 		dispatch(setCurrentCoin(id));
 
+		// recent item 
 		let recentItem = coins.data.filter((item) => {
 			return item.name === name;
 		});

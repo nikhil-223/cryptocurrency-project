@@ -1,18 +1,16 @@
 import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { getCoins } from "./api";
 import { Chart, Coins, Exchange, Portfolio } from "./components";
 import { BrowserRouter } from "react-router-dom";
 import Alert from "./components/alert/Alert";
 import PhoneMenu from "./components/phoneMenu/PhoneMenu";
-// import { setAlert } from "./store/slices/AlertSlice";
 import { setWatchList } from "./store/slices/WatchSlice";
+import { useAppSelector } from "./store/storeAccess";
 
 const App = () => {
-	const theme = useSelector((state) => 
-		 state.theme);
-	const currency = useSelector((state) => state.drop.currency.currency);
-	const dispatch = useDispatch();
+	const {theme,currency}=useAppSelector()
+	const dispatch=useDispatch()
 
 	useEffect(() => {
 		dispatch(getCoins(currency));

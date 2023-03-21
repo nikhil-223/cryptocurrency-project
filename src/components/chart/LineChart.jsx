@@ -84,13 +84,15 @@ const LineChart = () => {
 	let datasets = [];
 	let cryptoname = [];
 	coins.data.map((coin) => {
+
 		if (coin.id === chartList[0]) cryptoname[0]=coin;
+		else if (coin.id === chartList[1]) {
+			cryptoname[1]=coin;
+		}
 		return 0;
 	});
 	coins.data.map((coin) => {
-		if (coin.id === chartList[1]) {
-			cryptoname[1]=coin;
-		}
+		
 		return 0;
 	});
 	
