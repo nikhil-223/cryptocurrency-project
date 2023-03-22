@@ -1,5 +1,6 @@
 import React from "react"; // import React and necessary components
 import { useDispatch } from "react-redux";
+import { setFirstItemChartList } from "../../store/slices/ChartSlice";
 import {
 	setCryptoDropName,
 	setCurrentCoin,
@@ -32,22 +33,20 @@ const CoinItem = (props) => {  // define a functional component called CoinItem 
 		dispatch(addPieItem(name)); // dispatch an action to add a pie item with the given name
 		coins.data.map((coin) => { // loop through the coins data to find the first crypto name
 			if (coin.id === id) cryptofirstname.push(coin);
-			return 0;
-		});
-		coins.data.map((coin) => { // loop through the coins data to find the second crypto name
-			if (coin.id === chartList[1]) {
+			else if (coin.id === chartList[1]) {
 				cryptosecondname.push(coin);
 			}
 			return 0;
 		});
 		dispatch(
 			setCryptoDropName(
-				`${cryptofirstname[0].name}, ${cryptosecondname[0].name}`
+				`${cryptofirstname[0].name} ${cryptosecondname[0]?`,${cryptosecondname[0].name}`:""}`
 			)
-		); // dispatch an action to set the crypto drop name with the names of the two cryptocurrencies
-		dispatch(setCurrentCoin(id)); // dispatch an action to set the current coin to the given id
+		);// dispatch an action to set the crypto drop name with the names of the two cryptocurrencies
+		dispatch(setFirstItemChartList(id));
 
-		let recentItem = coins.data.filter((item) => { // find the most recent item
+		// recent item 
+		let recentItem = coins.data.filter((item) => {
 			return item.name === name;
 		});
 		let coinIndex = recentList.indexOf(recentItem[0]); // get the index of the most recent item in the recent list

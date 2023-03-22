@@ -8,6 +8,7 @@ body {
 		sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+	background-color: blue;
 }
 /* Style for displaying code using monospace font */
 code {

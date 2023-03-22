@@ -4,19 +4,37 @@ import { getChartData } from "../../api";
 const ChartSlice = createSlice({
 	name: "chart",
 	initialState: {
-		coinNo: 1, // Represents the coin number for which data is currently being fetched
-		coin1: { isLoading: false, data: [], isError: false }, // Represents the first coin data object
-		coin2: { isLoading: false, data: [], isError: false }, // Represents the second coin data object
-		chartList: ["tether", "usd-coin"], // Array of two coins for which data is to be fetched
+		coinNo: 1,
+		coin1: { isLoading: false, data: [], isError: false },
+		coin2: { isLoading: false, data: [], isError: false },
+		chartList: ["bitcoin"],
+		reload:true,
 	},reducers:{
 		// Reducer to set the first item in chart list
 		setFirstItemChartList(state,action){
+			state.reload=true;
 			state.chartList[0]=action.payload
 		},
 		// Reducer to set the second item in chart list
 		setSecondItemChartList(state,action){
+			state.reload=true
 			state.chartList[1]=action.payload
+		},
+		removeSecondItemChartList(state,action){
+			state.reload=false
+			state.chartList.splice(1,1);
+		},
+		interchangeChartItems(state,action){
+			state.reload=false;
+			state.coin1.data=state.coin2.data
+			state.coin2.data=[]
+			state.chartList[0]=state.chartList[1]
+			state.chartList.splice(1,1)
+			state.coinNo=2
 		}
+		// setFirstAsSecondItem(state,action){
+		// 	state.coin1.data=state.coin2.data
+		// }
 	},
 	extraReducers: (builder) => {
 		// Case to handle successful data fetch
@@ -58,5 +76,10 @@ const ChartSlice = createSlice({
 	},
 });
 
-export const {setFirstItemChartList,setSecondItemChartList}=ChartSlice.actions
+export const {
+	setFirstItemChartList,
+	setSecondItemChartList,
+	removeSecondItemChartList,
+	interchangeChartItems,
+} = ChartSlice.actions;
 export default ChartSlice.reducer;

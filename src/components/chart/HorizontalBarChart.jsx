@@ -3,34 +3,26 @@ import {
 	Chart as ChartJS,
 	CategoryScale,
 	LinearScale,
-	PointElement,
-	LineElement,
+	BarElement,
 	Title,
 	Tooltip,
-	Filler,
 	Legend,
-	LineController,
 } from "chart.js";
-import { Line } from "react-chartjs-2";
 import { useAppSelector } from "../../store/storeAccess";
+import { Bar } from "react-chartjs-2";
 
 ChartJS.register(
 	CategoryScale,
 	LinearScale,
-	PointElement,
-	LineElement,
-	Filler,
+	BarElement,
 	Title,
 	Tooltip,
-	Legend,
-	LineController
+	Legend
 );
 
-const LineChart = () => {
-	const {chart,coins,chartRange,chartList}=useAppSelector()
-	
+const HorizontalBarChart = () => {
+	const { chart, coins, chartRange, chartList } = useAppSelector();
 
-	let theme = "dark";
 	// lables
 
 	let labels = [];
@@ -84,35 +76,32 @@ const LineChart = () => {
 	let datasets = [];
 	let cryptoname = [];
 	coins.data.map((coin) => {
-
-		if (coin.id === chartList[0]) cryptoname[0]=coin;
+		if (coin.id === chartList[0]) cryptoname[0] = coin;
 		else if (coin.id === chartList[1]) {
-			cryptoname[1]=coin;
+			cryptoname[1] = coin;
 		}
 		return 0;
 	});
 	coins.data.map((coin) => {
-		
 		return 0;
 	});
-	
-	if (chart.coin2.data !== undefined && chart.coin1.data!== undefined)
+
+	if (chart.coin2.data !== undefined && chart.coin1.data !== undefined)
 		for (const chartitemindex in chartList) {
 			let dataArray = [];
-			let coindata=[chart.coin1.data,chart.coin2.data];
+			let coindata = [chart.coin1.data, chart.coin2.data];
 			let color = ["#CD5888", "#579BB1"];
-			
+
 			for (const element of coindata[chartitemindex]) {
 				dataArray.push(element[1]);
 			}
-			
+
 			datasets.push({
 				label: cryptoname[chartitemindex].name,
 				data: dataArray,
-				borderColor:color[chartitemindex],
+				borderColor: color[chartitemindex],
 				borderWidth: 1.5,
-				backgroundColor:
-					theme === "dark" ? "rgba(0,0,0,0.15)" : "rgba(0,0,0,0.03)",
+				backgroundColor: color[chartitemindex],
 				tension: 0.1,
 				pointRadius: 0,
 				fill: true,
@@ -148,6 +137,7 @@ const LineChart = () => {
 		plugins: {
 			legend: true,
 		},
+        indexAxis: 'y',
 		scales: {
 			// to remove the labels
 			x: {
@@ -174,7 +164,7 @@ const LineChart = () => {
 	// Call listener function at run time
 	// Attach listener function on state changes
 
-	return <Line data={data} options={options} />;
+	return <Bar data={data} options={options} />;
 };
 
-export default LineChart;
+export default HorizontalBarChart;

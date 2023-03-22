@@ -12,17 +12,34 @@ import CryptoItem from "./CryptoItem";
 import CurrencyDrop from "./CurrencyDrop";
 import LineChart from "./LineChart";
 import TimePeriodItem from "./TimePeriodItem";
+import HorizontalBarChart from "./HorizontalBarChart";
+import VerticalBarChart from "./VerticalBarChart";
 
 const Chart = () => {
-	const {theme,coins,cryptoDropName,cryptoList,chartType,chartDisplay,firstchartitem,secondchartitem,timePeriod,currency,currentCoin,timePeriodList,chart}=useAppSelector()
+	const {
+		theme,
+		coins,
+		currentChartType,
+		cryptoDropName,
+		cryptoList,
+		chartType,
+		chartDisplay,
+		firstchartitem,
+		secondchartitem,
+		timePeriod,
+		currency,
+		currentCoin,
+		timePeriodList,
+		chart,
+		chartReload,
+	} = useAppSelector();
 
 	const dispatch = useDispatch();
 	useEffect(() => {
 		dispatch(setCryptoList(coins.data));
 	}, [dispatch, coins.data]);
 
-
-	const arr = [{ itemname: "Line" }, { itemname: "Bar" }];
+	const arr = [{ itemname: "Line" }, { itemname: "Bar" }, { itemname: "Hor..Bar" }];
 
 	const showCryptoList = () => {
 		document.getElementById("cryptoDroplist").style.display = "flex";
@@ -64,16 +81,18 @@ const Chart = () => {
 
 	useEffect(() => {
 		let currentCoin = firstchartitem;
+		if(chartReload===true)
 		dispatch(getChartData({ currentCoin, timePeriod, currency }));
 	}, [dispatch, firstchartitem, timePeriod, currency]);
 
 	useEffect(() => {
 		let currentCoin = secondchartitem;
+		if(currentCoin!==undefined && chartReload===true)
 		dispatch(getChartData({ currentCoin, timePeriod, currency }));
 	}, [dispatch, secondchartitem, timePeriod, currency]);
 
 	useEffect(() => {
-		dispatch(setFirstItemChartList(currentCoin));
+		// dispatch(setFirstItemChartList(currentCoin));
 	}, [dispatch, currentCoin]);
 
 	return (
@@ -190,7 +209,12 @@ const Chart = () => {
 					coins.data[0] && (
 						<div
 							className={`LineChart h-full lg:w-3/4 md:w-3/4 sm:w-full sm:${chartDisplay}`}>
-							<LineChart />
+							{/* <LineChart /> */}
+							{/* <VerticalBarChart /> */}
+							{currentChartType==='Line' && <LineChart />}
+							{currentChartType==='Bar' && <VerticalBarChart />}
+							{currentChartType==='Hor..Bar' && <HorizontalBarChart />}
+
 						</div>
 					)
 				) : (

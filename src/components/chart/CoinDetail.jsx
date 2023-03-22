@@ -9,7 +9,7 @@ import { useAppSelector } from "../../store/storeAccess";
 const CoinDetail = () => {
 	// Initialize the required Redux store actions and state using custom hooks
 	const dispatch = useDispatch();
-	const {coins,currentCoin,currencySymbol,WatchList}=useAppSelector()
+	const {coins,chartList,currencySymbol,WatchList}=useAppSelector()
 	
 	// Store the WatchList array in local storage to persist data
 	localStorage.setItem("watchlist", JSON.stringify(WatchList));
@@ -18,7 +18,7 @@ const CoinDetail = () => {
 	// Filter the coins.data array to get the details of the current coin
 	if (coins.data[0] !== undefined) {
 		coinDetails = coins.data.filter((item) => {
-			return item.id === currentCoin;
+			return item.id === chartList[0];
 		})[0];
 	}
 	// Check if the current coin is already present in the WatchList array
