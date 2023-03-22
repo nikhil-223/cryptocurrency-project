@@ -31,6 +31,7 @@ const Chart = () => {
 		currentCoin,
 		timePeriodList,
 		chart,
+		chartReload,
 	} = useAppSelector();
 
 	const dispatch = useDispatch();
@@ -80,17 +81,18 @@ const Chart = () => {
 
 	useEffect(() => {
 		let currentCoin = firstchartitem;
+		if(chartReload===true)
 		dispatch(getChartData({ currentCoin, timePeriod, currency }));
 	}, [dispatch, firstchartitem, timePeriod, currency]);
 
 	useEffect(() => {
 		let currentCoin = secondchartitem;
-		if(currentCoin!==undefined)
+		if(currentCoin!==undefined && chartReload===true)
 		dispatch(getChartData({ currentCoin, timePeriod, currency }));
 	}, [dispatch, secondchartitem, timePeriod, currency]);
 
 	useEffect(() => {
-		dispatch(setFirstItemChartList(currentCoin));
+		// dispatch(setFirstItemChartList(currentCoin));
 	}, [dispatch, currentCoin]);
 
 	return (

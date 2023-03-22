@@ -8,14 +8,14 @@ import { useAppSelector } from "../../store/storeAccess";
 
 const CoinDetail = () => {
 	const dispatch = useDispatch();
-	const {coins,currentCoin,currencySymbol,WatchList}=useAppSelector()
+	const {coins,chartList,currencySymbol,WatchList}=useAppSelector()
 	
 	localStorage.setItem("watchlist", JSON.stringify(WatchList));
 
 	let coinDetails;
 	if (coins.data[0] !== undefined) {
 		coinDetails = coins.data.filter((item) => {
-			return item.id === currentCoin;
+			return item.id === chartList[0];
 		})[0];
 	}
 	let iconFilled = WatchList.filter((item) => {

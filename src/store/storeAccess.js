@@ -20,7 +20,7 @@ export const useAppSelector = () => {
 		},
 		alert,
 		theme,
-		chart: { chartList },
+		chart: { chartList,reload:chartReload },
 		coins,
 		phone: { chartDisplay },
 		watch: { list: WatchList },
@@ -67,6 +67,7 @@ export const useAppSelector = () => {
 		phoneMenuItems,
 		phoneMenuPath,
 		PieItem,
+		chartReload,
 	};
 };
 

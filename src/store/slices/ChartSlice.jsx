@@ -8,16 +8,31 @@ const ChartSlice = createSlice({
 		coin1: { isLoading: false, data: [], isError: false },
 		coin2: { isLoading: false, data: [], isError: false },
 		chartList: ["bitcoin"],
+		reload:true,
 	},reducers:{
 		setFirstItemChartList(state,action){
+			state.reload=true;
 			state.chartList[0]=action.payload
 		},
 		setSecondItemChartList(state,action){
+			state.reload=true
 			state.chartList[1]=action.payload
 		},
 		removeSecondItemChartList(state,action){
+			state.reload=false
 			state.chartList.splice(1,1);
+		},
+		interchangeChartItems(state,action){
+			state.reload=false;
+			state.coin1.data=state.coin2.data
+			state.coin2.data=[]
+			state.chartList[0]=state.chartList[1]
+			state.chartList.splice(1,1)
+			state.coinNo=2
 		}
+		// setFirstAsSecondItem(state,action){
+		// 	state.coin1.data=state.coin2.data
+		// }
 	},
 	extraReducers: (builder) => {
 		builder.addCase(getChartData.fulfilled, (state, action) => {
@@ -60,5 +75,6 @@ export const {
 	setFirstItemChartList,
 	setSecondItemChartList,
 	removeSecondItemChartList,
+	interchangeChartItems,
 } = ChartSlice.actions;
 export default ChartSlice.reducer;

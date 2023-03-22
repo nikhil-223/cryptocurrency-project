@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import {
 	setCryptoDropName, setCurrentCoin,
 } from "../../store/slices/DropSlice";
-import { removeSecondItemChartList, setFirstItemChartList, setSecondItemChartList } from "../../store/slices/ChartSlice";
+import { interchangeChartItems, removeSecondItemChartList, setFirstItemChartList, setSecondItemChartList } from "../../store/slices/ChartSlice";
 import { useAppSelector } from "../../store/storeAccess";
 import { setAlert } from "../../store/slices/AlertSlice";
 
@@ -30,9 +30,10 @@ const CryptoItem = (props) => {
 		}
 		// first item clicked          add second item to first      then remove first 
 		else if(chartList[0]===id && chartList[1]!==undefined){ 
-			dispatch(setFirstItemChartList(chartList[1]))
-			dispatch(removeSecondItemChartList())
-			dispatch(setCurrentCoin(chartList[1]));
+			// dispatch(setFirstItemChartList(chartList[1]))
+			// dispatch(removeSecondItemChartList())
+			dispatch(interchangeChartItems())
+			// dispatch(setCurrentCoin(chartList[1]));
 			coins.data.map((coin) => {
 				if (coin.id === chartList[1]) cryptofirstname[0]=coin;
 				return 0;
@@ -48,6 +49,13 @@ const CryptoItem = (props) => {
 				}
 				return 0;
 			});
+			dispatch(
+				setCryptoDropName(
+					`${cryptofirstname[0].name} ${
+						cryptosecondname[0] ? `,${cryptosecondname[0].name}` : ""
+					}`
+				)
+			);
 		}
 		else if (chartList[1] !== undefined && chartList[0] !== id) {
 			dispatch(setSecondItemChartList(id));
@@ -70,13 +78,13 @@ const CryptoItem = (props) => {
 				setAlert({ type: "success", message: "Choose atleast one coin" })
 			);
 		}
-		dispatch(
-			setCryptoDropName(
-				`${cryptofirstname[0].name} ${
-					cryptosecondname[0] ? `,${cryptosecondname[0].name}` : ""
-				}`
-			)
-		); 
+		// dispatch(
+		// 	setCryptoDropName(
+		// 		`${cryptofirstname[0].name} ${
+		// 			cryptosecondname[0] ? `,${cryptosecondname[0].name}` : ""
+		// 		}`
+		// 	)
+		// ); 
 	};
 	
     

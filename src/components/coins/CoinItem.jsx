@@ -1,5 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
+import { setFirstItemChartList } from "../../store/slices/ChartSlice";
 import {
 	setCryptoDropName,
 	setCurrentCoin,
@@ -42,7 +43,7 @@ const CoinItem = (props) => {
 				`${cryptofirstname[0].name} ${cryptosecondname[0]?`,${cryptosecondname[0].name}`:""}`
 			)
 		);
-		dispatch(setCurrentCoin(id));
+		dispatch(setFirstItemChartList(id));
 
 		// recent item 
 		let recentItem = coins.data.filter((item) => {
