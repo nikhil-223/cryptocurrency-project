@@ -1,7 +1,11 @@
 
 import { useSelector } from "react-redux";
 
+// This custom hook is named useAppSelector and it uses the useSelector hook from the react-redux library to select and return parts of the state.
 export const useAppSelector = () => {
+	// Here, the state is destructured to obtain the necessary parts.
+	// The state object has a property called 'drop', which has nested objects and arrays.
+	// These nested objects and arrays contain properties that are needed by the component that uses this hook.
 	const {
 		drop: {
 			currency: {
@@ -28,11 +32,15 @@ export const useAppSelector = () => {
 		pieItem: PieItem,
 	} = useSelector((state) => state);
 
+	// Another way of selecting a specific property from the state is by calling useSelector and passing in a function that returns the desired property. 
+	// Here, the chart object is selected from the state.
     const chart= useSelector(state=>state.chart)
     
+	// These variables are assigned values from the first two items in the chartList array.
 		const firstchartitem = chartList[0];
 		const secondchartitem = chartList[1];
 
+		// The parts of the state that are needed by the component that uses this hook are returned as an object.
 	return {
 		currency,
 		alert,
@@ -70,5 +78,3 @@ export const useAppSelector = () => {
 		chartReload,
 	};
 };
-
-

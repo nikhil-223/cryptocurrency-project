@@ -4,9 +4,11 @@ const RecentSlice = createSlice({
 	name: "recent",
 	initialState: [],
 	reducers: {
+		// create a "addRecentCoin" reducer function that will add a new coin to the beginning of the state array
 		addRecentCoin(state,action){
          state.unshift(action.payload)
         },
+		// create a "removeRecentCoin" reducer function that will remove a coin from the state array by name
 		removeRecentCoin(state,action){
 
         return state.filter((item)=>{

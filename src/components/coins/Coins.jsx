@@ -12,19 +12,22 @@ import WatchList from "./WatchList";
 import RecentList from "./RecentList";
 import { useAppSelector } from "../../store/storeAccess";
 
+// useLocation hook to get current route location
 const Coins = () => {
 	let location = useLocation();
 	const dispatch = useDispatch();
+	// useSelector hook to get current theme and coin search name from redux store
 	const theme = useSelector((state) => {
 		return state.theme;
 	});
 	const {coinSearchName,coins}=useAppSelector()
 
-
+    // useEffect hook to set the search list based on the data retrieved from redux store
 	useEffect(() => {
 		dispatch(setSearchList(coins.data));
 	}, [dispatch, coins.data]);
 
+	// useEffect hook to update the position of the list tracker based on current route location
 	useEffect(() => {
 
 		if (location.pathname === "/coins"){
@@ -36,12 +39,14 @@ const Coins = () => {
 		else document.querySelector(".tracker").style.transform = "translate(0)";
 	}, [location.pathname]);
 
+	// function to toggle between light and dark mode
 	const setMode = () => {
 		theme === "dark"
 			? dispatch(setThemeLight("light"))
 			: dispatch(setThemeDark("dark"));
 	};
 
+	// function to handle the coin search input field changes and update the search list accordingly
 	const handleChange = (e) => {
 		dispatch(setCoinSearchName(e.target.value));
 		let rahul = coins.data.filter((element) => {

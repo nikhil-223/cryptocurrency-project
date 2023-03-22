@@ -2,13 +2,16 @@ import React from 'react'
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
 import { useAppSelector } from '../../store/storeAccess';
+
+// Register Chart.js components
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const PieChart = () => {
+  // Get data from Redux store using custom hook
   const {PieItem,coins}=useAppSelector()
 
  
-
+// Find coin data for each item in PieItem array
   const arr=PieItem.map((item)=>{
      let found= coins.data.find(function (element) {
           return element.name === item;
@@ -19,7 +22,7 @@ const PieChart = () => {
 
   
 
-
+// Get labels and values from arr for chart data
   const labels= arr.map((item)=>{
     return item.name
   })
@@ -28,6 +31,7 @@ const PieChart = () => {
 
   })
 
+   // Define chart data and options
   const data = {
 		labels: labels,
 		datasets: [
@@ -59,6 +63,7 @@ const PieChart = () => {
   }
     }
   }
+  // Render the chart using react-chartjs-2
   return (
     <Doughnut
   options={options}

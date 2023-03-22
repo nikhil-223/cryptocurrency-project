@@ -7,21 +7,26 @@ import { setAlert } from "../../store/slices/AlertSlice";
 import { useAppSelector } from "../../store/storeAccess";
 
 const CoinDetail = () => {
+	// Initialize the required Redux store actions and state using custom hooks
 	const dispatch = useDispatch();
 	const {coins,chartList,currencySymbol,WatchList}=useAppSelector()
 	
+	// Store the WatchList array in local storage to persist data
 	localStorage.setItem("watchlist", JSON.stringify(WatchList));
 
 	let coinDetails;
+	// Filter the coins.data array to get the details of the current coin
 	if (coins.data[0] !== undefined) {
 		coinDetails = coins.data.filter((item) => {
 			return item.id === chartList[0];
 		})[0];
 	}
+	// Check if the current coin is already present in the WatchList array
 	let iconFilled = WatchList.filter((item) => {
 		return item === coinDetails.name;
 	})[0];
 
+	// Function to add/remove current coin to/from the WatchList array and display an alert message
 	const handleClick = () => {
 		let found = WatchList.filter((item) => {
 			return item === coinDetails.name;
@@ -44,6 +49,7 @@ const CoinDetail = () => {
 			);
 		}
 	};
+	// Render the UI for the CoinDetail component based on the isLoading and data properties of the coins object
 	return (
 		<>
 			{coins.isLoading === false && coins.data[0] ? (

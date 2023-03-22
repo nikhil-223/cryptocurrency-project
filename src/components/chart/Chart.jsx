@@ -59,12 +59,12 @@ const Chart = () => {
 	const handleCryptoChange = (e) => {
 		handleCryptoFocus();
 		dispatch(setCryptoDropName(e.target.value));
-		let rahul = coins.data.filter((element) => {
+		let dummyList = coins.data.filter((element) => {
 			return element.name.toLowerCase().includes(e.target.value.toLowerCase());
 		});
-		!rahul[0] || e.target.value === ""
+		!dummyList[0] || e.target.value === ""
 			? dispatch(setCryptoList(coins.data))
-			: dispatch(setCryptoList(rahul));
+			: dispatch(setCryptoList(dummyList));
 	};
 
 	const showChartList = () => {

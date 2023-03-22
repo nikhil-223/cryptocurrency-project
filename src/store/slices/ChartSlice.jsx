@@ -10,10 +10,12 @@ const ChartSlice = createSlice({
 		chartList: ["bitcoin"],
 		reload:true,
 	},reducers:{
+		// Reducer to set the first item in chart list
 		setFirstItemChartList(state,action){
 			state.reload=true;
 			state.chartList[0]=action.payload
 		},
+		// Reducer to set the second item in chart list
 		setSecondItemChartList(state,action){
 			state.reload=true
 			state.chartList[1]=action.payload
@@ -35,6 +37,7 @@ const ChartSlice = createSlice({
 		// }
 	},
 	extraReducers: (builder) => {
+		// Case to handle successful data fetch
 		builder.addCase(getChartData.fulfilled, (state, action) => {
 			if (state.coinNo === 1) {
 				state.coin1.isLoading = false;
@@ -48,6 +51,7 @@ const ChartSlice = createSlice({
 				state.coinNo = 1;
 			}
 		});
+		// Case to handle data fetch in progress
 		builder.addCase(getChartData.pending, (state, action) => {
 			if (state.coinNo === 1) {
 				state.coin1.isLoading = true;
@@ -57,6 +61,7 @@ const ChartSlice = createSlice({
 				state.coin2.isError = false;
 			}
 		});
+		// Case to handle data fetch failure
 		builder.addCase(getChartData.rejected, (state, action) => {
 			if (state.coinNo === 1) {
 				state.coin1.isLoading = false;
