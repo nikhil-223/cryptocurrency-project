@@ -23,7 +23,10 @@ export const getChartData = createAsyncThunk(
 	async ({currentCoin,timePeriod,currency}) => {
 		// Make a fetch request to the Coingecko API with the specified parameters
 		let interval;
-		if(timePeriod>70 && timePeriod<190){
+		if(timePeriod>5 && timePeriod<70){
+			interval='daily'
+		}
+		else if(timePeriod>70 && timePeriod<190){
 			interval='monthly'
 		}
 		else if (timePeriod>=190){

@@ -32,11 +32,11 @@ const ChartSlice = createSlice({
 			state.coin2.data=[]
 			state.chartList[0]=state.chartList[1]
 			state.chartList.splice(1,1)
-			state.coinNo=2
+			state.coinNo=1
+		},
+		setChartReload(state,action){
+			state.reload=action.payload
 		}
-		// setFirstAsSecondItem(state,action){
-		// 	state.coin1.data=state.coin2.data
-		// }
 	},
 	extraReducers: (builder) => {
 		// Case to handle successful data fetch
@@ -45,6 +45,7 @@ const ChartSlice = createSlice({
 				state.coin1.isLoading = false;
 				state.coin1.isError = false;
 				state.coin1.data = action.payload.prices;
+				if(state.chartList.length!==1)
 				state.coinNo = 2;
 			} else if (state.coinNo === 2) {
 				state.coin2.isLoading = false;
@@ -65,6 +66,7 @@ const ChartSlice = createSlice({
 		});
 		// Case to handle data fetch failure
 		builder.addCase(getChartData.rejected, (state, action) => {
+			console.log(action.payload);
 			if (state.coinNo === 1) {
 				state.coin1.isLoading = false;
 				state.coin1.isError=true
@@ -83,5 +85,6 @@ export const {
 	setSecondItemChartList,
 	removeSecondItemChartList,
 	interchangeChartItems,
+	setChartReload,
 } = ChartSlice.actions;
 export default ChartSlice.reducer;

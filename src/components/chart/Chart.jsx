@@ -12,6 +12,7 @@ import LineChart from "./LineChart";
 import TimePeriodItem from "./TimePeriodItem";
 import HorizontalBarChart from "./HorizontalBarChart";
 import VerticalBarChart from "./VerticalBarChart";
+import { setChartReload } from "../../store/slices/ChartSlice";
 
 const Chart = React.memo(
 	({
@@ -86,6 +87,7 @@ const Chart = React.memo(
 			let currentCoin = firstchartitem;
 			if (chartReload === true)
 				dispatch(getChartData({ currentCoin, timePeriod, currency }));
+			else dispatch(setChartReload(true))
 			// eslint-disable-next-line
 		}, [dispatch, firstchartitem, timePeriod, currency]);
 
