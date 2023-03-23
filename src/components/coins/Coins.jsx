@@ -10,29 +10,28 @@ import { setCoinSearchName, setSearchList } from "../../store/slices/DropSlice";
 import CoinList from "./CoinList";
 import WatchList from "./WatchList";
 import RecentList from "./RecentList";
-import { useAppSelector } from "../../store/storeAccess";
+// import { useAppSelector } from "../../store/storeAccess";
 
 // useLocation hook to get current route location
-const Coins = () => {
+const Coins = React.memo(({ coinSearchName, coins }) => {
 	let location = useLocation();
 	const dispatch = useDispatch();
 	// useSelector hook to get current theme and coin search name from redux store
 	const theme = useSelector((state) => {
 		return state.theme;
 	});
-	const {coinSearchName,coins}=useAppSelector()
+	// const {coinSearchName,coins}=useAppSelector()
 
-    // useEffect hook to set the search list based on the data retrieved from redux store
+	// useEffect hook to set the search list based on the data retrieved from redux store
 	useEffect(() => {
 		dispatch(setSearchList(coins.data));
 	}, [dispatch, coins.data]);
 
 	// useEffect hook to update the position of the list tracker based on current route location
 	useEffect(() => {
-
-		if (location.pathname === "/coins"){
+		if (location.pathname === "/coins") {
 			document.querySelector(".tracker").style.transform = "translate(0)";
-		}else if (location.pathname === "/recent")
+		} else if (location.pathname === "/recent")
 			document.querySelector(".tracker").style.transform = "translate(100%)";
 		else if (location.pathname === "/watchlist")
 			document.querySelector(".tracker").style.transform = "translate(200%)";
@@ -129,6 +128,6 @@ const Coins = () => {
 			{/* coinlist  */}
 		</>
 	);
-};
+});
 
 export default Coins;

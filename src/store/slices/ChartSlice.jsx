@@ -14,11 +14,13 @@ const ChartSlice = createSlice({
 		setFirstItemChartList(state,action){
 			state.reload=true;
 			state.chartList[0]=action.payload
+			state.coinNo=1
 		},
 		// Reducer to set the second item in chart list
 		setSecondItemChartList(state,action){
 			state.reload=true
 			state.chartList[1]=action.payload
+			state.coinNo=2
 		},
 		removeSecondItemChartList(state,action){
 			state.reload=false
@@ -48,8 +50,8 @@ const ChartSlice = createSlice({
 				state.coin2.isLoading = false;
 				state.coin2.isError = false;
 				state.coin2.data = action.payload.prices;
-				state.coinNo = 1;
-			}
+				state.coinNo=1
+			} 
 		});
 		// Case to handle data fetch in progress
 		builder.addCase(getChartData.pending, (state, action) => {

@@ -91,10 +91,6 @@ const LineChart = () => {
 		}
 		return 0;
 	});
-	coins.data.map((coin) => {
-		
-		return 0;
-	});
 	
 	if (chart.coin2.data !== undefined && chart.coin1.data!== undefined)
 		for (const chartitemindex in chartList) {

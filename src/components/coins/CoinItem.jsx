@@ -2,8 +2,7 @@ import React from "react"; // import React and necessary components
 import { useDispatch } from "react-redux";
 import { setFirstItemChartList } from "../../store/slices/ChartSlice";
 import {
-	setCryptoDropName,
-	setCurrentCoin,
+	setCryptoDropName
 } from "../../store/slices/DropSlice";
 import { addPieItem } from "../../store/slices/PieItemSlice";
 import {
