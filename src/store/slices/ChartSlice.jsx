@@ -68,15 +68,17 @@ const ChartSlice = createSlice({
 		});
 		// Case to handle data fetch failure
 		builder.addCase(getChartData.rejected, (state, action) => {
-			console.log(action.payload);
+			console.log('error');
 			if (state.coinNo === 1) {
 				state.coin1.isLoading = false;
 				state.coin1.isError=true
-				state.coinNo=2
+				console.log(state.chartList.length);
+				if (state.chartList.length !== 1)
+				 state.coinNo = 2;
 			} else if (state.coinNo === 2) {
 				state.coin2.isLoading = false;
 				state.coin2.isError=true
-				state.coinNo=1
+				if (state.chartList.length !== 1) state.coinNo = 1;
 			}
 		});
 	},
