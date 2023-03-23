@@ -80,13 +80,13 @@ const CryptoItem = (props) => {
 				setAlert({ type: "success", message: "Choose atleast one coin" })
 			);
 		}
-		// dispatch(
-		// 	setCryptoDropName(
-		// 		`${cryptofirstname[0].name} ${
-		// 			cryptosecondname[0] ? `,${cryptosecondname[0].name}` : ""
-		// 		}`
-		// 	)
-		// ); 
+		dispatch(
+			setCryptoDropName(
+				`${cryptofirstname[0].name} ${
+					cryptosecondname[0] ? `,${cryptosecondname[0].name}` : ""
+				}`
+			)
+		); 
 	};
 	
     

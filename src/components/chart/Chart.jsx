@@ -95,6 +95,7 @@ const Chart = React.memo(
 			let currentCoin = secondchartitem;
 			if (currentCoin !== undefined && chartReload === true)
 				dispatch(getChartData({ currentCoin, timePeriod, currency }));
+			else dispatch(setChartReload(true));
 			// eslint-disable-next-line
 		}, [dispatch, secondchartitem, timePeriod, currency]);
 

@@ -25,6 +25,7 @@ const ChartSlice = createSlice({
 		removeSecondItemChartList(state,action){
 			state.reload=false
 			state.chartList.splice(1,1);
+			state.coin2.data=[]
 		},
 		interchangeChartItems(state,action){
 			state.reload=false;
@@ -51,6 +52,7 @@ const ChartSlice = createSlice({
 				state.coin2.isLoading = false;
 				state.coin2.isError = false;
 				state.coin2.data = action.payload.prices;
+				if(state.chartList.length!==1)
 				state.coinNo=1
 			} 
 		});
