@@ -13,7 +13,6 @@ export const getCoins = createAsyncThunk("getCoins", async (currency) => {
 			},
 		}
 	);
-	console.log('coins');
 	// Convert the response to a JSON object and return it
 	return response.json();
 });
@@ -41,7 +40,6 @@ export const getChartData = createAsyncThunk(
 				},
 			}
 		);
-		console.log('chart',currentCoin);
 		// Convert the response to a JSON object and return it
 		return response.json();
 	}
