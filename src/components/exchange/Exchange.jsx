@@ -102,7 +102,7 @@ const Exchange = React.memo(
 				<div className=" w-full h-1/6 flex items-center">
 					<div className="ml-4 text-lg font-bold mb-1">
 						{" "}
-						Exchange coins.data
+						Exchange coins
 					</div>
 				</div>
 				{/* Title  */}
