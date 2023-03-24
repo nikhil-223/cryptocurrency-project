@@ -1,70 +1,36 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Crypto Currency Dashboard
+The Crypto Currency Dashboard is a web application built to provide users with real-time data and insights into the cryptocurrency market. The application uses a range of frameworks and dependencies to build a scalable and maintainable application that is easy to use and interact with.
 
-## Available Scripts
+## Features
+The Crypto Currency Dashboard includes the following features:
 
-In the project directory, you can run:
+### Watchlist: Add your favorite coins to a watchlist for easy access and monitoring.
+### Recent: View recently viewed coins for quick reference.
+### Dark mode: Reduce eye strain and improve usability in low-light conditions.
+### Exchange coins: Exchange coins within the application.
+### Coins portfolio: Track your coin portfolio and monitor your investment performance.
+### Compare coins: Compare coins side-by-side to help you make informed investment decisions.
+### Chart data different range: View chart data over different time ranges such as 1 hour, 1 day, and 1 month, allowing you to analyze cryptocurrency trends over time.
+Search by coin: Search for specific coins within the application for quick access to coin information.
+Change currency of coins: Switch between different currencies to view coin prices in your preferred currency.
 
-### `npm start`
+## Technologies Used
+The Crypto Currency Dashboard uses the following technologies:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### ReactJS: A popular open-source JavaScript library used to build complex and interactive user interfaces.
+### React-Redux: A library that provides a centralized store to manage the state of the application.
+### Redux-Thunk: A middleware library that allows developers to write asynchronous logic that interacts with the Redux store.
+### TailwindCSS: A utility-first CSS framework that provides a set of pre-defined classes to quickly style HTML elements.
+### Chart.js and React-Chartjs-2: JavaScript libraries that provide a simple and flexible way to create charts and graphs on a webpage.
+### Coingecko API: An API that provides real-time data about cryptocurrency prices, market caps, and other related data.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Getting Started
+To get started with the Crypto Currency Dashboard, follow these steps:
 
-### `npm test`
+### Clone the repository to your local machine.
+### Install the necessary dependencies by running npm install.
+### Start the development server by running npm start.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Contributing
+Contributions to the Crypto Currency Dashboard are welcome! If you find a bug or want to suggest a new feature, please create an issue or submit a pull request. Make sure to follow the code style and format guidelines outlined in the repository.
