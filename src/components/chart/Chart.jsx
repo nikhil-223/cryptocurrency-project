@@ -23,8 +23,7 @@ const Chart = React.memo(
 		cryptoList,
 		chartType,
 		chartDisplay,
-		firstchartitem,
-		secondchartitem,
+		chartList,
 		timePeriod,
 		currency,
 		timePeriodList,
@@ -84,20 +83,11 @@ const Chart = React.memo(
 		};
 
 		useEffect(() => {
-			let currentCoin = firstchartitem;
 			if (chartReload === true)
-				dispatch(getChartData({ currentCoin, timePeriod, currency }));
+				dispatch(getChartData({ chartList, timePeriod, currency }));
 			else dispatch(setChartReload(true))
 			// eslint-disable-next-line
-		}, [dispatch, firstchartitem, timePeriod, currency]);
-
-		useEffect(() => {
-			let currentCoin = secondchartitem;
-			if (currentCoin !== undefined && chartReload === true)
-				dispatch(getChartData({ currentCoin, timePeriod, currency }));
-			else dispatch(setChartReload(true));
-			// eslint-disable-next-line
-		}, [dispatch, secondchartitem, timePeriod, currency]);
+		}, [dispatch, chartList, timePeriod, currency]);
 
 		return (
 			<>
@@ -213,10 +203,8 @@ const Chart = React.memo(
 						}`}>
 						{<CoinDetail />}
 					</div>
-					{chart.coin2.isLoading === false &&
-					chart.coin1.isLoading === false ? (
-						chart.coin1.data !== [] &&
-						chart.coin2.data !== [] &&
+					{chart.all.isLoading === false? (
+				
 						coins.data[0] && (
 							<div
 								className={`LineChart h-full lg:w-3/4 md:w-3/4 lg:min-w-20 md:min-w-20 sm:w-full sm:${chartDisplay}`}>

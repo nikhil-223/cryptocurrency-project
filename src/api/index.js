@@ -20,7 +20,7 @@ export const getCoins = createAsyncThunk("getCoins", async (currency) => {
 // Define another async thunk to fetch data for a single coin's market chart
 export const getChartData = createAsyncThunk(
 	"getChartData",
-	async ({currentCoin,timePeriod,currency}) => {
+	async ({chartList,timePeriod,currency}) => {
 		// Make a fetch request to the Coingecko API with the specified parameters
 		let interval;
 		if(timePeriod>5 && timePeriod<70){
@@ -34,8 +34,19 @@ export const getChartData = createAsyncThunk(
 		}
 		else interval='hourly'
 
-		const response = await fetch(
-			`https://api.coingecko.com/api/v3/coins/${currentCoin}/market_chart?vs_currency=${currency}&days=${timePeriod}&interval=${interval}`,
+		const response1 = await fetch(
+			`https://api.coingecko.com/api/v3/coins/${chartList[0]}/market_chart?vs_currency=${currency}&days=${timePeriod}&interval=${interval}`,
+			{
+				method: "GET",
+				headers: {
+					"Content-Type": "application/json",
+				},
+			}
+		);
+
+		if(chartList[1]!==undefined)
+		var response2 = await fetch(
+			`https://api.coingecko.com/api/v3/coins/${chartList[1]}/market_chart?vs_currency=${currency}&days=${timePeriod}&interval=${interval}`,
 			{
 				method: "GET",
 				headers: {
@@ -44,6 +55,12 @@ export const getChartData = createAsyncThunk(
 			}
 		);
 		// Convert the response to a JSON object and return it
-		return response.json();
+		if(chartList[1]===undefined)
+		return Promise.allSettled([response1.json()])
+		else return Promise.allSettled([response1.json(),response2.json()]) 
+
+
 	}
 );
+
+

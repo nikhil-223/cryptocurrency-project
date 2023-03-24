@@ -37,8 +37,6 @@ export const useAppSelector = () => {
     const chart= useSelector(state=>state.chart)
     
 	// These variables are assigned values from the first two items in the chartList array.
-		const firstchartitem = chartList[0];
-		const secondchartitem = chartList[1];
 
 		// The parts of the state that are needed by the component that uses this hook are returned as an object.
 	return {
@@ -50,8 +48,6 @@ export const useAppSelector = () => {
 		cryptoList,
 		chartType,
 		chartDisplay,
-		firstchartitem,
-		secondchartitem,
 		timePeriod,
 		currentCoin,
 		timePeriodList,

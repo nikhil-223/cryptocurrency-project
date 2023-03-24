@@ -21,6 +21,7 @@ const App = () => {
 		buyDropName,
 		buyList,
 		buyCoin,
+		chartList,
 		coinSearchName,
 		currentChartType,
 		cryptoDropName,
@@ -83,6 +84,7 @@ const App = () => {
 							timePeriodList={timePeriodList}
 							chart={chart}
 							chartReload={chartReload}
+							chartList={chartList}
 						/>
 					</div>
 					{/* this is the portfolio component  */}
