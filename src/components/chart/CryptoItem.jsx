@@ -1,7 +1,8 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import { BsCheck2Square } from "react-icons/bs";
 import { BiSquareRounded } from "react-icons/bi";
-import { useDispatch } from "react-redux";
+
 import {
 	setCryptoDropName
 } from "../../store/slices/DropSlice";
@@ -12,9 +13,11 @@ import { setAlert } from "../../store/slices/AlertSlice";
 
 const CryptoItem = (props) => {
 	const { name,id } = props; // Destructuring the 'name' and 'id' props passed from parent component
-	const dispatch = useDispatch();  // Initializing the Redux dispatch function
+
+	const dispatch = useDispatch(); 
 	const {theme,chartList,coins}=useAppSelector() // Accessing the 'theme', 'chartList', and 'coins' state values from Redux store using custom hook 'useAppSelector'
-    let cryptofirstname=[]
+    
+	let cryptofirstname=[]
     let cryptosecondname=[]
     
          coins.data.map((coin)=>{
@@ -23,25 +26,24 @@ const CryptoItem = (props) => {
             return 0
         })
 
+	// this function works on click and it changes the state of chartSlice 
 	const handleClick = () => {
-
 		// second item clicked        if second item already exist     then remove it 
 		if(chartList[1]===id)
 		{dispatch(removeSecondItemChartList())
 			cryptosecondname[0]=undefined;
 		}
+
 		// first item clicked          add second item to first      then remove first 
 		else if(chartList[0]===id && chartList[1]!==undefined){ 
-			// dispatch(setFirstItemChartList(chartList[1]))
-			// dispatch(removeSecondItemChartList())
 			dispatch(interchangeChartItems())
-			// dispatch(setCurrentCoin(chartList[1]));
 			coins.data.map((coin) => {
 				if (coin.id === chartList[1]) cryptofirstname[0]=coin;
 				return 0;
 			});
 			dispatch(setCryptoDropName(cryptofirstname[0].name))
 		}
+
 		// second item does not exist   any item clicked          add second item    
 		else if (chartList[1] === undefined && chartList[0]!==id) {
 			dispatch(setSecondItemChartList(id));
@@ -59,6 +61,7 @@ const CryptoItem = (props) => {
 				)
 			);
 		}
+
 		else if (chartList[1] !== undefined && chartList[0] !== id) {
 			dispatch(setSecondItemChartList(id));
 			coins.data.map((coin) => {
@@ -106,4 +109,4 @@ const CryptoItem = (props) => {
 	);
 };
 
-export default CryptoItem; // Exporting the CryptoItem component so that it can be used in other parts of the application
+export default CryptoItem; 

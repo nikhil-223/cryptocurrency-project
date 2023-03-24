@@ -27,52 +27,51 @@ const VerticalBarChart = () => {
 
 	let labels = [];
 
-	if (chart.coin1.data !== undefined)
-		for (const element of chart.coin1.data) {
-			const timestamp = new Date(element[0]);
-			const weekday = ["Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"];
-			const yearMonth = [
-				"Jan",
-				"Feb",
-				"Mar",
-				"Apr",
-				"May",
-				"Jun",
-				"Jul",
-				"Aug",
-				"Sep",
-				"Oct",
-				"Nov",
-				"Dec",
-			];
+	// adding labels
+	for (const element of chart.coin1.data) {
+		const timestamp = new Date(element[0]);
+		const weekday = ["Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"];
+		const yearMonth = [
+			"Jan",
+			"Feb",
+			"Mar",
+			"Apr",
+			"May",
+			"Jun",
+			"Jul",
+			"Aug",
+			"Sep",
+			"Oct",
+			"Nov",
+			"Dec",
+		];
 
-			let day = weekday[timestamp.getDay()];
-			let month = yearMonth[timestamp.getMonth()];
-			// dummy
-			switch (chartRange) {
-				case "1D":
-					labels.push(`${timestamp.getHours()}:${timestamp.getMinutes()}`);
-					break;
-				case "1W":
-					labels.push(
-						`${day} ${timestamp.getHours()}:${timestamp.getMinutes()}`
-					);
-					break;
-				case "1M":
-					labels.push(`${month} ${timestamp.getDate()}`);
-					break;
-				case "6M":
-					labels.push(`${month} ${timestamp.getMonth()}`);
-					break;
-				case "1Y":
-					labels.push(`${month} ${timestamp.getMonth()}`);
-					break;
-				default:
-					labels.push(`${timestamp.getHours()}:${timestamp.getMinutes()}`);
-					break;
-			}
-			// eslint-disable-next-line
+		let day = weekday[timestamp.getDay()];
+		let month = yearMonth[timestamp.getMonth()];
+		// dummy
+		switch (chartRange) {
+			case "1D":
+				labels.push(`${timestamp.getHours()}:${timestamp.getMinutes()}`);
+				break;
+			case "1W":
+				labels.push(`${day} ${timestamp.getHours()}:${timestamp.getMinutes()}`);
+				break;
+			case "1M":
+				labels.push(`${month} ${timestamp.getDate()}`);
+				break;
+			case "6M":
+				labels.push(`${month} ${timestamp.getMonth()}`);
+				break;
+			case "1Y":
+				labels.push(`${month} ${timestamp.getMonth()}`);
+				break;
+			default:
+				labels.push(`${timestamp.getHours()}:${timestamp.getMinutes()}`);
+				break;
 		}
+	}
+
+	// adding datasets
 	let datasets = [];
 	let cryptoname = [];
 	coins.data.map((coin) => {
@@ -113,6 +112,7 @@ const VerticalBarChart = () => {
 			});
 		}
 
+	// setting datasets and labels in data
 	const data = {
 		labels,
 		datasets,
@@ -131,6 +131,8 @@ const VerticalBarChart = () => {
 		yticks = {};
 		xticks = {};
 	}
+
+	// setting options
 	const options = {
 		maintainAspectRatio: false,
 		responsive: true,
@@ -159,9 +161,6 @@ const VerticalBarChart = () => {
 			},
 		},
 	};
-
-	// Call listener function at run time
-	// Attach listener function on state changes
 
 	return <Bar data={data} options={options} />;
 };

@@ -1,35 +1,40 @@
 import React, { useEffect } from "react";
-import CurrencyItem from "./CurrencyItem";
-import { IoMdArrowDropdown } from "react-icons/io";
-import { currencies } from "../../assets"; // Importing the list of currencies
 import { useDispatch } from "react-redux";
+import { IoMdArrowDropdown } from "react-icons/io";
+
+import CurrencyItem from "./CurrencyItem";
+import { currencies } from "../../assets"; // Importing the list of currencies
 import {
 	setCurrencyDropdownName,
 	setCurrencyList,
 } from "../../store/slices/DropSlice"; // Importing Redux actions
-import { useAppSelector } from "../../store/storeAccess"; // Importing custom Redux hook
+import { useAppSelector } from "../../store/storeAccess";
 
 const CurrencyDrop = (props) => {
 	const { theme } = props;
 
 	const dispatch = useDispatch();
-	const {currencyList,currencyDropName}=useAppSelector() // Extracting state from Redux store using the custom hook
+	const { currencyList, currencyDropName } = useAppSelector(); // Extracting state from Redux store using the custom hook
 
 	useEffect(() => {
 		dispatch(setCurrencyList(currencies)); // Initializing the list of currencies in the Redux store
 		// eslint-disable-next-line
 	}, []);
+
+	// below are the function for crypto dropdown
 	const hideList = () => {
 		document.getElementById("currencyDroplist").style.display = "none"; // Hiding the currency dropdown list
 	};
 	const showList = () => {
 		document.getElementById("currencyDroplist").style.display = "flex"; // Showing the currency dropdown list
 	};
+
 	const handleClick = () => {
 		const dropListState =
 			document.getElementById("currencyDroplist").style.display;
 		dropListState === "none" ? showList() : hideList(); // Toggling the visibility of the currency dropdown list
 	};
+
 	const handleChange = (e) => {
 		dispatch(setCurrencyDropdownName(e.target.value)); // Updating the dropdown name in the Redux store
 		let dummyList = currencies.filter((element) => {
