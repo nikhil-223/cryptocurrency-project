@@ -1,18 +1,19 @@
 import React from "react"; // import React and necessary components
 import { useDispatch } from "react-redux";
+
 import { setFirstItemChartList } from "../../store/slices/ChartSlice";
+import { addPieItem } from "../../store/slices/PieItemSlice";
 import {
 	setCryptoDropName
 } from "../../store/slices/DropSlice";
-import { addPieItem } from "../../store/slices/PieItemSlice";
 import {
 	addRecentCoin,
 	removeRecentCoin,
 } from "../../store/slices/RecentSlice";
 import { useAppSelector } from "../../store/storeAccess";
 
-const CoinItem = (props) => {  // define a functional component called CoinItem that takes in props
-	const dispatch = useDispatch();  // retrieve the dispatch function from react-redux
+const CoinItem = (props) => { 
+	const dispatch = useDispatch();
 	const {currencySymbol,coins,recentList,chartList}=useAppSelector(); // retrieve the state variables from the Redux store
 	const {
 		name,
@@ -25,10 +26,11 @@ const CoinItem = (props) => {  // define a functional component called CoinItem 
 
 	const market_cap_change_percentage_24h_toString = `${market_cap_change_percentage_24h}`;
 
-	let cryptofirstname = []; // initialize an empty array to store crypto name
-	let cryptosecondname = []; // initialize an empty array to store crypto name
+	let cryptofirstname = []; 
+	let cryptosecondname = [];
 
-	const aboutItem = (e) => { // define an event handler function called aboutItem
+	// this function adds the pie chart data and sets chartlist 
+	const aboutItem = (e) => { 
 		dispatch(addPieItem(name)); // dispatch an action to add a pie item with the given name
 		coins.data.map((coin) => { // loop through the coins data to find the first crypto name
 			if (coin.id === id) cryptofirstname.push(coin);
@@ -55,6 +57,7 @@ const CoinItem = (props) => {  // define a functional component called CoinItem 
 			dispatch(addRecentCoin(recentItem[0])); // then add it back to the beginning of the list
 		}
 	};
+
 	return (
 		<>
 			<div

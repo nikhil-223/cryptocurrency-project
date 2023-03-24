@@ -1,9 +1,11 @@
 import React from "react";
+
 import { useAppSelector } from "../../store/storeAccess";
 import CoinItem from './CoinItem'
 
-// Create a functional component called CoinList
+
 const CoinList = () => {
+
 	// Use the useAppSelector hook to extract the searchList and coins state
 	const {searchList,coins}=useAppSelector()
 	return (
@@ -35,5 +37,4 @@ const CoinList = () => {
 	);
 };
 
-// Export the CoinList component
 export default CoinList;
