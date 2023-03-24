@@ -1,13 +1,13 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { getCoins } from "./api";
-import { Chart, Coins, Exchange, Portfolio } from "./components";
 import { BrowserRouter } from "react-router-dom";
-import Alert from "./components/alert/Alert";
-import PhoneMenu from "./components/phoneMenu/PhoneMenu";
+
+import { Chart, Coins, Exchange, Portfolio,Alert,PhoneMenu } from "./components";
+import { getCoins } from "./api";
 import { setWatchList } from "./store/slices/WatchSlice";
 import { useAppSelector } from "./store/storeAccess";
 
+// this is the app component containing 4 major components namely chart ,coins, exchange, portfolio
 const App = () => {
 	const {
 		currency,

@@ -1,16 +1,10 @@
 import React, { useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useAppSelector } from "../../store/storeAccess";
 
 const Alert = () => {
-	// const {alert,theme} = useContext(CoinContext)
+	// Using useAppSelector custom hook to extract alert and theme state variables from the redux store
+	const {alert,theme} = useAppSelector()
 
-	// Using useSelector hook to extract alert and theme state variables from the redux store
-	const alert = useSelector((state) => {
-		return state.alert;
-	});
-	const theme = useSelector((state) => {
-		return state.theme;
-	});
 	// useEffect hook to add and remove a class to display/hide the alert box
 	useEffect(() => {
 		if (alert.message !== "") {
@@ -25,7 +19,6 @@ const Alert = () => {
 		}
 	},[alert]);
 
-	// rendering the alert box with appropriate styling based on the alert type and theme
 	return (
 		<div
 			className={`alert fixed w-60 h-auto p-4 bottom-8 left-4 -translate-x-72 rounded z-20 transition-all ${

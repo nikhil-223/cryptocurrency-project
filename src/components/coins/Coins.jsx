@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
+import { useDispatch} from "react-redux";
 import { Link, Route, Routes, useLocation } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
 import { AiOutlineSearch } from "react-icons/ai";
 import { MdLightMode, MdModeNight } from "react-icons/md";
 
@@ -10,17 +10,14 @@ import { setCoinSearchName, setSearchList } from "../../store/slices/DropSlice";
 import CoinList from "./CoinList";
 import WatchList from "./WatchList";
 import RecentList from "./RecentList";
-// import { useAppSelector } from "../../store/storeAccess";
+import { useAppSelector } from "../../store/storeAccess";
 
-// useLocation hook to get current route location
 const Coins = React.memo(({ coinSearchName, coins }) => {
+	// useLocation hook to get current route location
 	let location = useLocation();
 	const dispatch = useDispatch();
-	// useSelector hook to get current theme and coin search name from redux store
-	const theme = useSelector((state) => {
-		return state.theme;
-	});
-	// const {coinSearchName,coins}=useAppSelector()
+	
+	const {theme} = useAppSelector()
 
 	// useEffect hook to set the search list based on the data retrieved from redux store
 	useEffect(() => {
@@ -58,7 +55,7 @@ const Coins = React.memo(({ coinSearchName, coins }) => {
 
 	return (
 		<>
-			{/* title  */}
+			{/* Search Bar */}
 			<div className=" my-2 mx-auto h-12 border-b-2 border-gray-400 w-11/12 flex items-center justify-start ">
 				{/* search icon  */}
 				<div className=" m-3 mx-5 text-xl">
@@ -90,7 +87,7 @@ const Coins = React.memo(({ coinSearchName, coins }) => {
 					</div>
 				)}
 			</div>
-			{/* title  */}
+			{/* Search Bar  */}
 
 			{/* list options  */}
 			<div className="w-full h-10 flex flex-wrap shadow-md">

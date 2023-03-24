@@ -119,7 +119,6 @@ const LineChart = () => {
 				spanGaps: true,
 			});
 		}
-		console.log(chart);
 
 	const data = {
 		labels,

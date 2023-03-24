@@ -43,6 +43,11 @@ const DropSlice = createSlice({
 		chartType: {
 			dropName: "Line",
 			currentChartType: "Line",
+			chartTypeList:[
+			{ itemname: "Line" },
+			{ itemname: "Bar" },
+			{ itemname: "Hor..Bar" },
+			]
 		},
 		sell: {
 			dropName: "Bitcoin",

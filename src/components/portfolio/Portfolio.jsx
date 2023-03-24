@@ -1,10 +1,9 @@
 import React from 'react'
+
 import PieChart from './PieChart';
-// import { useAppSelector } from '../../store/storeAccess';
 
 const Portfolio = React.memo(({ currencySymbol, PieItem, coins }) => {
 
-	// Initialize total value variable to 0
 	let tv = 0;
 
 	// If coins array is not empty, loop through PieItem array
