@@ -42,18 +42,18 @@ const ChartSlice = createSlice({
 	extraReducers: (builder) => {
 		// Case to handle successful data fetch
 		builder.addCase(getChartData.fulfilled, (state, action) => {
-			if (state.coinNo === 1) {
+			let coin=action.payload.currentCoin;
+			if (coin===state.chartList[0]) {
 				state.coin1.isLoading = false;
 				state.coin1.isError = false;
-				state.coin1.data = action.payload.prices;
+				state.coin1.data = action.payload.result.prices;
 				if(state.chartList.length!==1)
 				state.coinNo = 2;
-			} else if (state.coinNo === 2) {
+			} else if (coin === state.chartList[1]) {
 				state.coin2.isLoading = false;
 				state.coin2.isError = false;
-				state.coin2.data = action.payload.prices;
-				if(state.chartList.length!==1)
-				state.coinNo=1
+				state.coin2.data = action.payload.result.prices;
+				if (state.chartList.length !== 1) state.coinNo = 1;
 			} 
 		});
 		// Case to handle data fetch in progress
