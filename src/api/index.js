@@ -41,7 +41,6 @@ export const getChartData = createAsyncThunk(
 			}
 		);
 		// const res = { response: response.json(), coin: currentCoin };
-		console.log("chart");
 		return response.json().then((result) => {
 			return { result, currentCoin };
 		});
