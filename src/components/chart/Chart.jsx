@@ -167,7 +167,7 @@ const Chart = React.memo(
 
 					{/* chartType dropdown  */}
 					<div
-						className={` dropdown flex items-center justify-between  lg:w-24 md:w-24 sm:w-20 lg:p-2 md:p-2 sm:p-1 ${
+						className={` dropdown flex items-center justify-between  lg:w-24 md:w-24 sm:w-24 lg:p-2 md:p-2 sm:p-1 ${
 							theme === "dark" ? " bg-dropdownBoxDark" : " bg-dropdownBoxLight"
 						}  lg:rounded md:rounded sm:rounded`}>
 						<div
@@ -219,8 +219,6 @@ const Chart = React.memo(
 						coins.data[0] && (
 							<div
 								className={`LineChart h-full lg:w-3/4 md:w-3/4 lg:min-w-20 md:min-w-20 sm:w-full sm:${chartDisplay}`}>
-								{/* <LineChart /> */}
-								{/* <VerticalBarChart /> */}
 								{currentChartType === "Line" && <LineChart />}
 								{currentChartType === "Bar" && <VerticalBarChart />}
 								{currentChartType === "Hor..Bar" && <HorizontalBarChart />}
