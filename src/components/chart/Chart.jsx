@@ -176,7 +176,7 @@ const Chart = React.memo(
 						</div>
 						<span
 							className="lg:w-5 sm:w-5 flex justify-center items-center text-2xl cursor-pointer"
-							onClick={showChartList}>
+							onClick={handleChartClick}>
 							<IoMdArrowDropdown />
 						</span>
 
@@ -186,7 +186,7 @@ const Chart = React.memo(
 								theme === "dark"
 									? " bg-dropdownBoxDark"
 									: " bg-dropdownBoxLight"
-							} -translate-x-1 translate-y-20 w-20 h-24 flex-col rounded overflow-scroll`}
+							} -translate-x-1 translate-y-20 w-20 h-28 flex-col rounded overflow-scroll`}
 							style={{ display: "none" }}
 							onMouseLeave={hideChartList}
 							onClick={handleChartClick}>
